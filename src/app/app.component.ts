@@ -1,22 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'HMS-ANGULAR-SPRING-PROJECT';
-
-
-  ngOnInit(): void {
-    $("p").text("minhaj");
-   
-  }
-
-
-
-
-
+export class AppComponent {
+  title = 'HMS';
 }

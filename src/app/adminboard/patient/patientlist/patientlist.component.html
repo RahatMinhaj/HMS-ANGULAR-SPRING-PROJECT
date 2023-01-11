@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Patient List:</li>
+    </ol>
+</nav>
+
+<div class="container d-flex justify-content-end mb-3">
+    <div class="btn btn-primary">Add New Patient</div>
+</div>
+
+
+
+<mat-tab-group>
+    <mat-tab label="First">
+        <app-patientpending></app-patientpending>
+        Content 1
+    </mat-tab>
+
+    <mat-tab label="Second">
+        <app-patientreview></app-patientreview>
+        Content 2
+    </mat-tab>
+
+    <mat-tab label="Third">
+        Content 3
+    </mat-tab>
+
+</mat-tab-group>

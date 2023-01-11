@@ -1,0 +1,196 @@
+
+<mat-sidenav-container fullscreen>
+    <mat-sidenav mode="side" #sidenav opened="opened" position="start" >
+        <mat-nav-list>
+            <mat-list-item routerLink="/admin">
+                <mat-icon class="align-middle">dashboard</mat-icon><span class="align-middle">Dashboard</span>
+            </mat-list-item>
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-calendar-check fa-2x me-4"></i>
+                  Appointments
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/appointments_list">
+                        <mat-icon>view_list</mat-icon>
+                        <span>Appointment List</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>note_add</mat-icon>
+                        <span>New Appointment</span>
+                    </a>
+                    
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-user-doctor fa-2x me-4"></i>
+                  Doctor
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/doctors">
+                        <mat-icon>groups</mat-icon>
+                        <span>Doctor List</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/createdoc">
+                        <mat-icon>android</mat-icon>
+                        <span>New Doctor</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>apple</mat-icon><span>Departmnents</span>
+                    </a>
+                    
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-bed-pulse fa-2x me-4"></i>
+                  Patient
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/patientlist">
+                        <mat-icon>groups</mat-icon>
+                        <span>Patient List</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>New Patient</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>apple</mat-icon><span>Departmnents</span>
+                    </a>
+                    
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+
+
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Appointment
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">Spring</a>
+                    <a mat-list-item routerLink="#">Hibernate</a>
+                    <a mat-list-item routerLink="#">Struts</a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-nav-list>
+      left panel
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        Hospital Management System
+        <span class="toolbar-spacer"></span>
+        <!-- toolbar right side -->
+
+        <div class="bg-dark test rounded-circle me-2"></div>
+        <div class="tool_profile">
+        <h3>Minhajul Islam</h3>
+        </div>
+      </mat-toolbar>
+
+
+
+
+
+
+
+
+
+
+      <div class="main-content">  
+
+        <router-outlet></router-outlet>
+    </div>
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>ConcretePage.com</span>
+    <span class="toolbar-item-spacer"></span>
+    <button mat-icon-button matTooltip="Like">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Share">
+        <mat-icon>share</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Notifications">
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+        <button mat-menu-item routerLink="#">
+            <mat-icon>person</mat-icon><span>My Account</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>settings</mat-icon><span>Settings</span>
+        </button>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>help</mat-icon><span>Help</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item routerLink="#">
+            <mat-icon>exit_to_app</mat-icon>Logout
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+    <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
+        <mat-nav-list>
+            <mat-list-item routerLink="#">
+                <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+            </mat-list-item>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Mobile Phone
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>apple</mat-icon><span>iOS</span>
+                    </a>
+                    <a mat-list-item routerLink="#">
+                        <mat-icon>android</mat-icon><span>Android</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header>
+                    Frameworks
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="#">Spring</a>
+                    <a mat-list-item routerLink="#">Hibernate</a>
+                    <a mat-list-item routerLink="#">Struts</a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet>
+            <div class="app-sidenav-content">
+                Components open here
+            </div>
+        </router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>  -->

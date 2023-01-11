@@ -1,0 +1,72 @@
+<p>newappointment works!</p>
+<div class="container">
+    <h1>Appointment Form</h1>
+    
+    
+    <form [formGroup]="appointForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+      <div class="row">
+        <div class="form-group col">
+          <label for="uname">Your Registered Name:</label>
+          <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="form-group col">
+          <label for="uname">Your Patient ID:</label>
+          <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+        </div>
+      </div>
+    
+      <div class="row">
+      <div class="form-group col">
+        <label for="uname">Appointment Type:</label>
+        <select class="form-select" formControlName="appointment_type">
+          <option value="1">Emergency</option>
+          <option value="2">Casual</option>
+          <option value="3">Online</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="uname">Doctors Category:</label>
+        <select class="form-select" formControlName="department_id">
+          <option value="1">Medicine</option>
+          <option value="2">Orthopedics</option>
+          <option value="2">Surgon</option>
+          <option value="2">Skin</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col">
+        <label for="uname">Doctors Name:</label>
+        <select class="form-select" formControlName="doc_id">
+          <option value="1">Khalek</option>
+          <option value="1">Malek</option>
+          <option value="1">Rashed</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="upass">Appoint Date</label>
+        <input type="date" class="form-control" formControlName="appointment_date">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col">
+        <label for="uname">Appoint Time:</label>
+        <select class="form-select" formControlName="appointment_time">
+          <option value="1">Morning</option>
+          <option value="2">Evening</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="">Desease Details</label>
+        <textarea class="form-control" formControlName="deasease" rows="3"></textarea>
+      </div>
+    </div>
+    
+    <div class="d-flex justify-content-center"><button type="submit" class="btn btn-success float-right d-flex justify-content-center" id="btnLogin" (click)="appointment()">Create
+      Appointment</button></div>
+    
+    </form>
+    </div>
+    
+    
+    

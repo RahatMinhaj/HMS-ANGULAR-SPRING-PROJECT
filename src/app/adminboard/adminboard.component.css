@@ -1,0 +1,67 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+mat-sidenav {
+    width: 280px;
+    padding: 15px;
+}
+
+.mat-drawer {
+    /* background-color: #023075; */
+    color: #fff
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+
+.test {
+    height: 50px;
+    width: 50px;
+}
+
+
+
+/* .carousel{
+    position: absolute;
+    top:100px;
+} */
+
+
+/* .toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: 90%;
+    margin: 0;
+}  
+.app-sidenav {
+    width: 230px;
+}
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}  */
+
+
+/* Custom CSS */
+/* mat-icon{
+    font-size: 100px;
+}
+ts{
+    font-size: 80;
+} */
+span{
+    margin-left: 20px;
+}

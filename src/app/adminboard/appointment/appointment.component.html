@@ -1,0 +1,44 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Patient List:</li>
+    </ol>
+</nav>
+
+<div class="container d-flex justify-content-end mb-3">
+
+    <div class="btn btn-primary">Add New Appointment</div>
+</div>
+
+
+
+<mat-tab-group>
+    <mat-tab label="All Appointment">
+        <ng-template matTabContent>
+            <app-allappointment></app-allappointment>
+        </ng-template>
+
+    </mat-tab>
+
+    <mat-tab label="Pending Appointment">
+        <ng-template matTabContent>
+        <app-pendingappointment></app-pendingappointment>
+    </ng-template>
+
+    </mat-tab>
+
+    <mat-tab label="On Doctor's Review ">
+        <ng-template matTabContent>
+            <app-onreviewappointment></app-onreviewappointment>
+        </ng-template>
+    </mat-tab>
+
+
+    <mat-tab label="Confimed Appointments">
+        <ng-template matTabContent>
+            <app-confirmedappointment></app-confirmedappointment>
+        </ng-template>
+    </mat-tab>
+
+
+</mat-tab-group>
