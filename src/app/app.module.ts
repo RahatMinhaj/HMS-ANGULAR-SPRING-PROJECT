@@ -45,6 +45,13 @@ import { AllappointmentComponent } from './adminboard/appointment/allappointment
 import { PendingappointmentComponent } from './adminboard/appointment/pendingappointment/pendingappointment.component';
 import { ConfirmedappointmentComponent } from './adminboard/appointment/confirmedappointment/confirmedappointment.component';
 import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewappointment/onreviewappointment.component';
+import { BillingComponent } from './adminboard/billing/billing.component';
+import { PrescriptionComponent } from './adminboard/prescription/prescription.component';
+import { CabinComponent } from './adminboard/cabin/cabin.component';
+import { LabComponent } from './adminboard/lab/lab.component';
+import { EmployeeComponent } from './adminboard/employee/employee.component';
+import { PharmacyComponent } from './adminboard/pharmacy/pharmacy.component';
+import { AmbulanceComponent } from './adminboard/ambulance/ambulance.component';
 
 
 
@@ -70,6 +77,13 @@ import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewa
     PendingappointmentComponent,
     ConfirmedappointmentComponent,
     OnreviewappointmentComponent,
+    BillingComponent,
+    PrescriptionComponent,
+    CabinComponent,
+    LabComponent,
+    EmployeeComponent,
+    PharmacyComponent,
+    AmbulanceComponent,
   ],
   imports: [
     BrowserModule,

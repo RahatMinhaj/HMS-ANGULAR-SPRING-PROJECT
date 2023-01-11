@@ -15,6 +15,11 @@ import { AppointmentlistComponent } from './adminboard/appointment/appointmentli
 import { PatientlistComponent } from './adminboard/patient/patientlist/patientlist.component';
 import { PatientpendingComponent } from './adminboard/patient/patientlist/patientpending/patientpending.component';
 import { PatientreviewComponent } from './adminboard/patient/patientlist/patientreview/patientreview.component';
+import { PendingappointmentComponent } from './adminboard/appointment/pendingappointment/pendingappointment.component';
+import { AllappointmentComponent } from './adminboard/appointment/allappointment/allappointment.component';
+import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewappointment/onreviewappointment.component';
+import { ConfirmedappointmentComponent } from './adminboard/appointment/confirmedappointment/confirmedappointment.component';
+import { NewappointmentComponent } from './adminboard/appointment/newappointment/newappointment.component';
 
 const routes: Routes = [
   {
@@ -33,6 +38,33 @@ const routes: Routes = [
       {
         path: 'appointments_list',
         component: AppointmentComponent,
+        children:[
+          {
+            path: '',
+            redirectTo: "/admin/appointments_list/all" ,
+            pathMatch:'full'
+          },
+          {
+            path: 'all',
+            component:AllappointmentComponent
+          },
+          {
+            path: 'pending',
+            component:PendingappointmentComponent
+          },
+          {
+            path: 'ondoctor',
+            component:OnreviewappointmentComponent
+          },
+          {
+            path: 'confirmed',
+            component:ConfirmedappointmentComponent
+          }
+        ]
+      },
+      {
+        path: "new_appointment",
+        component:NewappointmentComponent
       },
       // ========================Appointment menu: end=============================
 
