@@ -7,7 +7,10 @@ emp_mobile!:string;
 emp_address!:string;
 emp_email!:string;
 emp_join_date!:Date;
-dept_id!:number;
+ed_id!:number;
 emp_salary!:number;
+emp_picture!:string;
+emp_NID!:string;
+
 
 }

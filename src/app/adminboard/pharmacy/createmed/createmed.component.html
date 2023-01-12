@@ -1,0 +1,81 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Doctor</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="">
+        <div class="">
+            <h3 class="text-center">Add New Med Item</h3><br>
+            <div class="text-center">
+                <img src="../../../../assets/images/doctor.jpg" alt="" class="rounded-circle">
+            </div>
+
+
+            <form [formGroup]="createMedItemForm" method="POST">
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Med Item Name:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="first_name">
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="">Med Group/Scrientific Name:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="first_name">
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group col">
+                        <label for="">Med Item Category</label>
+                        <select class="form-select" formControlName="departmentcheckbox">
+                            <option [ngValue]="1">One</option>
+                            <option [ngValue]="2">Two</option>
+                            <option [ngValue]="3">Three</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group col">
+                        <label for="">Med Weight/Mesurement:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="mobile">
+                    </div>
+                    <div class="form-group col">
+                        <label for="">Med Item Description:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="mobile">
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Put Your Medicine Image:</label>
+                        <input class="form-control" type="file" name="" id="" formControlName="details">
+                    </div>
+                </div>
+
+
+
+                <br><br>
+
+                <div class="d-flex justify-content-center"><button type="submit"
+                        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin"
+                        (click)="createMedItem()">Create Doctor</button>
+                </div>
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>

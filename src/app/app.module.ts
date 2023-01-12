@@ -52,7 +52,10 @@ import { LabComponent } from './adminboard/lab/lab.component';
 import { EmployeeComponent } from './adminboard/employee/employee.component';
 import { PharmacyComponent } from './adminboard/pharmacy/pharmacy.component';
 import { AmbulanceComponent } from './adminboard/ambulance/ambulance.component';
-
+import { DoctorboardComponent } from './doctorboard/doctorboard.component';
+import { EmployeeDepartmentComponent } from './adminboard/employee-department/employee-department.component';
+import { CreatemedComponent } from './adminboard/pharmacy/createmed/createmed.component';
+import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.component';
 
 
 @NgModule({
@@ -84,6 +87,10 @@ import { AmbulanceComponent } from './adminboard/ambulance/ambulance.component';
     EmployeeComponent,
     PharmacyComponent,
     AmbulanceComponent,
+    DoctorboardComponent,
+    EmployeeDepartmentComponent,
+    CreatemedComponent,
+    MedreportComponent,
   ],
   imports: [
     BrowserModule,

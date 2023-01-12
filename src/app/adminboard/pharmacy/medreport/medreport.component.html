@@ -1,0 +1,91 @@
+<p>medreport works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Medicine Report</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="">
+        <div class="">
+            <h3 class="text-center">Add New Medicine Report</h3><br>
+            <div class="text-center">
+                <img src="../../../../assets/images/doctor.jpg" alt="" class="rounded-circle">
+            </div>
+
+
+            <form [formGroup]="createMedReportForm" method="POST">
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Med Item ID</label>
+                        <select class="form-select" formControlName="med_id">
+                            <option [ngValue]="1">One</option>
+                            <option [ngValue]="2">Two</option>
+                            <option [ngValue]="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="">Medicine Company</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="med_company">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Med Quantity</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="med_quantity">
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Med Country:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="med_courty">
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="">Med Production Date:</label>
+                        <input class="form-control" type="date" name="" id="" formControlName="med_production_date">
+                    </div>
+                    <div class="form-group col">
+                        <label for="">Med Expiry Date:</label>
+                        <input class="form-control" type="date" name="" id="" formControlName="med_expiry_date">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="">Supplier ID:</label>
+                        <select class="form-select" formControlName="supplier_id">
+                            <option [ngValue]="1">One</option>
+                            <option [ngValue]="2">Two</option>
+                            <option [ngValue]="3">Three</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="">Med Price:</label>
+                        <input class="form-control" type="text" name="" id="" formControlName="med_price">
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="d-flex justify-content-center"><button type="submit"
+                        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin"
+                        (click)="createMedReport()">Create Doctor</button>
+                </div>
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
