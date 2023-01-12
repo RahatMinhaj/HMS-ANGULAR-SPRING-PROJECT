@@ -14,7 +14,7 @@
             </div>
 
 
-            <form [formGroup]="createDocForm" method="POST">
+            <form method="POST">
 
                 <div class="row">
                     <div class="form-group col">
@@ -36,9 +36,9 @@
                     <div class="form-group col">
                         <label for="">Department ID:</label>
                         <select class="form-select" formControlName="dept_id">
-                            <option *ngFor="let dept of deptList" [ngValue]="dept.id">
+                            <!-- <option *ngFor="let dept of deptList" [ngValue]="dept.id">
                                 {{dept.dept_name}}
-                            </option>
+                            </option> -->
                         </select>
 
                         <!-- For Just Static Value Getting -->
@@ -85,7 +85,7 @@
 
                 <div class="d-flex justify-content-center"><button type="submit"
                         class="btn btn-success float-right d-flex justify-content-center" id="btnLogin"
-                        (click)="createDoc()">Create Doctor</button>
+                        >Create Doctor</button>
                 </div>
 
 

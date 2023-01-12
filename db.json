@@ -1,0 +1,39 @@
+{
+  "department": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "dept_name": "sdfasd",
+      "dept_manager": "dsfdsf"
+    },
+    {
+      "id": 3,
+      "dept_name": "gsdf",
+      "dept_manager": "dfgdfg"
+    },
+    {
+      "id": 4,
+      "dept_name": "dsdf",
+      "dept_manager": "fdsgdfg"
+    },
+    {
+      "id": 5,
+      "dept_name": "sfdg",
+      "dept_manager": "gdfdfs"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
