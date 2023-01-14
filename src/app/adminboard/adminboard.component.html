@@ -1,9 +1,10 @@
 
 <mat-sidenav-container fullscreen>
-    <mat-sidenav mode="side" #sidenav opened="opened" position="start" >
+    <mat-sidenav mode="side" #sidenav opened="opened" position="start">
         <mat-nav-list>
-            <mat-list-item routerLink="/admin">
-                <mat-icon class="align-middle">dashboard</mat-icon><span class="align-middle">Dashboard</span>
+            <mat-list-item routerLink="/admin" class="mb-5">
+                <mat-icon class="align-middle dash-icon">dashboard</mat-icon>
+                <span class="align-middle">Dashboard</span>
             </mat-list-item>
             <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
                 <mat-expansion-panel-header>
@@ -58,9 +59,104 @@
                         <span>New Patient</span>
                     </a>
                     <a mat-list-item routerLink="/admin/create_dept">
-                        <mat-icon>apple</mat-icon><span>Departmnents</span>
+                        <mat-icon>apple</mat-icon><span>Patient Admission</span>
+                    </a>
+
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>apple</mat-icon><span>Prescriptions</span>
                     </a>
                     
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+            
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-credit-card fa-2x me-4"></i>
+                  Payments
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/patientlist">
+                        <mat-icon>groups</mat-icon>
+                        <span>New Payments</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>Payments List</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>apple</mat-icon><span>Total Billing Invoice</span>
+                    </a>
+                    
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-door-open fa-2x me-4"></i>
+                  Cabin Allotments
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/patientlist">
+                        <mat-icon>groups</mat-icon>
+                        <span>New Allotment</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>All Cabins and Status</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_dept">
+                        <mat-icon>apple</mat-icon><span>Add New Cabin</span>
+                    </a>
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+
+
+
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-list-check fa-2x me-4"></i>
+                  Diagonosis
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/patientlist">
+                        <mat-icon>groups</mat-icon>
+                        <span>Diagonosis List</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>New Diagonosis</span>
+                    </a>
+                   
+                </mat-nav-list>
+            </mat-expansion-panel>
+
+
+
+
+
+
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+                <mat-expansion-panel-header>
+                    <i class="fa-solid fa-mortar-pestle fa-2x me-4"></i>
+                  Pharmacy
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <a mat-list-item routerLink="/admin/patientlist">
+                        <mat-icon>groups</mat-icon>
+                        <span>Medicine</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>Medicine Report</span>
+                    </a>
+                    <a mat-list-item routerLink="/admin/create_patient">
+                        <mat-icon>android</mat-icon>
+                        <span>Supplier Information</span>
+                    </a>
+                   
                 </mat-nav-list>
             </mat-expansion-panel>
 
@@ -68,6 +164,7 @@
 
             <mat-expansion-panel [class.mat-elevation-z0]="true">
                 <mat-expansion-panel-header>
+                   
                     Appointment
                 </mat-expansion-panel-header>
                 <mat-nav-list>
@@ -79,23 +176,103 @@
         </mat-nav-list>
       left panel
     </mat-sidenav>
+
     <mat-sidenav-content>
+
+        <!--  
       <mat-toolbar color="primary">
         <button mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
         Hospital Management System
-        <span class="toolbar-spacer"></span>
+        <span class="toolbar-spacer"></span>-->
         <!-- toolbar right side -->
 
-        <div class="bg-dark test rounded-circle me-2"></div>
+        <!-- <div class="bg-dark test rounded-circle me-2"></div>
         <div class="tool_profile">
         <h3>Minhajul Islam</h3>
+        </div> -->
+<!--  
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>-->
+                    <!-- <div class="bg-dark rounded-circle me-2"></div> 
+                    <img src="../../assets/images/team1.png" alt="" class="img-fluid imgtest rounded-circle">
+                    <span class="text-white">Minhajul Islam</span>
+                </button>
+               
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+            -->
+
+            <!-- <div ngbDropdown class="d-flex-block">
+                <a type="button" id="dropdownBasic1" ngbDropdownToggle>
+                    <div class="bg-dark test rounded-circle me-2"></div>
+                    <div>
+                        <h3>Minhajul Islam</h3>
+                    </div>
+                    
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+
+
+
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown link
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div> 
+
+      </mat-toolbar>-->
+
+
+
+
+
+
+      <nav class="navbar bg-body-tertiary bg-info" color="primary">
+        <div class="container-fluid">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+              <div class="d-flex align-self-middle">
+                Hospital Management System
+              </div>
+
+              <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                    <!-- <div class="bg-dark rounded-circle me-2"></div> -->
+                    <img src="../../assets/images/team1.png" alt="" class="img-fluid imgtest rounded-circle">
+                    <span class="text-white">Minhajul Islam</span>
+                </button>
+               
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+
+
+        
         </div>
-      </mat-toolbar>
+      </nav>
 
-
-
+    
 
 
 

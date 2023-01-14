@@ -56,6 +56,7 @@ import { DoctorboardComponent } from './doctorboard/doctorboard.component';
 import { EmployeeDepartmentComponent } from './adminboard/employee-department/employee-department.component';
 import { CreatemedComponent } from './adminboard/pharmacy/createmed/createmed.component';
 import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.component';
+import { PaymentsComponent } from './adminboard/payments/payments.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.co
     EmployeeDepartmentComponent,
     CreatemedComponent,
     MedreportComponent,
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
