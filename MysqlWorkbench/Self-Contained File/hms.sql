@@ -88,7 +88,7 @@ CREATE TABLE `billing` (
   `p_id` int DEFAULT NULL,
   `doc_charge` int DEFAULT NULL,
   `medicine_charge` int DEFAULT NULL,
-  `room_charge` int DEFAULT NULL,
+  `cabin_charge` int DEFAULT NULL,
   `ambulance_charge` int DEFAULT NULL,
   `operation_charge` int DEFAULT NULL,
   `lab_charge` int DEFAULT NULL,
@@ -123,6 +123,7 @@ CREATE TABLE `cabin` (
   `cabin_type` varchar(45) DEFAULT NULL,
   `cabin_status` varchar(45) DEFAULT NULL,
   `cabin_fare` int DEFAULT NULL,
+  `floor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cabin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -134,6 +135,34 @@ CREATE TABLE `cabin` (
 LOCK TABLES `cabin` WRITE;
 /*!40000 ALTER TABLE `cabin` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cabin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cabin_allotment`
+--
+
+DROP TABLE IF EXISTS `cabin_allotment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cabin_allotment` (
+  `c_allotment_id` int NOT NULL,
+  `cabin_id` int DEFAULT NULL,
+  `cabin_type` varchar(45) DEFAULT NULL,
+  `p_id` int DEFAULT NULL,
+  `allotment_date` date DEFAULT NULL,
+  `allotment_expiry_date` date DEFAULT NULL,
+  `d_id` int DEFAULT NULL,
+  PRIMARY KEY (`c_allotment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cabin_allotment`
+--
+
+LOCK TABLES `cabin_allotment` WRITE;
+/*!40000 ALTER TABLE `cabin_allotment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cabin_allotment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -326,6 +355,7 @@ CREATE TABLE `med_report` (
   `med_expiry_date` date DEFAULT NULL,
   `med_country` varchar(45) DEFAULT NULL,
   `supplier_id` int DEFAULT NULL,
+  `med_price` int DEFAULT NULL,
   PRIMARY KEY (`med_report_id`),
   KEY `med_sup_idx` (`supplier_id`),
   KEY `mp_med_idx` (`med_id`),
@@ -658,4 +688,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-11  1:00:16
+-- Dump completed on 2023-01-17  2:09:12
