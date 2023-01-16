@@ -57,6 +57,15 @@ import { EmployeeDepartmentComponent } from './adminboard/employee-department/em
 import { CreatemedComponent } from './adminboard/pharmacy/createmed/createmed.component';
 import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.component';
 import { PaymentsComponent } from './adminboard/payments/payments.component';
+import { PrescriptionlistComponent } from './adminboard/prescription/prescriptionlist/prescriptionlist.component';
+import { PatientaddmissionComponent } from './adminboard/patient/patientaddmission/patientaddmission.component';
+import { PaymentslistComponent } from './adminboard/payments/paymentslist/paymentslist.component';
+import { PaymentinvoicesComponent } from './adminboard/payments/paymentinvoices/paymentinvoices.component';
+import { AllcabinlistComponent } from './adminboard/cabin/allcabinlist/allcabinlist.component';
+import { CabincreateComponent } from './adminboard/cabin/cabincreate/cabincreate.component';
+import { DiagonosisComponent } from './adminboard/diagonosis/diagonosis.component';
+import { DiagonosislistComponent } from './adminboard/diagonosis/diagonosislist/diagonosislist.component';
+import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
 
 
 @NgModule({
@@ -93,6 +102,15 @@ import { PaymentsComponent } from './adminboard/payments/payments.component';
     CreatemedComponent,
     MedreportComponent,
     PaymentsComponent,
+    PrescriptionlistComponent,
+    PatientaddmissionComponent,
+    PaymentslistComponent,
+    PaymentinvoicesComponent,
+    AllcabinlistComponent,
+    CabincreateComponent,
+    DiagonosisComponent,
+    DiagonosislistComponent,
+    SupplierComponent,
   ],
   imports: [
     BrowserModule,
