@@ -20,6 +20,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -133,6 +137,16 @@ import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.compo
     MatExpansionModule,
     MatTooltipModule,
     MatTabsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    
+
+
+
+
+
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

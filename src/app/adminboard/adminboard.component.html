@@ -4,9 +4,9 @@
         <mat-nav-list>
             <mat-list-item routerLink="/admin" class="mb-5">
                 <mat-icon class="align-middle dash-icon">dashboard</mat-icon>
-                <span class="align-middle">Dashboard</span>
+                <span class="align-middle logoicon">Adminboard</span>
             </mat-list-item>
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-calendar-check fa-2x me-4"></i>
                   Appointments
@@ -23,7 +23,7 @@
                     
                 </mat-nav-list>
             </mat-expansion-panel>
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-user-doctor fa-2x me-4"></i>
                   Doctor
@@ -44,7 +44,7 @@
                 </mat-nav-list>
             </mat-expansion-panel>
 
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-bed-pulse fa-2x me-4"></i>
                   Patient
@@ -58,11 +58,11 @@
                         <mat-icon>android</mat-icon>
                         <span>New Patient</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_dept">
+                    <!-- <a mat-list-item routerLink="/admin/patient_admission">
                         <mat-icon>apple</mat-icon><span>Patient Admission</span>
-                    </a>
+                    </a> -->
 
-                    <a mat-list-item routerLink="/admin/create_dept">
+                    <a mat-list-item routerLink="/admin/prescription">
                         <mat-icon>apple</mat-icon><span>Prescriptions</span>
                     </a>
                     
@@ -70,21 +70,21 @@
             </mat-expansion-panel>
 
             
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-credit-card fa-2x me-4"></i>
                   Payments
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item routerLink="/admin/patientlist">
+                    <a mat-list-item routerLink="/admin/newpayment">
                         <mat-icon>groups</mat-icon>
                         <span>New Payments</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_patient">
+                    <a mat-list-item routerLink="/admin/paymentlist">
                         <mat-icon>android</mat-icon>
                         <span>Payments List</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_dept">
+                    <a mat-list-item routerLink="/admin/payment_invoices">
                         <mat-icon>apple</mat-icon><span>Total Billing Invoice</span>
                     </a>
                     
@@ -92,21 +92,21 @@
             </mat-expansion-panel>
 
 
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-door-open fa-2x me-4"></i>
                   Cabin Allotments
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item routerLink="/admin/patientlist">
+                    <a mat-list-item routerLink="/admin/cabin_allotment">
                         <mat-icon>groups</mat-icon>
                         <span>New Allotment</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_patient">
+                    <a mat-list-item routerLink="/admin/cabin_status">
                         <mat-icon>android</mat-icon>
-                        <span>All Cabins and Status</span>
+                        <span>Cabins and Status</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_dept">
+                    <a mat-list-item routerLink="/admin/newcabin">
                         <mat-icon>apple</mat-icon><span>Add New Cabin</span>
                     </a>
                 </mat-nav-list>
@@ -115,17 +115,17 @@
 
 
 
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-list-check fa-2x me-4"></i>
                   Diagonosis
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item routerLink="/admin/patientlist">
+                    <a mat-list-item routerLink="/admin/diagonosis">
                         <mat-icon>groups</mat-icon>
                         <span>Diagonosis List</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_patient">
+                    <a mat-list-item routerLink="/admin/creatediagonosis">
                         <mat-icon>android</mat-icon>
                         <span>New Diagonosis</span>
                     </a>
@@ -138,21 +138,21 @@
 
 
 
-            <mat-expansion-panel [class.mat-elevation-z0]="true" class="">
+            <mat-expansion-panel [class.mat-elevation-z0]="true" class="sidenavdropdown">
                 <mat-expansion-panel-header>
                     <i class="fa-solid fa-mortar-pestle fa-2x me-4"></i>
                   Pharmacy
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <a mat-list-item routerLink="/admin/patientlist">
+                    <a mat-list-item routerLink="/admin/medicine">
                         <mat-icon>groups</mat-icon>
                         <span>Medicine</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_patient">
+                    <a mat-list-item routerLink="/admin/med_report">
                         <mat-icon>android</mat-icon>
                         <span>Medicine Report</span>
                     </a>
-                    <a mat-list-item routerLink="/admin/create_patient">
+                    <a mat-list-item routerLink="/admin/med_supplier">
                         <mat-icon>android</mat-icon>
                         <span>Supplier Information</span>
                     </a>
@@ -163,7 +163,7 @@
             
 
         </mat-nav-list>
-      left panel
+
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -233,13 +233,14 @@
 
 
 
-      <nav class="navbar bg-body-tertiary bg-info" color="primary">
+      <nav class="navbar bg-body-tertiary bg-dark text-white" color="primary">
         <div class="container-fluid">
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
               </button>
               <div class="d-flex align-self-middle">
-                Hospital Management System
+                <h3 class=""> Hospital Management System</h3>
+               
               </div>
 
               <div ngbDropdown class="d-inline-block">

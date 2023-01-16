@@ -694,13 +694,6 @@ text-transform: normal;
 
 
 /********** Template CSS **********/
-:root {
-  --primary: #355EFC;
-  --secondary: #E93C05;
-  --tertiary: #555555;
-  --light: #DFE4FD;
-  --dark: #011A41;
-}
 
 
 .btl{

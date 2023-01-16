@@ -1,1 +1,95 @@
-<p>cabin works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">New Allotment</li>
+    </ol>
+  </nav>
+  
+  
+  <div class="container d-flex justify-content-end mb-3">
+    <button class="btn btn-outline-primary" routerLink="/admin/create_patient">Cabin List & Status</button>
+  </div>
+  
+  
+  
+  <div class="container">
+    <h3 class="text-center">Create New Allotment</h3>
+  
+  
+    <form  class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+      method="POST">
+     
+  
+      <div class="row">
+        <div class="form-group col">
+          <label for="uname">Select Patient ID:</label>
+          <select class="form-select" formControlName="appointment_type">
+            <option value="1">P101</option>
+            <option value="2">P102</option>
+            <option value="3">P103</option>
+          </select>
+        </div>
+
+        <div class="form-group col">
+          <label for="uname">Patient Name:</label>
+          <input type="text" placeholder="Patient Name" class="form-control" disabled>
+         
+        </div>
+        </div>
+
+
+      <div class="row">
+        <div class="form-group col">
+          <label for="uname">Cabin ID:</label>
+          <select class="form-select" formControlName="appointment_type">
+            <option value="1">C101</option>
+            <option value="2">C102</option>
+            <option value="3">C103</option>
+          </select>
+        </div>
+
+        <div class="form-group col">
+          <label for="uname">Cabin Type:</label>
+          <select class="form-select" formControlName="appointment_type">
+            <option value="1">ICU</option>
+            <option value="2">GENRAL</option>
+            <option value="3">AC ROOM</option>
+          </select>  
+        </div>
+      </div>
+
+
+      <div class="row">
+
+        <div class="form-group col">
+            <label for="uname">Refferal Doctor:</label>
+            <select class="form-select" formControlName="doc_id">
+              <option value="1">Khalek</option>
+              <option value="1">Malek</option>
+              <option value="1">Rashed</option>
+            </select>
+          </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="form-group col">
+          <label for="uname">Allotment Date:</label>
+          <input type="date" class="form-control" formControlName="appointment_date">
+         
+        </div>
+        <div class="form-group col">
+          <label for="upass">Discharge Date:</label>
+          <input type="date" class="form-control" formControlName="appointment_date">
+        </div>
+      </div>
+
+    
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-success float-right d-flex justify-content-center m-2" id="btnLogin">Create Allotment</button>
+        <button type="submit" class="btn btn-outline-info float-right d-flex justify-content-center m-2" id="btnLogin">Cabin List</button>
+    </div>
+  
+</form>
+  </div>

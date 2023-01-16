@@ -26,3 +26,16 @@
 /* text-decoration: none; */
 /* list-style: none; */
 }
+
+.btt{
+    color: white;
+    background-color: #1E88E5;;
+}
+.mat-success {
+    background-color: green;
+    color: #fff;
+}
+.mat-warn{
+    background-color: green;
+    color: #fff;
+}

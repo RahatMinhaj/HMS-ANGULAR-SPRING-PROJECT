@@ -4,6 +4,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
+
 .dash-icon{
 
         font-size: 50px;
@@ -11,18 +12,22 @@
         height:50px;
 
 }
+.logoicon{
+    font-size: 20px;
+    font-weight: bold;
+}
 
 .imgtest{
     width: 40px;
     height: 40px;
 }
 mat-sidenav {
-    width: 22%;
+    width: 25%;
     padding: 15px;
 }
 
 .mat-drawer {
-    /* background-color: #023075; */
+    background-color: #B3E5FC;
     color: #fff
 }
 
@@ -34,6 +39,9 @@ mat-sidenav {
     flex: 1 1 auto;
 }
 
+.sidenavdropdown{
+    background-color: #B3E5FC;
+}
 
 /* .test {
     height: 50px;

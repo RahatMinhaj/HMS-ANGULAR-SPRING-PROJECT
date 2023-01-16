@@ -20,6 +20,20 @@ import { AllappointmentComponent } from './adminboard/appointment/allappointment
 import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewappointment/onreviewappointment.component';
 import { ConfirmedappointmentComponent } from './adminboard/appointment/confirmedappointment/confirmedappointment.component';
 import { NewappointmentComponent } from './adminboard/appointment/newappointment/newappointment.component';
+import { PatientaddmissionComponent } from './adminboard/patient/patientaddmission/patientaddmission.component';
+import { PrescriptionComponent } from './adminboard/prescription/prescription.component';
+import { PrescriptionlistComponent } from './adminboard/prescription/prescriptionlist/prescriptionlist.component';
+import { PaymentsComponent } from './adminboard/payments/payments.component';
+import { PaymentslistComponent } from './adminboard/payments/paymentslist/paymentslist.component';
+import { PaymentinvoicesComponent } from './adminboard/payments/paymentinvoices/paymentinvoices.component';
+import { CabinComponent } from './adminboard/cabin/cabin.component';
+import { AllcabinlistComponent } from './adminboard/cabin/allcabinlist/allcabinlist.component';
+import { CabincreateComponent } from './adminboard/cabin/cabincreate/cabincreate.component';
+import { DiagonosisComponent } from './adminboard/diagonosis/diagonosis.component';
+import { DiagonosislistComponent } from './adminboard/diagonosis/diagonosislist/diagonosislist.component';
+import { PharmacyComponent } from './adminboard/pharmacy/pharmacy.component';
+import { MedicineReport } from './ModelClass/MedicineReport.model';
+import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -38,33 +52,33 @@ const routes: Routes = [
       {
         path: 'appointments_list',
         component: AppointmentComponent,
-        children:[
+        children: [
           {
             path: '',
-            redirectTo: "/admin/appointments_list/all" ,
-            pathMatch:'full'
+            redirectTo: '/admin/appointments_list/all',
+            pathMatch: 'full',
           },
           {
             path: 'all',
-            component:AllappointmentComponent
+            component: AllappointmentComponent,
           },
           {
             path: 'pending',
-            component:PendingappointmentComponent
+            component: PendingappointmentComponent,
           },
           {
             path: 'ondoctor',
-            component:OnreviewappointmentComponent
+            component: OnreviewappointmentComponent,
           },
           {
             path: 'confirmed',
-            component:ConfirmedappointmentComponent
-          }
-        ]
+            component: ConfirmedappointmentComponent,
+          },
+        ],
       },
       {
-        path: "new_appointment",
-        component:NewappointmentComponent
+        path: 'new_appointment',
+        component: NewappointmentComponent,
       },
       // ========================Appointment menu: end=============================
 
@@ -101,7 +115,67 @@ const routes: Routes = [
           },
         ],
       },
+      // {
+      //   path: 'patient_admission',
+      //   component: PatientaddmissionComponent,
+      // },
+      {
+        path: 'prescription',
+        component: PrescriptionlistComponent,
+      },
       // ========================Patient menu: end=============================
+
+      // ========================Payments menu: start=============================
+      {
+        path: 'newpayment',
+        component: PaymentsComponent,
+      },
+      {
+        path: 'paymentlist',
+        component: PaymentslistComponent,
+      },
+      {
+        path: 'payment_invoices',
+        component: PaymentinvoicesComponent,
+      },
+      // ========================Payments menu: end=============================
+      // ========================Cabin menu: start=============================
+      {
+        path: 'cabin_allotment',
+        component: CabinComponent,
+      },
+      {
+        path: 'cabin_status',
+        component: AllcabinlistComponent,
+      },
+      {
+        path: 'newcabin',
+        component: CabincreateComponent,
+      },
+      // ========================Cabin menu: end=============================
+      // ========================Diagonosis menu: start=============================
+      {
+        path: 'diagonosis',
+        component: DiagonosislistComponent,
+      },
+      {
+        path: 'creatediagonosis',
+        component: DiagonosisComponent,
+      },
+      // ========================Diagonosis menu: end=============================
+      // ========================Pharmacy menu: start=============================
+      {
+        path: 'medicine',
+        component: PharmacyComponent,
+      },
+      {
+        path: 'med_report',
+        component: MedicineReport,
+      },
+      {
+        path: 'med_supplier',
+        component: SupplierComponent,
+      },
     ],
   },
 
