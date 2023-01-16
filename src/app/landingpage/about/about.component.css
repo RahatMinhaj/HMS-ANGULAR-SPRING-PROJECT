@@ -1,0 +1,28 @@
+.mynav {
+    /* background-color: aqua; */
+    z-index: 999;
+    position: absolute;
+}
+
+.myimg {
+    position: relative;
+    /* top: 10; */
+
+
+}
+
+.wrapper {
+    height: 450px;
+    vertical-align: middle;
+
+
+    
+
+}
+.contentwrapper{
+    height: 600px;
+}
+.lnk{
+/* text-decoration: none; */
+/* list-style: none; */
+}
