@@ -340,7 +340,7 @@
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
-  background: #0f66f8;
+  background: #20A0D8;
 }
 .team-area .single-team .team-caption:hover span {
   color: #fff;
@@ -705,6 +705,9 @@ text-transform: normal;
 /*Spacing to give the login button spacing. Ignore if used for "Navbar" */ 
 .spacing {
   padding: 50px; 
+}
+.headlinecar{
+  background-color: #BFE7F970
 }
 
 

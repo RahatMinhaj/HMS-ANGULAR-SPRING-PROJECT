@@ -70,6 +70,7 @@ import { CabincreateComponent } from './adminboard/cabin/cabincreate/cabincreate
 import { DiagonosisComponent } from './adminboard/diagonosis/diagonosis.component';
 import { DiagonosislistComponent } from './adminboard/diagonosis/diagonosislist/diagonosislist.component';
 import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.compo
     DiagonosisComponent,
     DiagonosislistComponent,
     SupplierComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

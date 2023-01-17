@@ -2,14 +2,6 @@
 
 /* templave css navbar */
 /********** Template CSS **********/
-:root {
-  --primary: #355EFC;
-  --secondary: #E93C05;
-  --tertiary: #555555;
-  --light: #DFE4FD;
-  --dark: #011A41;
-}
-
 /*** Navbar ***/
 .fixed-top {
   transition: .5s;
@@ -94,3 +86,4 @@
     width: 100%;
     top: 5%;
 }
+

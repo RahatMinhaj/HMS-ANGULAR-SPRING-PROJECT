@@ -14,10 +14,13 @@
 .wrapper {
     height: 450px;
     vertical-align: middle;
+    /* background-image: url(../../../assets/images/Contact/pawel-czerwinski--0xCCPIbl3M-unsplash.jpg); */
+    background-color: #283848;
 
-
-    
-
+}
+.bgp{
+    border-radius: 25%;
+    padding: 20px;
 }
 .contentwrapper{
     height: 600px;
@@ -38,4 +41,7 @@
 .mat-warn{
     background-color: green;
     color: #fff;
+}
+.listcontro{
+    list-style-type: none;
 }

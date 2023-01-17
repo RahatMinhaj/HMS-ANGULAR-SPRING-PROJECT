@@ -15,7 +15,11 @@ export class HeaderComponent {
 	}
 
 	openLg(content:any) {
-		this.modalService.open(content, {size:'lg'});
+		this.modalService.open(content, {size:'xl'});
+	}
+
+	opensignup(content:any) {
+		this.modalService.open(content, {size:'xl'});
 	}
 
 

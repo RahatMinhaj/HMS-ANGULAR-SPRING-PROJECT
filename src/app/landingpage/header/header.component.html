@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="col-md-6 text-center text-lg-end">
-            <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
+            <div class="position-relative d-inline-flex align-items-center text-white top-shape px-5 bgp">
                 <div class="me-3 pe-3 border-end py-2">
                     <p class="m-0"><i class="fa fa-envelope-open me-2"></i>info@example.com</p>
                 </div>
@@ -22,18 +22,21 @@
 
 
 <!-- Navbar Start -->
-<nav class="navbar fixed-top navbar-expand-lg shadow-sm px-5 py-3 py-lg-0 my-nav">
+<nav class="navbar fixed-top navbar-expand-lg shadow-sm py-3 py-lg-0 my-nav">
     <a href="index.html" class="navbar-brand p-0">
-        <h1 class="m-0 text-primary"><i class="fa-solid fa-house-medical-flag"></i> IsDB-BISEW Hospital</h1>
+        <h1 class="m-0 bgpt"><i class="fa-solid fa-house-medical-flag"></i> IsDB-BISEW Hospital</h1>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-            <a routerLink="" class="nav-item nav-link active">Home</a>
-            <a routerLink="/about" class="nav-item nav-link">About</a>
-            <a routerLink="/contact" class="nav-item nav-link">Doctors</a>
+            <a routerLink="" class="nav-item nav-link active bgph">Home</a>
+            <a routerLink="/about" class="nav-item nav-link bgph">About</a>
+            <a routerLink="/contact" class="nav-item nav-link bgph">Contact</a>
+            <a routerLink="/admin" class="nav-item nav-link bgph">Amin Panel</a>
+            <a routerLink="/login" class="nav-item nav-link bgph">Sign In</a>
+            <a routerLink="/signup" class="nav-item nav-link bgph">Sign Up</a>
             <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">
@@ -43,16 +46,30 @@
                     <a href="appointment.html" class="dropdown-item">Appointment</a>
                 </div>
             </div> -->
-            <a routerLink="/admin" class="nav-item nav-link">Amin Panel</a>
+           
         </div>
+
+
         <!-- Button trigger modal -->
-        <a class="btn btn-outline-secondary btn-round btl" (click)="openLg(content)"> Login </a>
-        <a class="btn btn-outline-secondary btl" data-toggle="modal"
-            data-target="#signModal"> Signup </a>
-        <a class="btn btn-outline-secondary btl" data-toggle="modal"
+        <!-- <a class="btn bgph btn-round fw-bold" routerLink="/login" style="padding-left: 1.5rem; padding-right: 1.5rem;"> Login </a>
+        <a class="btn btn-outline bgph fw-bold" routerLink="/signup" style="padding-left: 1.5rem; padding-right: 1.5rem;" > Signup </a> -->
+
+        <!-- For Modal Page -->
+        <!-- <a class="btn btn-outline-primary btn-round btl m-2" (click)="openLg(content)"> Login </a>
+        <a class="btn btn-outline-secondary btl m-2" data-toggle="modal"
+            data-target="#signModal" (click)="opensignup(content2)"> Signup </a> -->
+
+
+
+
+
+
+
+
+        <!-- <a class="btn btn-outline-secondary btl" data-toggle="modal"
             data-target="#signModal"> Logout </a>
         <a  routerLink="/patient" class="btn btn-outline-secondary btl"
-            data-toggle="modal" data-target="#pmdnModal"> P log </a>
+            data-toggle="modal" data-target="#pmdnModal"> P log </a> -->
     </div>
 </nav>
 <!-- Navbar End -->
@@ -61,13 +78,14 @@
 <!-- ==================modal=============start-============= -->
 
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title text-center" id="modal-basic-title">Member's Login</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-        
-        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+    <div class="modal-header">
+        <h4 class="modal-title text-center" id="modal-basic-title">Member's Login</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-login></app-login>
+
+        <!-- <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
           method="POST">
 
           <div class="image">
@@ -97,13 +115,65 @@
               class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
               >Create Cabin</button></div>
   
-        </form>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-	</div>
+        </form> -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="openLg(content)">Launch demo modal</button>
 
 
+
+
+
+
+
+
+<!-- singup -->
+<ng-template #content2 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title text-center" id="modal-basic-title">Member's Login</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-signup></app-signup>
+
+        <!-- <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+          method="POST">
+
+          <div class="image">
+            <img src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png" alt="" class="img-fluid" width="80">
+        </div>
+
+
+
+
+          <div class="form-group">
+            <label for="">Floor:</label>
+            <input class="form-control" type="text" name="" id="" formControlName="dept_name">
+          </div>
+
+          <div class="form-group">
+            <label for="">Cabin Type:</label>
+            <input class="form-control" type="text" name="" id="" formControlName="dept_manager">
+          </div>
+
+          <div class="form-group">
+            <label for="">Cabin Fare:</label>
+            <input class="form-control" type="text" name="" id="" formControlName="dept_manager">
+          </div>
+          <br><br>
+  
+          <div class="d-flex justify-content-center"><button type="submit"
+              class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
+              >Create Cabin</button></div>
+  
+        </form> -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="openLg(content)">Launch demo modal</button> -->

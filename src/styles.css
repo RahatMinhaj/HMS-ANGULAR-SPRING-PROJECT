@@ -2,3 +2,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.bgp{
+    background-color: #20A0D8;
+  }
+  .bgpout{
+    border: 1px solid #20A0D8;
+  }
+  .bgph:hover{
+    background-color: #BFE7F9;
+    border-radius: 12%;
+  }
+  .bgpt{
+    color: #20A0D8;
+  }

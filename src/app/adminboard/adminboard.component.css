@@ -22,12 +22,12 @@
     height: 40px;
 }
 mat-sidenav {
-    width: 25%;
-    padding: 15px;
+    width: 22%;
+    /* padding: 15px; */
 }
 
 .mat-drawer {
-    background-color: #B3E5FC;
+    background-color: #BFE7F9;
     color: #fff
 }
 
@@ -40,7 +40,7 @@ mat-sidenav {
 }
 
 .sidenavdropdown{
-    background-color: #B3E5FC;
+    background-color: #BFE7F9;
 }
 
 /* .test {
