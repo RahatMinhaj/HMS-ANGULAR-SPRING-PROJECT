@@ -71,6 +71,7 @@ import { DiagonosisComponent } from './adminboard/diagonosis/diagonosis.componen
 import { DiagonosislistComponent } from './adminboard/diagonosis/diagonosislist/diagonosislist.component';
 import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
 import { SignupComponent } from './signup/signup.component';
+import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import { SignupComponent } from './signup/signup.component';
     DiagonosislistComponent,
     SupplierComponent,
     SignupComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,

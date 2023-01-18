@@ -1,5 +1,7 @@
 
-<mat-sidenav-container fullscreen>
+
+
+<mat-sidenav-container fullscreen class="h-100">
     <mat-sidenav mode="side" #sidenav opened="opened" position="start">
         <mat-nav-list>
             <mat-list-item routerLink="/admin" class="mb-5">
@@ -162,10 +164,20 @@
 
             
 
+
+
+
+            <mat-list-item routerLink="/" class="mt-5 d-flex justify-content-center">
+                <!-- <mat-icon class="align-middle dash-icon">dashboard</mat-icon> -->
+                <span class="align-middle lead fw-bold text-uppercase">Back To Index Page</span>
+            </mat-list-item>
+            
         </mat-nav-list>
-
+        
+        
     </mat-sidenav>
-
+    
+    
     <mat-sidenav-content>
 
         <!--  
@@ -233,7 +245,7 @@
 
 
 
-      <nav class="navbar bg-body-tertiary bg-dark text-white" color="primary">
+      <nav class="navbar bg-body-tertiary text-white bg-dark" color="primary">
         <div class="container-fluid">
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
@@ -275,6 +287,7 @@
     </div>
       
     </mat-sidenav-content>
+    
   </mat-sidenav-container>
 
 

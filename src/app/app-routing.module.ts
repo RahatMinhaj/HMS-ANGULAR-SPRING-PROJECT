@@ -35,6 +35,7 @@ import { PharmacyComponent } from './adminboard/pharmacy/pharmacy.component';
 import { MedicineReport } from './ModelClass/MedicineReport.model';
 import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
 import { SignupComponent } from './signup/signup.component';
+import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminboardComponent,
     children: [
+      {
+        path: '',
+        component: AdminhomeComponent
+      },
       // ========================Appointment menu: Start=============================
       {
         path: 'appointments_list',
@@ -196,4 +201,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
