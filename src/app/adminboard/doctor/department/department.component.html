@@ -29,14 +29,19 @@
       </form>
     </div>
     <div class="col-8 h-25">
-      <table class="table table-bordered dept_table">
+
+
+
+
+
+
+      <table id="table_id" class="display compact" style="width:100%">
         <thead>
           <tr>
             <th>Department ID</th>
             <th>Department Name</th>
             <th>Department Manager</th>
             <th>Actions</th>
-
           </tr>
         </thead>
         <tbody>
@@ -45,13 +50,15 @@
             <td>{{dept.dept_name}}</td>
             <td>{{dept.dept_manager}}</td>
             <td>
-              <button class="btn btn-primary me-2">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-outline-secondary me-2">Edit</button>
+              <button class="btn btn-outline-danger">Delete</button>
             </td>
           </tr>
         </tbody>
-
       </table>
+
+
+
     </div>
   </div>
 </div>

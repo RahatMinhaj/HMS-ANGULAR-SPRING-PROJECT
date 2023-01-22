@@ -9,14 +9,15 @@ export class DepartmentService {
 
   constructor(private http:HttpClient) { }
 
-  url:string = "http://localhost:3000/department"
+  // url:string = "http://localhost:3000/department"
+  url:string = "http://localhost:8080/department"
 
   save(data: Department){
-    return this.http.post(this.url, data);
+    return this.http.post(this.url + "/create", data);
     
   }
 
   getAll(){
-  return this.http.get<Department[]>(this.url);
+  return this.http.get<Department[]>(this.url  + "/lists");
   }
 }

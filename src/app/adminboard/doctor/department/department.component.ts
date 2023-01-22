@@ -28,12 +28,26 @@ export class DepartmentComponent implements OnInit {
     this.deptService.getAll().subscribe((data: Department[]) => {
       this.deptList = data;
     });
+
+
+
+
+
+    
+    // this method if for data table
+    // tuts: https://webdamn.com/how-to-use-datatables-in-angular-8/
+    // https://datatables.net/examples/index
+
+    $(document).ready(function () {
+      $('#table_id').DataTable();
+    });
   }
 
   createDept() {
     console.log(this.docDeptForm.value.dept_name);
     this.deptService.save(this.docDeptForm.value).subscribe((data) => {
       this.ngOnInit();
+     
     });
   }
 }
