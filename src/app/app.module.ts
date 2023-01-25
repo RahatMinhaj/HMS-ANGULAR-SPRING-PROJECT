@@ -20,10 +20,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatTableModule} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -123,12 +123,11 @@ import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-  
+
     CarouselModule,
 
     DataTablesModule,
     NgbModule,
-
 
     BrowserAnimationsModule,
     MatButtonModule,
@@ -145,17 +144,12 @@ import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
     MatFormFieldModule,
     MatPaginatorModule,
     MatDialogModule,
-    
-
-
-
-
 
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
