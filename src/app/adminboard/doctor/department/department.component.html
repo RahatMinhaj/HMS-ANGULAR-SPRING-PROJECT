@@ -9,7 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4">
-      
+
       <h3 class="text-center">Add a Department For Doctor</h3>
       <form [formGroup]="docDeptForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
         method="POST">
@@ -33,58 +33,60 @@
           <!-- <div *ngIf="docDeptForm.get('dept_name')?.invalid && (docDeptForm.get('dept_name')?.dirty || docDeptForm.get('name')?.touched)">
             <div *ngIf="docDeptForm.get('dept_name')?.errors">Name is required</div>
           </div> -->
-          
+
         </div><br>
-    <div class="form-group">
-      <label for="">Department Manager</label>
-      <input class="form-control" type="text" name="" id="" formControlName="dept_manager" required>
+        <div class="form-group">
+          <label for="">Department Manager</label>
+          <input class="form-control" type="text" name="" id="" formControlName="dept_manager" required>
 
-      <div class="text-danger" *ngIf="docDeptForm.get('dept_manager')?.invalid && (docDeptForm.get('dept_manager')?.dirty || docDeptForm.get('dept_manager')?.touched)">
-        <div *ngIf="docDeptForm.get('dept_manager')?.errors?.['required']">Fill The Field First</div>
-      </div>
-      
+          <div class="text-danger"
+            *ngIf="docDeptForm.get('dept_manager')?.invalid && (docDeptForm.get('dept_manager')?.dirty || docDeptForm.get('dept_manager')?.touched)">
+            <div *ngIf="docDeptForm.get('dept_manager')?.errors?.['required']">Fill The Field First</div>
+          </div>
+
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-center"><button type="submit"
+            class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
+            (click)="createDept()">Create Department</button></div>
+
+      </form>
     </div>
-    <br>
+    <div class="col-8 h-25">
 
-    <div class="d-flex justify-content-center"><button type="submit"
-        class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
-        (click)="createDept()">Create Department</button></div>
 
-    </form>
+
+
+
+
+      <table id="table_id" class="display compact" cellspacing="0" width="100%">
+        <!-- <table> -->
+        <thead>
+          <tr>
+            <th >Department ID</th>
+            <th >Department Name</th>
+            <th >Department Manager</th>
+            <th >Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dept of deptList">
+            <td>{{dept.id}} </td>
+            <td>{{dept.dept_name}}</td>
+            <td>{{dept.dept_manager}}</td>
+            <td>
+              <button class="btn btn-outline-secondary me-2" (click)="EditDept(content, dept)">Edit</button>
+              <button class="btn btn-outline-danger" (click)="deleteDeptByID(dept.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
   </div>
-  <div class="col-8 h-25">
-
-
-
-
-
-
-    <table id="table_id" class="display compact" style="width:100%">
-      <thead>
-        <tr>
-          <th>Department ID</th>
-          <th>Department Name</th>
-          <th>Department Manager</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let dept of deptList">
-          <td>{{dept.id}} </td>
-          <td>{{dept.dept_name}}</td>
-          <td>{{dept.dept_manager}}</td>
-          <td>
-            <button class="btn btn-outline-secondary me-2" (click)="openLg(content, dept.id)" >Edit</button>
-            <button class="btn btn-outline-danger" (click)="deleteDeptByID(dept.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-
-
-  </div>
-</div>
 </div>
 
 
@@ -97,21 +99,71 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-      <h4 class="modal-title text-center" id="modal-basic-title">Member's Login</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    <h4 class="modal-title text-center" id="modal-basic-title">Member's Login</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
   <div class="modal-body">
-      <app-department></app-department>
 
-      <!-- <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+    <h3 class="text-center">Edit Your Data</h3>
+    <form [formGroup]="docDeptForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+      method="POST">
+      <div class="form-group">
+        <label for="">Department Name</label>
+        <input class="form-control" type="text" formControlName="dept_name" required minlength="3">
+
+        <div class="text-danger" *ngIf="deptNameValue?.touched && userNameval?.invalid">
+          <div *ngIf="deptNameValue?.errors?.['required']">Fill The Field First</div>
+        </div>
+
+        <!-- <div class="alert alert-danger " *ngIf="userNameval?.touched && userNameval?.invalid">
+          <div *ngIf="userNameval?.errors?.['minLength']">please put 3</div>
+        </div> -->
+
+        <!-- <div class="alert alert-danger " *ngIf="docDeptForm.get('dept_name')?.touched && docDeptForm.get('dept_name')?.invalid">
+          <div *ngIf="docDeptForm.get('dept_name')?.errors.required"></div>
+        </div> -->
+
+
+        <!-- <div *ngIf="docDeptForm.get('dept_name')?.invalid && (docDeptForm.get('dept_name')?.dirty || docDeptForm.get('name')?.touched)">
+          <div *ngIf="docDeptForm.get('dept_name')?.errors">Name is required</div>
+        </div> -->
+
+      </div><br>
+      <div class="form-group">
+        <label for="">Department Manager</label>
+        <input class="form-control" type="text" name="" id="" formControlName="dept_manager" required>
+
+        <div class="text-danger"
+          *ngIf="docDeptForm.get('dept_manager')?.invalid && (docDeptForm.get('dept_manager')?.dirty || docDeptForm.get('dept_manager')?.touched)">
+          <div *ngIf="docDeptForm.get('dept_manager')?.errors?.['required']">Fill The Field First</div>
+        </div>
+
+      </div>
+      <br>
+
+      <button class="btn btn-outline-success me-2" (click)="updateData()">Update</button>
+      <button class="btn btn-outline-secondary" (click)="d('Cross click')">Cancel</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <app-department></app-department> -->
+    <!-- <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
         method="POST">
-
         <div class="image">
           <img src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png" alt="" class="img-fluid" width="80">
       </div>
-
-
-
 
         <div class="form-group">
           <label for="">Floor:</label>
@@ -136,6 +188,53 @@
       </form> -->
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
   </div>
 </ng-template>
+
+<h1>{{closeResult}}</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table class="mat-elevation-z8" mat-table [dataSource]="deptList"> -->
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="dept_id">
+    <th mat-header-cell *matHeaderCellDef>Department ID </th>
+    <td mat-cell *matCellDef="let deptList"> {{deptList.id}} </td>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="department_name">
+    <th mat-header-cell *matHeaderCellDef> Department Name </th>
+    <td mat-cell *matCellDef="let deptList"> {{deptList.dept_name}} </td>
+  </ng-container> -->
+
+  <!-- Weight Column -->
+  <!-- <ng-container matColumnDef="department_name">
+    <th mat-header-cell *matHeaderCellDef> Department Manager </th>
+    <td mat-cell *matCellDef="let deptList"> {{deptList.dept_manager}} </td>
+  </ng-container> -->
+
+  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let deptList; columns: displayedColumns;"></tr>
+</table> -->
+
+
+
+
+
+
+

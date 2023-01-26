@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Department } from 'src/app/ModelClass/Department.model';
 
 @Injectable({
@@ -45,8 +46,24 @@ export class DepartmentService implements OnInit {
     return this.http.delete(this.url + "/lists/delete/"+id , this.httpOptions);
   }
 
-  getuserByID (id : number){
-    console.log(this.http.get<Department>(this.url + "/lists/edit/" + id));
-return this.http.get<Department>(this.url + "/lists/edit/" + id);
+
+// ================================edit method:start================================
+
+  getuserByID (id : number): Observable<any>{
+    // console.log(this.http.get<Department>(this.url + "/lists/edit/" + id));
+    console.log("user id : ===============" + id)
+
+// return this.http.get<Department>(this.url + "/lists/editbyid/{id}" + id);
+return this.http.get<Department>(this.url + "/lists/editbyid/" + id);
+// return this.http.get<Department>(this.url + "/lists/editbyid/" + id);
   }
+
+  updateData(department:Department){
+    // console.log(department.id + "======================================id " + department.dept_name)
+    return this.http.put(this.url+ "/lists/edit/"+ department.id , department);
+    // console.log("medod work")
+
+  }
+  // ================================edit method:end================================
+
 }

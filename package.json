@@ -34,6 +34,7 @@
     "jquery": "^3.6.3",
     "material-icons": "^1.13.1",
     "ngx-owl-carousel-o": "^15.0.0",
+    "primeicons": "^6.0.1",
     "rxjs": "~7.5.0",
     "save": "^2.9.0",
     "tslib": "^2.3.0",
