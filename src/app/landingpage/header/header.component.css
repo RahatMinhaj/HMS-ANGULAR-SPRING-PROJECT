@@ -80,7 +80,7 @@
 }
 
 .my-nav {
-    position: static;
+    position: fixed;
     /* position: absolute; for trasperanet navbar */
      z-index: 20;
     width: 100%;
