@@ -1,10 +1,14 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { AppointmentService } from 'src/app/Service/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
+import * as $ from 'jquery';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-department',
@@ -18,7 +22,17 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
 
   deptModel!: Department;
 
-  displayedColumns:string[] = ['id','dept_name','dept_manager']
+
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+datasource:any;
+@ViewChild(MatSort) sorting!: MatSort;
+
+
+
+
+
+
+  displayedColumns:string[] = ['id','dept_name','dept_manager','action']
 
 
 
@@ -41,6 +55,9 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
 
     this.deptService.getAll().subscribe((data: Department[]) => {
       this.deptList = data;
+      this.datasource = new MatTableDataSource<Department>(this.deptList)
+      this.datasource.paginator = this.paginator;
+      this.datasource.sort = this.sorting;
     });
 
    
@@ -50,12 +67,12 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
      // this method if for data table
     // tuts: https://webdamn.com/how-to-use-datatables-in-angular-8/
     // https://datatables.net/examples/index
-    $(document).ready(function () {
-      $('#table_id').DataTable({
-        destroy: true
-      });
+    // $(document).ready(function () {
+    //   $('#table_id').DataTable({
+    //     destroy: true
+    //   });
       
-    });
+    // });
   }
 
 
@@ -87,12 +104,11 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
   deleteDeptByID(id: number) {
     if (confirm("Do You Really want to delete?")) {
       alert("deleted!")
+      this.ngOnInit();
       this.deptService.deleteById(id).subscribe(resp => {
         console.log(resp + "============================resp from angular")
+        this.ngOnInit();
       })
-      // console.log("deleted")
-      // console.log(this.deptService.deleteById(id))
-
     } else {
       alert("delete Failed")
     }
@@ -103,9 +119,12 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
 
     // ================================edit method:end================================
 
+
   EditDept(content: any, dept: Department) {
 
-    this.modalService.open(content, { size: 'xl' }).result.then((result) => {
+
+
+    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.ngOnInit();
       this.closeResult = `Closed with: ${result}`;
 
@@ -124,8 +143,9 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
 
   updateData(){
     this.deptService.updateData(this.docDeptForm.value).subscribe((data) => {
-      alert("Department Added");
+      alert("Department Updated!");
       this.ngOnInit();
+      this.modalService.dismissAll();
     });
     // console.log("update meth called")
 
@@ -160,7 +180,21 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
 
 
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue;
+    // this.deptList.sort = 
 
+
+
+
+    // this.deptList.filter = filterValue.trim().toLowerCase();
+
+    // if (this.deptList.paginator) {
+    //   this.deptList.paginator.firstPage();
+    // }
+  // }
+}
 
 
 

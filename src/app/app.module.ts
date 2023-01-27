@@ -13,6 +13,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -146,6 +148,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatInputModule,
+
+
+    
 
 
 

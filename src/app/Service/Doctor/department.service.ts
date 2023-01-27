@@ -43,7 +43,7 @@ export class DepartmentService implements OnInit {
   }
 
   deleteById(id : number){
-    return this.http.delete(this.url + "/lists/delete/"+id , this.httpOptions);
+    return this.http.delete(this.url + "/lists/delete/"+id);
   }
 
 
