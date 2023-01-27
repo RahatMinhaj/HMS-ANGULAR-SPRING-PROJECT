@@ -26,7 +26,8 @@ export class CreatedoctorComponent implements OnInit{
   degree:[''],
   specialization:[''],
   details:[''],
-  charge:[''],
+  visit_charge:[''],
+  doc_join_date:[''],
 
    })
 

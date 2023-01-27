@@ -60,7 +60,7 @@ return this.http.get<Department>(this.url + "/lists/editbyid/" + id);
 
   updateData(department:Department){
     // console.log(department.id + "======================================id " + department.dept_name)
-    return this.http.put(this.url+ "/lists/edit/"+ department.id , department);
+    return this.http.put(this.url+ "/lists/update/"+ department.id , department);
     // console.log("medod work")
 
   }
