@@ -42,11 +42,6 @@ export class DepartmentService implements OnInit {
   return this.http.get<Department[]>(this.url  + "/lists");
   }
 
-  deleteById(id : number){
-    return this.http.delete(this.url + "/lists/delete/"+id);
-  }
-
-
 // ================================edit method:start================================
 
   getuserByID (id : number): Observable<any>{
@@ -65,5 +60,10 @@ return this.http.get<Department>(this.url + "/lists/editbyid/" + id);
 
   }
   // ================================edit method:end================================
+
+
+  deleteById(id : number){
+    return this.http.delete(this.url + "/lists/delete/"+id);
+  }
 
 }

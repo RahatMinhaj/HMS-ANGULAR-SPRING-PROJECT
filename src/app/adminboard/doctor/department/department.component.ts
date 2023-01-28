@@ -15,7 +15,8 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css'],
 })
-export class DepartmentComponent implements OnInit,AfterViewInit {
+// export class DepartmentComponent implements OnInit, AfterViewInit {
+export class DepartmentComponent implements OnInit{
   docDeptForm!: FormGroup;
   deptList!: Department[];
   message!: Observable<string>;
@@ -23,26 +24,32 @@ export class DepartmentComponent implements OnInit,AfterViewInit {
   deptModel!: Department;
 
 
-@ViewChild(MatPaginator) paginator!: MatPaginator;
-datasource:any;
-@ViewChild(MatSort) sorting!: MatSort;
 
+  // ==============Table Properties===========
+  datasource: any;
+  displayedColumns: string[] = ['id', 'dept_name', 'dept_manager', 'action']
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sorting!: MatSort;
 
-
-
-
-
-  displayedColumns:string[] = ['id','dept_name','dept_manager','action']
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue;
+    // this.deptList.sort = 
+    // this.deptList.filter = filterValue.trim().toLowerCase();
+    // if (this.deptList.paginator) {
+    //   this.deptList.paginator.firstPage();
+    // }
+    // }
+  }
 
 
   constructor(
     private formBuilder: FormBuilder,
     private deptService: DepartmentService,
+
+    // Service For Modal
     private modalService: NgbModal
   ) { }
-
-
 
 
 
@@ -55,25 +62,27 @@ datasource:any;
 
     this.deptService.getAll().subscribe((data: Department[]) => {
       this.deptList = data;
+
+      // ===========data table properties===============
       this.datasource = new MatTableDataSource<Department>(this.deptList)
       this.datasource.paginator = this.paginator;
       this.datasource.sort = this.sorting;
     });
 
-   
+
   }
 
-  ngAfterViewInit(): void {
-     // this method if for data table
-    // tuts: https://webdamn.com/how-to-use-datatables-in-angular-8/
-    // https://datatables.net/examples/index
-    // $(document).ready(function () {
-    //   $('#table_id').DataTable({
-    //     destroy: true
-    //   });
-      
-    // });
-  }
+  // ngAfterViewInit(): void {
+  //    // this method if for data table
+  //   // tuts: https://webdamn.com/how-to-use-datatables-in-angular-8/
+  //   // https://datatables.net/examples/index
+  //   // $(document).ready(function () {
+  //   //   $('#table_id').DataTable({
+  //   //     destroy: true
+  //   //   });
+
+  //   // });
+  // }
 
 
   get deptNameValue() {
@@ -82,10 +91,6 @@ datasource:any;
   get userNameval() {
     return this.docDeptForm.get('dept_name');
   }
-
-
-
-
 
 
   createDept() {
@@ -101,29 +106,14 @@ datasource:any;
 
   }
 
-  deleteDeptByID(id: number) {
-    if (confirm("Do You Really want to delete?")) {
-      alert("deleted!")
-      this.ngOnInit();
-      this.deptService.deleteById(id).subscribe(resp => {
-        console.log(resp + "============================resp from angular")
-        this.ngOnInit();
-      })
-    } else {
-      alert("delete Failed")
-    }
-  }
-
-  closeResult!:string;
-
-
-    // ================================edit method:end================================
-
-
-  EditDept(content: any, dept: Department) {
 
 
 
+
+  // ================================edit method:end================================
+
+  closeResult!: string;
+  editDept(content: any, dept: Department) {
     this.modalService.open(content, { size: 'lg' }).result.then((result) => {
       this.ngOnInit();
       this.closeResult = `Closed with: ${result}`;
@@ -141,7 +131,8 @@ datasource:any;
     })
   }
 
-  updateData(){
+
+  updateData() {
     this.deptService.updateData(this.docDeptForm.value).subscribe((data) => {
       alert("Department Updated!");
       this.ngOnInit();
@@ -153,8 +144,8 @@ datasource:any;
 
 
 
-// -------Unused Edit method------
-    // getuserByID(dept: Department) {
+  // -------Unused Edit method------
+  // getuserByID(dept: Department) {
 
   //   // this.deptService.getuserByID(dept.id).subscribe((data:Department) =>{
   //   //   console.log(data + "         ====================data comes from back");
@@ -169,41 +160,20 @@ datasource:any;
 
 
 
+  deleteDeptByID(id: number) {
+    if (confirm("Do You Really want to delete?")) {
+      alert("deleted!")
+      this.ngOnInit();
+      this.deptService.deleteById(id).subscribe(resp => {
+        console.log(resp + "============================resp from angular")
+        this.ngOnInit();
+      })
+    } else {
+      alert("delete Failed")
+    }
+  }
 
 
-
-
-
-
-
-
-
-
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.datasource.filter = filterValue;
-    // this.deptList.sort = 
-
-
-
-
-    // this.deptList.filter = filterValue.trim().toLowerCase();
-
-    // if (this.deptList.paginator) {
-    //   this.deptList.paginator.firstPage();
-    // }
-  // }
-}
-
-
-
-
-
-
-
-
-  
 
 
 }

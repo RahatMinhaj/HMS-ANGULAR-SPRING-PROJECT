@@ -90,7 +90,7 @@
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Manager </th>
               <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"
-                  (click)="EditDept(content, row)">Edit</button>|
+                  (click)="editDept(content, row)">Edit</button>|
                 <button class="btn btn-danger btn-sm ms-1" (click)="deleteDeptByID(row.id)">Delete</button>
               </td>
             </ng-container>
