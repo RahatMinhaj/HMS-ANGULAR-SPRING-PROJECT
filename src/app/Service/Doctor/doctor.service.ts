@@ -8,7 +8,7 @@ import { Doctor } from 'src/app/ModelClass/Doctor.model';
 })
 export class DoctorService implements ICommonService<Doctor> {
 
-  url:string = "http://localhost:8080/doctor";
+  url:string = "http://localhost:8080/doctor/";
 
   constructor(
     private http:HttpClient,
@@ -18,13 +18,13 @@ export class DoctorService implements ICommonService<Doctor> {
 
   save(data: Doctor) {
     // console.log("printed from doc service" + data.first_name)
-        return this.http.post(this.url + "/create", data);
+        return this.http.post(this.url + "create", data);
   }
 
 
 
   getAll() {
-    throw new Error('Method not implemented.');
+    return this.http.get<Doctor[]>(this.url + "lists")
   }
 
 

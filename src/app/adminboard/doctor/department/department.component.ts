@@ -19,7 +19,10 @@ import { MatSort } from '@angular/material/sort';
 export class DepartmentComponent implements OnInit{
   docDeptForm!: FormGroup;
   deptList!: Department[];
+
+
   message!: Observable<string>;
+
 
   deptModel!: Department;
 
@@ -68,8 +71,6 @@ export class DepartmentComponent implements OnInit{
       this.datasource.paginator = this.paginator;
       this.datasource.sort = this.sorting;
     });
-
-
   }
 
   // ngAfterViewInit(): void {

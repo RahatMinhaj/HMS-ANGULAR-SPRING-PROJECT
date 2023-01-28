@@ -22,7 +22,7 @@ import { RouterModule} from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import {MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -75,6 +75,7 @@ import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.compo
 import { SignupComponent } from './signup/signup.component';
 import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 import { MatSortModule } from '@angular/material/sort';
+import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { MatSortModule } from '@angular/material/sort';
     SupplierComponent,
     SignupComponent,
     AdminhomeComponent,
+    DoctorlistComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
   empForm!: FormGroup;
+  
 
 
   constructor(private formBuilder: FormBuilder) { }

@@ -36,18 +36,30 @@ export class CreatedoctorComponent implements OnInit,ICommonComp<Doctor>{
     throw new Error('Method not implemented.');
   }
 
+
+
+
   create(): void {
     if (this.createDocForm.valid) {
       console.log(this.createDocForm.value.first_name);
+      console.log(this.createDocForm.value.picture.value);
 
       this.DocService.save(this.createDocForm.value).subscribe((data) => {
-        alert("Doctor Added");
+        alert("Doctor Added" + data);
         this.ngOnInit();
       });
     } else {
       alert("Please Fill The Field Properly")
     }
   }
+
+  // file!:File;
+  // onFileChange(event:Event){
+  //   this.file = event.target!.files[0];
+  // }
+
+
+
 
 
 
@@ -80,6 +92,7 @@ export class CreatedoctorComponent implements OnInit,ICommonComp<Doctor>{
       details: [''],
       visit_charge: [''],
       doc_join_date: [''],
+      picture:['']
 
     })
 
