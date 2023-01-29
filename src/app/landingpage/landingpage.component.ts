@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Route } from '@angular/router';
 import { HardCodeauthService } from '../Service/hard-codeauth.service';
-import { PatientService } from '../Service/patient.service';
+import { PatientService } from '../Service/Patient.service';
 
 @Component({
   selector: 'app-landingpage',
@@ -50,7 +50,7 @@ this.userLoginForm = this.formBuilder.group({
 
   registration(){
     console.log(this.userSignUpform.value.p_first_name)
-    this.patientService.saveData(this.userSignUpform.value)
+    // this.patientService.saveData(this.userSignUpform.value)
   }
   
   userLogin(){

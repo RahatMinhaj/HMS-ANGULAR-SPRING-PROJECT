@@ -7,37 +7,81 @@
 
 
 
+<div class="row">
+<div class="col">
 
-<div class="table_wrapper">
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Search Your Data Here</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+  
+    <div class="col">
+      <div class="container d-flex justify-content-end mb-3">
+        <button class="btn btn-outline-info me-2" routerLink="/admin/create_patient">New Doctor</button>
+        <button class="btn btn-outline-info" routerLink="/admin/create_patient">Departments</button>
+      </div>
+    </div>
 
-  <!-- <mat-form-field>
-    <mat-label>Search Your Data Here</mat-label>
-    <input matInput (keyup)="applyFilter($event)">
-  </mat-form-field> -->
+
+  </div>
+
   <!-- A General Input Field Workd Also -->
   <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="daata" matSort class="table-stripped">
+  <div class="mat-elevation-z8 table_wrapper">
+    <table mat-table [dataSource]="datasource" matSort>
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.id}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="dept_name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Deparment Name </th>
-        <td mat-cell *matCellDef="let row"> {{row.dept_name}}</td>
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.first_name}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="dept_manager">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Manager </th>
-        <td mat-cell *matCellDef="let row"> {{row.dept_manager}} </td>
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.last_name}} </td>
       </ng-container>
+
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.mobile}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.dept_id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="specialization">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Specialization </th>
+        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.specialization}} </td>
+      </ng-container>
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.details}} </td>
+      </ng-container>
+      <ng-container matColumnDef="visit_charge">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Visit Charge </th>
+        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.visit_charge}} </td>
+      </ng-container>
+      <ng-container matColumnDef="doc_join_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Join Date </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.doc_join_date}} </td>
+      </ng-container>
+
+
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Manager </th>
-        <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"
-            >Edit</button>|
-          <button class="btn btn-danger btn-sm ms-1">Delete</button>
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-info btn-sm me-1" (click)="edit(row, content)"
+            >Edit</button><br>
+          <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
         </td>
       </ng-container>
 
@@ -50,4 +94,174 @@
 </tr> -->
     </table>
   </div>
+  <mat-paginator [pageSizeOptions]="[10, 20,30, 100]" showFirstLastButtons
+    aria-label="Select page of users"></mat-paginator>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ==============================Modal====================================================== -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">Edit Doctor's Information:</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <h3 class="text-center">Update Doctor's Information</h3>
+    <form [formGroup]="editDocForm" method="POST">
+      <div class="row">
+        <div class="form-group col">
+          <label for="">First Name:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="first_name"
+          />
+        </div>
+        <div class="form-group col">
+          <label for="">Last Name:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="last_name"
+          />
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="form-group col">
+          <label for="">Mobile:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="mobile"
+          />
+        </div>
+  
+        <div class="form-group col">
+          <label for="">Department ID:</label>
+          <select class="form-select" formControlName="dept_id">
+            <option *ngFor="let dept of deptList" [ngValue]="dept.id">
+              {{ dept.dept_name }}
+            </option>
+          </select>
+  
+          <!-- For Just Static Value Getting -->
+          <!-- <select class="form-select" formControlName="departmentcheckbox">
+                              <option [ngValue]="1">One</option>
+                              <option [ngValue]="2">Two</option>
+                              <option [ngValue]="3">Three</option>
+                          </select> -->
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="form-group col">
+          <label for="">Degree:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="degree"
+          />
+        </div>
+        <div class="form-group col">
+          <label for="">Specialization:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="specialization"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col">
+          <label for="">Other Information:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="details"
+          />
+        </div>
+        <div class="form-group col">
+          <label for="">Charge:</label>
+          <input
+            class="form-control"
+            type="text"
+            name=""
+            id=""
+            formControlName="visit_charge"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col">
+          <label for="">Join Date:</label>
+          <input
+            class="form-control"
+            type="date"
+            name=""
+            id=""
+            formControlName="doc_join_date"
+          />
+        </div>
+  
+        <div class="form-group col">
+          <label for="">Put Your Picture:</label>
+          <input class="form-control" type="file" formControlName="picture" />
+        </div>
+      </div>
+  
+      <br /><br />
+  
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-info btn-lg float-right d-flex justify-content-center me-2"
+          id="btnLogin"
+          (click)="updateData()"
+        >
+          Create Doctor
+        </button>
+  
+        <button
+          class="btn btn-success btn-lg float-right d-flex justify-content-center"
+          id="btnLogin"
+          routerLink="/admin/doctors"
+        >
+          Doctor List
+        </button>
+      </div>
+    </form>
+
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div> -->
+</ng-template>
+
+<h1>{{closeResult}}</h1>

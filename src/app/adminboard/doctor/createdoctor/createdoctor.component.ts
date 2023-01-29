@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
@@ -23,7 +24,8 @@ export class CreatedoctorComponent implements OnInit,ICommonComp<Doctor>{
   constructor(
     private formBuilder: FormBuilder,
      private deptService: DepartmentService,
-     private DocService:DoctorService
+     private DocService:DoctorService,
+     private router:Router
     ) { }
 
 
@@ -47,6 +49,7 @@ export class CreatedoctorComponent implements OnInit,ICommonComp<Doctor>{
       this.DocService.save(this.createDocForm.value).subscribe((data) => {
         alert("Doctor Added" + data);
         this.ngOnInit();
+        this.router.navigateByUrl("/admin/doctors")
       });
     } else {
       alert("Please Fill The Field Properly")

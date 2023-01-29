@@ -30,7 +30,7 @@ export class DoctorService implements ICommonService<Doctor> {
 
 
   getuserByID(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.get<Doctor>(this.url + "lists/editbyid/" + id)
   }
 
 
