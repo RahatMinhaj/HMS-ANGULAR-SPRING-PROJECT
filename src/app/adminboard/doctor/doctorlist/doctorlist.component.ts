@@ -9,6 +9,11 @@ import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
+import Swal from 'sweetalert2';
+
+
+
+
 
 @Component({
   selector: 'app-doctorlist',
@@ -119,11 +124,46 @@ export class DoctorlistComponent implements OnInit,ICommonComp<Doctor> {
 
 
   updateData() {
-    throw new Error('Method not implemented.');
+    this.docService.updateData(this.editDocForm.value).subscribe((data) => {
+      alert("Department Updated!");
+      this.ngOnInit();
+      this.modalService.dismissAll();
+    });
   }
-  deleteByID(id: number): void {
-    throw new Error('Method not implemented.');
+
+
+
+  deleteByID(id: number) {
+    this.docService.deleteById(id).subscribe((data:any) => {
+      this.ngOnInit();
+      return data.delMessage;
+    })
   }
+
+  delAlert(id:number){
+    Swal.fire({
+      title:'Are you sure !',
+      text:'You want to Delete this item',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonText: 'Yes',
+      cancelButtonText:'No',
+    }).then((result)=>{
+      if (result.value){
+        this.deleteByID(id)
+         Swal.fire('Removed', 'Product still in our database.','error');
+      }else if( result.dismiss=== Swal.DismissReason.cancel){
+        Swal.fire('Cancelled', 'Product still in our database.','error');
+      }
+    })
+    
+    }
+
+
+  
+
+  
+
 
   ngOnInit() {
 

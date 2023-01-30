@@ -80,7 +80,7 @@
           <div class="d-flex justify-content-center align-items-center">
             <button class="btn btn-info btn-sm me-1" (click)="edit(row, content)"
             >Edit</button><br>
-          <button class="btn btn-danger btn-sm">Delete</button>
+          <button class="btn btn-danger btn-sm" (click)="delAlert(row.id)">Delete</button>
           </div>
         </td>
       </ng-container>
@@ -245,7 +245,7 @@
           id="btnLogin"
           (click)="updateData()"
         >
-          Create Doctor
+          Update Data
         </button>
   
         <button

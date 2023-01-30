@@ -159,14 +159,14 @@ export class DepartmentComponent implements OnInit{
 
   // ================================edit method:end================================
 
-
+  deleteReturn!:string;
 
   deleteDeptByID(id: number) {
     if (confirm("Do You Really want to delete?")) {
-      alert("deleted!")
-      this.ngOnInit();
-      this.deptService.deleteById(id).subscribe(resp => {
-        console.log(resp + "============================resp from angular")
+      this.deptService.deleteById(id).subscribe((resp:any) => {
+        this.deleteReturn = resp;
+        alert("Data Deleted Success!")
+        console.log(resp);
         this.ngOnInit();
       })
     } else {

@@ -76,6 +76,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 import { MatSortModule } from '@angular/material/sort';
 import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.component';
+import Swal from 'sweetalert2';
 
 
 @NgModule({
@@ -161,6 +162,10 @@ import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.c
     MatFormFieldModule,
     MatPaginatorModule,
     MatDialogModule,
+
+
+
+
 
     
     FormsModule,

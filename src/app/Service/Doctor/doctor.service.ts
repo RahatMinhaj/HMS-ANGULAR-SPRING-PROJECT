@@ -36,13 +36,13 @@ export class DoctorService implements ICommonService<Doctor> {
 
 
   updateData(data: Doctor) {
-    throw new Error('Method not implemented.');
+    return this.http.put(this.url +"lists/update/" + data.id, data )
   }
 
 
 
   deleteById(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.delete(this.url + "lists/delete/" + id);
   }
 
 
