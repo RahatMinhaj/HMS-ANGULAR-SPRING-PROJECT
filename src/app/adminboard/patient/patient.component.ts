@@ -44,7 +44,7 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
       id: [''],
       p_first_name: [''],
       p_last_name: [''],
-      p_age: [''],
+      p_age: ['', [Validators.pattern(/^\d+$/)]],
       p_weight: [''],
       p_gender: [''],
       p_address: [''],

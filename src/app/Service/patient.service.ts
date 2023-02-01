@@ -24,16 +24,17 @@ url:string = "http://localhost:8080/patient/";
 
 
   getAll() {
-    throw new Error('Method not implemented.');
+    return this.http.get<Patient[]>(this.url + "lists");
+
   }
   getuserByID(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.get<Patient>(this.url + "lists/editbyid/" + id)
   }
   updateData(data: Patient) {
-    throw new Error('Method not implemented.');
+    return this.http.put(this.url +"lists/update/" + data.id, data );
   }
   deleteById(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.delete(this.url + "lists/delete/" + id);
   }
   
 

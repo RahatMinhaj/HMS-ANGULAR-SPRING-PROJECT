@@ -120,7 +120,7 @@
   </div>
   <div class="modal-body">
 
-    <h3 class="text-center">Update Doctor's Information</h3>
+    <h3 class="text-center bg-info mb-4 p-2">Update Doctor's Information</h3>
     <form [formGroup]="editDocForm" method="POST">
       <div class="row">
         <div class="form-group col">
@@ -251,7 +251,7 @@
         <button
           class="btn btn-success btn-lg float-right d-flex justify-content-center"
           id="btnLogin"
-          routerLink="/admin/doctors"
+          (click)="DocListButton()"
         >
           Doctor List
         </button>

@@ -9,7 +9,7 @@ export interface Patient {
     p_mobile: string;
     p_imageurl:string;
   
-    platform: string;
+    p_platform: string;
   
     username: string;
     p_email: string;
