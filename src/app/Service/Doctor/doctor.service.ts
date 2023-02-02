@@ -15,6 +15,11 @@ export class DoctorService implements ICommonService<Doctor> {
 
   ) { }
 
+  getDocByDepartment(department: number){
+    return this.http.get<Doctor[]>(this.url +'lists/dept/'+department);
+
+  }
+
 
   save(data: Doctor) {
     // console.log("printed from doc service" + data.first_name)

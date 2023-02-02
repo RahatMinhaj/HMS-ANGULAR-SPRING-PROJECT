@@ -11,86 +11,102 @@
 </div>
 
 
-
 <div class="container">
   <h1>Appointment Form</h1>
+
+  <div class="d-flex align-items-end flex-column">
+    <div class="btn btn-primary mb-2">Patient Type</div>
+    <select class="form-select apt_table_option">
+        <option default value="all">New</option>
+        <option value="pending">Old</option>
+    </select>
+  </div>
 
 
   <form [formGroup]="appointForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
     method="POST">
     <div class="row">
+     
       <div class="form-group col">
-        <label for="uname">Your Registered Name:</label>
-        <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example"
-          disabled readonly>
+        <label for="uname">First Name:</label>
+        <input class="form-control" type="text" formControlName="apFirstName">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
       </div>
       <div class="form-group col">
-        <label for="uname">Your Patient ID:</label>
-        <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example"
-          disabled readonly>
+        <label for="apLastName">Last Name:</label>
+        <input class="form-control" type="text" formControlName="apLastName">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
       </div>
     </div>
 
+
     <div class="row">
       <div class="form-group col">
-        <label for="uname">Appointment Type:</label>
-        <select class="form-select" formControlName="appointment_type">
-          <option value="1">Emergency</option>
-          <option value="2">Casual</option>
-          <option value="3">Online</option>
-        </select>
+        <label for="apMobile">Mobile:</label>
+        <input class="form-control" type="text" formControlName="apMobile">
       </div>
       <div class="form-group col">
-        <label for="uname">Doctors Category:</label>
-        <select class="form-select" formControlName="department_id">
-          <option value="1">Medicine</option>
-          <option value="2">Orthopedics</option>
-          <option value="2">Surgon</option>
-          <option value="2">Skin</option>
-        </select>
+        <label for="apDate">Appointment Date:</label>
+        <input class="form-control" type="date" formControlName="apDate">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
       </div>
     </div>
+
+
+
     <div class="row">
+
+
       <div class="form-group col">
-        <label for="uname">Doctors Name:</label>
-        <select class="form-select" formControlName="doc_id">
-          <option value="1">Khalek</option>
-          <option value="1">Malek</option>
-          <option value="1">Rashed</option>
+        <label for="">Department ID:</label>
+        <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)">
+          <option *ngFor="let dept of deptList" [ngValue]="dept.id">
+            {{ dept.dept_name }}
+          </option>
         </select>
-      </div>
-      <div class="form-group col">
-        <label for="upass">Appoint Date</label>
-        <input type="date" class="form-control" formControlName="appointment_date">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col">
-        <div class="mb-2">
-          <label for="uname">Appoint Time:</label>
-          <select class="form-select" formControlName="appointment_time">
-            <option value="1">Morning</option>
-            <option value="2">Evening</option>
+        </div>
+
+        <div class="form-group col">
+          <label for="">Doctor Name:</label>
+          <select class="form-select" formControlName="apDocName" [disabled]="docNameStatus">
+            <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id">
+              {{ dept.first_name }}
+            </option>
           </select>
-        </div>
-        <div class="input-group">
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" value=""
-              aria-label="Checkbox for following text input">
           </div>
-          <input type="text" class="form-control" aria-label="Text input with checkbox" disabled>
-        </div>
+    </div>
 
 
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="apGender">Gender:</label>
+        <select class="form-select" formControlName="apGender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
       </div>
       <div class="form-group col">
-        <label for="">Desease Details</label>
-        <textarea class="form-control" formControlName="deasease" rows="3"></textarea>
+        <label for="apAge">Age:</label>
+        <input type="number" class="form-control" formControlName="apAge">
       </div>
     </div>
 
-    <div class="d-flex justify-content-center"><button type="submit"
-        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin" (click)="appointment()">Create
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="apLocation">Location:</label>
+        <input type="number" class="form-control" formControlName="apLocation">
+      </div>
+      <div class="form-group col">
+        <label for="apDeseaseDetails">Desease Details</label>
+        <textarea class="form-control" formControlName="apDeseaseDetails" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5"><button type="submit"
+        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin" (click)="create()">Create
         Appointment</button></div>
 
   </form>

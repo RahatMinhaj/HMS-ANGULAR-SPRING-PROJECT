@@ -31,7 +31,9 @@ export class CreatedoctorComponent implements OnInit,ICommonComp<Doctor>{
 
 
 
-
+    onchange(value : string){
+console.log(value + " =============FORM DOCTOR COMP")
+    }
 
 
   getAll() {
