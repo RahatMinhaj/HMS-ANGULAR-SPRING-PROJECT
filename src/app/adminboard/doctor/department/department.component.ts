@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Department } from 'src/app/ModelClass/Department.model';
-import { AppointmentService } from 'src/app/Service/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import * as $ from 'jquery';
 import { MatPaginator } from '@angular/material/paginator';

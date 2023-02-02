@@ -52,7 +52,7 @@
       </ng-container>
 
       <ng-container matColumnDef="Department">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Id: </th>
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.dept_id}} </td>
       </ng-container>
 
@@ -263,5 +263,3 @@
     <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
   </div> -->
 </ng-template>
-
-<h1>{{closeResult}}</h1>

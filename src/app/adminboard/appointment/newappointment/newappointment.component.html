@@ -6,27 +6,43 @@
 </nav>
 
 
-<div class="container d-flex justify-content-end mb-3">
-  <button class="btn btn-primary" routerLink="/admin/create_patient">Create Patient</button>
+
+<div class="container d-flex justify-content-end align-items-end flex-column mb-3">
+  <button class="btn btn-primary" routerLink="/admin/create_patient" >Create Patient</button>
+  
 </div>
+
+
+
+
+
 
 
 <div class="container">
   <h1>Appointment Form</h1>
 
-  <div class="d-flex align-items-end flex-column">
-    <div class="btn btn-primary mb-2">Patient Type</div>
-    <select class="form-select apt_table_option">
-        <option default value="all">New</option>
-        <option value="pending">Old</option>
-    </select>
+  <div class="container d-flex justify-content-end align-items-end flex-column mb-1">
+    <h4>Select Patient Type:</h4>
+    <div class="">
+      <select class="form-select selecTIption mb-3" (change)="pTypeChange($event)">
+        <option default value="new">New Patient</option>
+        <option value="old">Old Patient</option>
+      </select>
+      <div class="inp d-flex" *ngIf="pType">
+        <input *ngIf="pType" class="form-control me-2" type="number" placeholder="Put Previous Patient ID" [(ngModel)]="playerName">
+      <button class="btn btn-outline-info" (click)="setPatientInfo()">Go</button>
+      </div>
+      
+
+    </div>
   </div>
+
 
 
   <form [formGroup]="appointForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
     method="POST">
     <div class="row">
-     
+
       <div class="form-group col">
         <label for="uname">First Name:</label>
         <input class="form-control" type="text" formControlName="apFirstName">
@@ -59,21 +75,24 @@
 
       <div class="form-group col">
         <label for="">Department ID:</label>
-        <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)">
-          <option *ngFor="let dept of deptList" [ngValue]="dept.id">
+        <select class="form-select" formControlName="apDocDepartments" #aDept (change)="onSelect(aDept.value)">
+          <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+          <option *ngFor="let dept of deptList" [value]="dept.id">
             {{ dept.dept_name }}
           </option>
         </select>
-        </div>
+      </div>
 
-        <div class="form-group col">
-          <label for="">Doctor Name:</label>
-          <select class="form-select" formControlName="apDocName" [disabled]="docNameStatus">
-            <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id">
-              {{ dept.first_name }}
-            </option>
-          </select>
-          </div>
+      <div class="form-group col">
+        <label for="">Doctor Name:</label>
+        <select class="form-select" formControlName="apDocName" [disabled]="docNameStatus">
+          <option *ngFor="let dept of docByDepartment" [value]="dept.id">
+            <!-- for another method -->
+            <!-- <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id"> -->
+            {{ dept.first_name }} {{dept.last_name}}
+          </option>
+        </select>
+      </div>
     </div>
 
 

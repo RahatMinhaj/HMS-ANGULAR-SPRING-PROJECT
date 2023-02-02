@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { error } from 'jquery';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Appointment } from 'src/app/ModelClass/Appointment.model';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
+import { Patient } from 'src/app/ModelClass/Patient.model';
+import { AppointmentService } from 'src/app/Service/Doctor/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
+import { PatientService } from 'src/app/Service/Patient.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-newappointment',
@@ -19,38 +24,143 @@ export class NewappointmentComponent
 
   appointForm!: FormGroup;
   docNameStatus = true;
-  deptSelect='';
+  deptSelect = '';
   docByDepartment!: Doctor[];
-  onSelect(aDept: string) {
-    const selectedDeptId = aDept;
-    const split = selectedDeptId.split(": ");
-    const depTID = parseInt(split[1])
-  // console.log(selectedDeptId);
-    // console.log(value.id + "==================================dddddddd")
-    if (depTID == null) {
-      
-    } else {  
-      this.docService
-        .getDocByDepartment(depTID)
-        .subscribe((data: Doctor[]) => {
-          this.docByDepartment = data;
-          this.docNameStatus = true;
-          console.log(data)
-        });
+
+
+
+  pType:boolean = false;
+
+  pTypeChange(val:any){
+    const valu = val.target.value;
+    if(valu == "new"){
+      this.pType = false;
+      this.ngOnInit();
+    }else if(valu == "old"){
+      this.pType = true;
     }
   }
 
+
+  playerName!:number;
+  setPatientInfo(){
+
+      this.patientService.getuserByID(this.playerName).subscribe((data:Patient)=>{
+
+        let pData={
+          id: data.id,
+          apFirstName: data.p_first_name,
+          apLastName: data.p_last_name,
+          apMobile: data.p_mobile,
+          apGender: data.p_gender,
+          apAge: data.p_age,
+
+          apSerial: [''],
+          apDate: [''],
+          apEntryDate: [''],
+          apDocDepartments: [''],
+          apDocName: [''],
+          apLocation: [''],
+          apDeseaseDetails: [''],
+          emp_id: [''],
+          apStatus: [''],
+          
+        }
+
+        this.appointForm.setValue(pData);
+      },
+
+      
+      error => {
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Not Found !',
+          // text: 'Data Not Found',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
+      }
+      
+  
+      )
+
+  }
+
+
+
+  onSelect(aDept: any) {
+    // console.log(aDept.target.value + "==============")
+    // console.log(aDept + "====================")
+    let deptID =  parseInt(aDept);
+    
+    if(deptID == null){
+      alert("Please Select the Department First");
+    }else{
+      this.docService.getDocByDepartment(deptID).subscribe((data: Doctor[]) => {
+                this.docByDepartment = data;
+                this.docNameStatus = true;
+                // console.log(data)
+              });
+    }
+
+// =====================Another Way=====================
+    //   const selectedDeptId = aDept;
+    //   const split = selectedDeptId.split(": ");
+    //   const depTID = parseInt(split[1])
+    // // console.log(selectedDeptId);
+    //   // console.log(value.id + "==================================dddddddd")
+    //   if (depTID == null) {
+    // alert("Please Select a Department")
+
+    //   } else {  
+    //     this.docService
+    //       .getDocByDepartment(depTID)
+    //       .subscribe((data: Doctor[]) => {
+    //         this.docByDepartment = data;
+    //         this.docNameStatus = true;
+    //         console.log(data)
+    //       });
+    //   }
+  }
+
+
+
+
   constructor(
     private formBuilder: FormBuilder,
-    private deptService:DepartmentService,
-    private docService: DoctorService
-  ) {}
+    private deptService: DepartmentService,
+    private docService: DoctorService,
+    private patientService:PatientService,
+    private appointService:AppointmentService
+  ) { }
 
   getAll() {
     throw new Error('Method not implemented.');
   }
   create(): void {
-    console.log(typeof this.appointForm.value.apDate);
+    this.appointService.save(this.appointForm.value).subscribe(
+      
+      data =>{
+        this.ngOnInit();
+
+    },
+    error =>{
+      Swal.fire({
+        // title: 'Are you sure !',
+        title: 'Data Cannot be saved !',
+        // text: 'Data Not Found',
+        icon: 'error',
+        // showCancelButton: true,
+        // confirmButtonText: 'Yes',
+        // cancelButtonText: 'No',
+      })
+
+    }
+
+    )
+    
   }
   edit(model: Appointment, modal?: any): void {
     throw new Error('Method not implemented.');

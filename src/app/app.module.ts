@@ -96,7 +96,6 @@ import Swal from 'sweetalert2';
     PatientlistComponent,
     PatientpendingComponent,
     PatientreviewComponent,
-    NewappointmentComponent,
     AllappointmentComponent,
     PendingappointmentComponent,
     ConfirmedappointmentComponent,
@@ -124,7 +123,9 @@ import Swal from 'sweetalert2';
     SupplierComponent,
     SignupComponent,
     AdminhomeComponent,
-    DoctorlistComponent
+    DoctorlistComponent,
+    DepartmentComponent,
+    NewappointmentComponent
   ],
   imports: [
     BrowserModule,
