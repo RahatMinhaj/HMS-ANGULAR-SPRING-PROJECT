@@ -19,7 +19,9 @@
 
 
 <div class="container">
-  <h1>Appointment Form</h1>
+  <div class="heading bg-info">
+    <h3 class="text-light text-center p-2">Add New Appointment</h3>
+  </div>
 
   <div class="container d-flex justify-content-end align-items-end flex-column mb-1">
     <h4>Select Patient Type:</h4>
@@ -75,7 +77,7 @@
 
       <div class="form-group col">
         <label for="">Department ID:</label>
-        <select class="form-select" formControlName="apDocDepartments" #aDept (change)="onSelect(aDept.value)">
+        <select class="form-select" formControlName="dept_id" #aDept (change)="onSelect(aDept.value)">
           <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
           <option *ngFor="let dept of deptList" [value]="dept.id">
             {{ dept.dept_name }}
@@ -85,7 +87,7 @@
 
       <div class="form-group col">
         <label for="">Doctor Name:</label>
-        <select class="form-select" formControlName="apDocName" [disabled]="docNameStatus">
+        <select class="form-select" formControlName="doc_id" [disabled]="docNameStatus">
           <option *ngFor="let dept of docByDepartment" [value]="dept.id">
             <!-- for another method -->
             <!-- <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id"> -->

@@ -10,7 +10,7 @@ import { Appointment } from 'src/app/ModelClass/Appointment.model';
 
 export class AppointmentService implements OnInit,ICommonService<Appointment> {
 
-  url:string = "http://localhost:8080/department";
+  url:string = "http://localhost:8080/appointment/";
 
   constructor(private http:HttpClient) { }
 
@@ -23,14 +23,23 @@ export class AppointmentService implements OnInit,ICommonService<Appointment> {
 
 
   save(data: Appointment) {
-    return this.http.post(this.url, data);
+    return this.http.post(this.url + "create",  data);
   }
 
   getAll() {
-    throw new Error('Method not implemented.');
+    return this.http.get<Appointment[]>(this.url + "lists");
   }
+
+  getAllListByAppointType(type:string){
+return this.http.get<Appointment[]>(this.url + "lists/" + type)
+  }
+
+
+
+
+
   getuserByID(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.get<Appointment>(this.url + "lists/editbyid/" + id)
   }
   updateData(data: Appointment) {
     throw new Error('Method not implemented.');

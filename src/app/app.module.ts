@@ -77,6 +77,7 @@ import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 import { MatSortModule } from '@angular/material/sort';
 import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.component';
 import Swal from 'sweetalert2';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -153,6 +154,8 @@ import Swal from 'sweetalert2';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
+    MatCheckboxModule,
+  
 
 
     

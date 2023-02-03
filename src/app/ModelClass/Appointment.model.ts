@@ -1,5 +1,8 @@
 export interface Appointment {
   id: number;
+  // p_type:string;
+  p_id:number;
+  p_type:string;
   apSerial: number /* Should be auto increment on daily basis*/;
   apFirstName: string;
   apLastName: string;
@@ -7,12 +10,12 @@ export interface Appointment {
   apDate: Date;
   // appointment_type!:string;
   apEntryDate: string;
-  apDocDepartments: number;
-  apDocName: string;
+  dept_id: number;
+  doc_id: string;
   apLocation: string;
   apGender: string;
   apAge: number;
   apDeseaseDetails: string;
   emp_id: number;
-  apStatus: number;
+  apStatus: string;
 }

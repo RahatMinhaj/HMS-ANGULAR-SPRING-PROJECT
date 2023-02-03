@@ -14,44 +14,246 @@
     <select class="form-select apt_table_option" #table (change)="onSelect(table.value)">
         <option default value="all">All Appointments</option>
         <option value="pending">Pending Appointments</option>
-        <option value="doctor">On Doctor's Review</option>
         <option value="confirm">Confirmed Appointments</option>
+        <option value="prescribed">Prscribed Appointment</option>
     </select>
 </div>
 
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+ <!-- A General Input Field Workd Also -->
+  <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+
+  <div class="mat-elevation-z8 table_wrapper">
+    <table mat-table [dataSource]="datasource" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apSerial">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial No: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.apSerial}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="p_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient Type: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.p_type}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="p_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient ID: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.p_id}}</td>
+      </ng-container>
 
 
-<!-- 
 
-<mat-tab-group>
-    <mat-tab label="All Appointment">
-        <ng-template matTabContent>
-            <app-allappointment></app-allappointment>
-        </ng-template>
+      
 
-    </mat-tab>
+      <ng-container matColumnDef="apFirstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name: </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.apFirstName}} </td>
+      </ng-container>
 
-    <mat-tab label="Pending Appointment">
-        <ng-template matTabContent>
-            <app-pendingappointment></app-pendingappointment>
-        </ng-template>
+      <ng-container matColumnDef="apLastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apLastName}} </td>
+      </ng-container>
 
-    </mat-tab>
+      <ng-container matColumnDef="apMobile">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apMobile}} </td>
+      </ng-container>
 
-    <mat-tab label="On Doctor's Review ">
-        <ng-template matTabContent>
-            <app-onreviewappointment></app-onreviewappointment>
-        </ng-template>
-    </mat-tab>
+      <ng-container matColumnDef="dept_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department ID: </th>
+        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.dept_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="doc_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor ID: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.doc_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="apLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Location: </th>
+        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.apLocation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apGender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apGender}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apAge">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Age: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apAge}} </td>
+      </ng-container>
+      <ng-container matColumnDef="apDeseaseDetails">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Details: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apDeseaseDetails}} </td>
+      </ng-container>
+      <ng-container matColumnDef="emp_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.emp_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="apStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Status: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apStatus}} </td>
+      </ng-container>
+      <ng-container matColumnDef="apDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Date: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apEntryDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Entry Date: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apEntryDate}} </td>
+      </ng-container>
 
 
-    <mat-tab label="Confimed Appointments">
-        <ng-template matTabContent>
-            <app-confirmedappointment></app-confirmedappointment>
-        </ng-template>
-    </mat-tab>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-success btn-sm me-1" (click)="edit(row, content)"
+            >Edit</button><br>
+            <button class="btn btn-info btn-sm me-1" 
+            >Approve</button><br>
+
+          <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+</tr> -->
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[10, 20,30, 100]" showFirstLastButtons
+    aria-label="Select page of users"></mat-paginator>
 
 
-</mat-tab-group> -->
+
+
+    
+
+<!-- ==============================Modal====================================================== -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">Edit Doctor's Information:</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <h3 class="text-center bg-info mb-4 p-2">Update Doctor's Information</h3>
+    <form [formGroup]="editAppointForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+    method="POST">
+    <div class="row">
+
+      <div class="form-group col">
+        <label for="uname">First Name:</label>
+        <input class="form-control" type="text" formControlName="apFirstName">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
+      </div>
+      <div class="form-group col">
+        <label for="apLastName">Last Name:</label>
+        <input class="form-control" type="text" formControlName="apLastName">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="apMobile">Mobile:</label>
+        <input class="form-control" type="text" formControlName="apMobile">
+      </div>
+      <div class="form-group col">
+        <label for="apDate">Appointment Date:</label>
+        <input class="form-control" type="date" formControlName="apDate">
+        <!-- <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly> -->
+      </div>
+    </div>
+
+
+
+    <div class="row">
+
+
+      <div class="form-group col">
+        <label for="">Department ID:</label>
+        <select class="form-select" formControlName="dept_id" #aDept (change)="onSelect(aDept.value)">
+          <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+          <option *ngFor="let dept of deptList" [value]="dept.id">
+            {{ dept.dept_name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group col">
+        <label for="">Doctor Name:</label>
+        <select class="form-select" formControlName="doc_id">
+          <option *ngFor="let dept of docByDepartment" [value]="dept.id">
+            <!-- for another method -->
+            <!-- <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id"> -->
+            {{ dept.first_name }} {{dept.last_name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="apGender">Gender:</label>
+        <select class="form-select" formControlName="apGender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="apAge">Age:</label>
+        <input type="number" class="form-control" formControlName="apAge">
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="apLocation">Location:</label>
+        <input type="number" class="form-control" formControlName="apLocation">
+      </div>
+      <div class="form-group col">
+        <label for="apDeseaseDetails">Desease Details</label>
+        <textarea class="form-control" formControlName="apDeseaseDetails" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5"><button type="submit"
+        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin" (click)="create()">Create
+        Appointment</button></div>
+
+  </form>
+
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div> -->
+</ng-template>
+
+
+
+
+
+
+

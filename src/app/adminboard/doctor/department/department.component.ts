@@ -44,6 +44,17 @@ export class DepartmentComponent implements OnInit{
     // }
   }
 
+  getDeptList(){
+    this.deptService.getAll().subscribe((data: Department[]) => {
+      this.deptList = data;
+
+      // ===========data table properties===============
+      this.datasource = new MatTableDataSource<Department>(this.deptList)
+      this.datasource.paginator = this.paginator;
+      this.datasource.sort = this.sorting;
+    });
+  }
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,14 +73,16 @@ export class DepartmentComponent implements OnInit{
       dept_manager: ['', Validators.required],
     });
 
-    this.deptService.getAll().subscribe((data: Department[]) => {
-      this.deptList = data;
+    this.getDeptList();
 
-      // ===========data table properties===============
-      this.datasource = new MatTableDataSource<Department>(this.deptList)
-      this.datasource.paginator = this.paginator;
-      this.datasource.sort = this.sorting;
-    });
+    // this.deptService.getAll().subscribe((data: Department[]) => {
+    //   this.deptList = data;
+
+    //   // ===========data table properties===============
+    //   this.datasource = new MatTableDataSource<Department>(this.deptList)
+    //   this.datasource.paginator = this.paginator;
+    //   this.datasource.sort = this.sorting;
+    // });
   }
 
   // ngAfterViewInit(): void {

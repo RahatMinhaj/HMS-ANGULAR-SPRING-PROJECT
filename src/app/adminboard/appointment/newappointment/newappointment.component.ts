@@ -46,28 +46,32 @@ export class NewappointmentComponent
   setPatientInfo(){
 
       this.patientService.getuserByID(this.playerName).subscribe((data:Patient)=>{
-
         let pData={
-          id: data.id,
+          p_id: data.id,
+           
           apFirstName: data.p_first_name,
           apLastName: data.p_last_name,
           apMobile: data.p_mobile,
           apGender: data.p_gender,
           apAge: data.p_age,
 
-          apSerial: [''],
-          apDate: [''],
-          apEntryDate: [''],
-          apDocDepartments: [''],
-          apDocName: [''],
-          apLocation: [''],
-          apDeseaseDetails: [''],
-          emp_id: [''],
-          apStatus: [''],
+
+          id:'', 
+          apSerial: '',
+          apDate: '',
+          apEntryDate: '',
+          dept_id: '',
+          doc_id: '',
+          apLocation: '',
+          apDeseaseDetails: '',
+          emp_id: '',
+          apStatus: 'Pending',
+          p_type:'Old',
           
         }
 
-        this.appointForm.setValue(pData);
+        this.appointForm.patchValue(pData);
+        console.log(this.appointForm.value.apFirstName)
       },
 
       
@@ -140,9 +144,11 @@ export class NewappointmentComponent
     throw new Error('Method not implemented.');
   }
   create(): void {
+    console.log(this.appointForm.value.apFirstName +"999999999999")
     this.appointService.save(this.appointForm.value).subscribe(
       
       data =>{
+        console.log("data saved!")
         this.ngOnInit();
 
     },
@@ -175,20 +181,22 @@ export class NewappointmentComponent
   ngOnInit(): void {
     this.appointForm = this.formBuilder.group({
       id: [''],
+      p_id: [''],
+      p_type:'New',
       apSerial: [''],
       apFirstName: [''],
       apLastName: [''],
       apMobile: [''],
       apDate: [''],
       apEntryDate: [''],
-      apDocDepartments: [''],
-      apDocName: [''],
+      dept_id: [''],
+      doc_id: [''],
       apLocation: [''],
       apGender: [''],
       apAge: [''],
       apDeseaseDetails: [''],
       emp_id: [''],
-      apStatus: [''],
+      apStatus:'Pending',
     });
 
 
