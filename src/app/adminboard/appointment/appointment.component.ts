@@ -21,21 +21,22 @@ import { DepartmentComponent } from '../doctor/department/department.component';
 export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
   aptList!: Appointment[];
 
-  appointmentModel!:Appointment;
-  editAppointForm!:FormGroup;
-  deptList!:Department[];
+  appointmentModel!: Appointment;
+  editAppointForm!: FormGroup;
+  deptList!: Department[];
   docByDepartment!: Doctor[];
 
   constructor(
 
     private appointService: AppointmentService,
-    private ngModal:NgbModal
+    private ngModal: NgbModal
 
-  ) {}
+  ) { }
 
   // ==============Table Properties===========
   datasource: any;
   displayedColumns: string[] = [
+    'select',
     'id',
     'apSerial',
     'p_type',
@@ -65,7 +66,7 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     this.getAll();
 
     // this.deptComp.getDeptList();
-    
+
   }
 
   applyFilter(event: Event) {
@@ -78,6 +79,112 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     // }
     // }
   }
+
+
+
+
+
+
+  upTableVal(model: Appointment) {
+    console.log(model.id + " ======================")
+    this.appointService.updateTableVals(model).subscribe(data => {
+      console.log("data get =======" + data)
+      this.ngOnInit();
+    });
+
+  }
+
+  selectedStatus = '';
+  statusChange(status:string){
+
+    this.selectedStatus = status;
+    console.log(status  + "========================status")
+    if(this.selectedStatus == ''){
+    console.log("Do nothing")
+    }else if (this.selectedStatus == 'mkPending') {
+      this.changeStatusFromCheckbox("Pending");
+      // console.log('all aapointment');
+    } else if (this.selectedStatus == 'mkConfirm') {
+      this.changeStatusFromCheckbox("Confirmed");
+      // console.log('pending aapointment');
+    }
+
+  }
+
+
+
+
+  changeStatusFromCheckbox(status:string){
+
+    console.log("button vlicked..", )
+    this.appointService.updateAllDataById(this.selectedIds,status).subscribe(data => {
+      console.log(data)
+      this.ngOnInit();
+    }
+    )
+  }
+
+
+
+
+  statusSelectionBox:boolean = false;
+  selectedIds:number[] = [];
+  selectedRows:Appointment[] = [];
+  tableCheckbox(row:number, checked:any) {
+    console.log("Selected row---", row)
+    if (checked) {
+      this.selectedIds.push(row);
+      this.statusSelectionBox = true;
+      console.log("row checked ")
+
+    } else {
+
+      this.selectedIds = this.selectedIds.filter(item => {
+        item !== row
+        // this.statusSelectionBox = false;
+      
+      });
+      console.log("row unchecked")
+      
+    }
+
+  // selectedRows:Appointment[] = [];
+  // tableCheckbox(row:Appointment, checked:any) {
+  //   console.log("Selected row---", row)
+  //   if (checked) {
+  //     this.selectedRows.push(row);
+  //     console.log("row checked ")
+
+  //   } else {
+
+  //     this.selectedRows = this.selectedRows.filter(item => item.id !== row.id);
+  //     console.log("row unchecked")
+  //   }
+
+    console.log("Selected row count",  this.selectedIds.length)
+
+    // for (let i = 0; i < this.selectedRows.length; i++) {
+    //   console.log(this.selectedRows[i])
+    // }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   getAll() {
     this.appointService.getAll().subscribe((data: Appointment[]) => {
@@ -134,6 +241,7 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
       .subscribe((data: Appointment[]) => {
         this.aptList = data;
         console.log(data);
+        // this.ngOnInit();
 
         // ===========data table properties===============
         this.datasource = new MatTableDataSource<Appointment>(this.aptList);
@@ -143,7 +251,6 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
   }
 
   selectedTeam = '';
-
   onSelect(value: string) {
     this.selectedTeam = value;
     if (this.selectedTeam == 'all') {
@@ -152,8 +259,8 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     } else if (this.selectedTeam == 'pending') {
       this.appointType('Pending');
       // console.log('pending aapointment');
-    } else if (this.selectedTeam == 'confirm') {
-      this.appointType('confirm');
+    } else if (this.selectedTeam == 'confirmed') {
+      this.appointType("confirmed");
       // console.log('pending aapointment');
     } else if (this.selectedTeam == 'prescribed') {
       this.appointType('prescribed');

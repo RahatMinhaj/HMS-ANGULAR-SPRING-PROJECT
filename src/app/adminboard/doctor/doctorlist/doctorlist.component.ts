@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
+import { Appointment } from 'src/app/ModelClass/Appointment.model';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
@@ -56,6 +57,17 @@ export class DoctorlistComponent implements OnInit, ICommonComp<Doctor> {
     // }
     // }
   }
+
+
+
+
+
+
+
+
+
+
+
 
   getAll() {
     this.docService.getAll().subscribe((data: Doctor[]) => {

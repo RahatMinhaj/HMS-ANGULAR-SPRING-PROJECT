@@ -17,7 +17,14 @@ export class AppointmentService implements OnInit,ICommonService<Appointment> {
 
 
 
+ updateTableVals(data:Appointment){
+    return this.http.put(this.url + "data/update/" + data.id, data );
+  }
 
+
+  updateAllDataById(ids:number[], status: string) {
+    return this.http.get<number[]>(this.url + "data/updateAll?ids="+ids+"&status="+status);
+  }
 
 
 

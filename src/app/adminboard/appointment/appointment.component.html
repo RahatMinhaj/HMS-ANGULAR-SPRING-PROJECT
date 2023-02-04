@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Patient List:</li>
+        <li class="breadcrumb-item active" aria-current="page">Appointment List:</li>
     </ol>
 </nav>
 
@@ -10,13 +10,23 @@
     <div class="btn btn-primary">Add New Appointment</div>
 </div> -->
 <div class="d-flex align-items-end flex-column">
-    <div class="btn btn-primary mb-2">Add New Appointment</div>
+    <div class="btn btn-primary mb-2" (click)="changeStatusFromCheckbox('confirmed')">Add New Appointment</div>
     <select class="form-select apt_table_option" #table (change)="onSelect(table.value)">
         <option default value="all">All Appointments</option>
         <option value="pending">Pending Appointments</option>
-        <option value="confirm">Confirmed Appointments</option>
+        <option value="confirmed">Confirmed Appointments</option>
         <option value="prescribed">Prscribed Appointment</option>
     </select>
+</div>
+
+
+
+<div class="d-flex align-items-end flex-column" *ngIf="statusSelectionBox">
+  <!-- <div class="btn btn-primary mb-2" (click)="confirmAll('confirmed')">Add New Appointment</div> -->
+  <select class="form-select apt_table_option" #table2 (change)="statusChange(table2.value)">
+      <option value="mkPending">Make Pending</option>
+      <option value="mkConfirm">Make Confirmed</option>
+  </select>
 </div>
 
 
@@ -27,6 +37,30 @@
 
   <div class="mat-elevation-z8 table_wrapper">
     <table mat-table [dataSource]="datasource" matSort>
+
+
+       <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (change)="tableCheckbox(row.id, $event.checked)">
+      </mat-checkbox>
+      <!-- <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox> -->
+    </td>
+  </ng-container>
+
+
+
+
+
+
+
+
+
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -119,8 +153,8 @@
           <div class="d-flex justify-content-center align-items-center">
             <button class="btn btn-success btn-sm me-1" (click)="edit(row, content)"
             >Edit</button><br>
-            <button class="btn btn-info btn-sm me-1" 
-            >Approve</button><br>
+            <button class="btn btn-info btn-sm me-1" (click)="upTableVal(row)" 
+            >Confirm</button><br>
 
           <button class="btn btn-danger btn-sm">Delete</button>
           </div>
