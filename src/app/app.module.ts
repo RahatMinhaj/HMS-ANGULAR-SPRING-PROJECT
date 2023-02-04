@@ -47,10 +47,6 @@ import { PatientlistComponent } from './adminboard/patient/patientlist/patientli
 import { PatientpendingComponent } from './adminboard/patient/patientlist/patientpending/patientpending.component';
 import { PatientreviewComponent } from './adminboard/patient/patientlist/patientreview/patientreview.component';
 import { NewappointmentComponent } from './adminboard/appointment/newappointment/newappointment.component';
-import { AllappointmentComponent } from './adminboard/appointment/allappointment/allappointment.component';
-import { PendingappointmentComponent } from './adminboard/appointment/pendingappointment/pendingappointment.component';
-import { ConfirmedappointmentComponent } from './adminboard/appointment/confirmedappointment/confirmedappointment.component';
-import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewappointment/onreviewappointment.component';
 import { BillingComponent } from './adminboard/billing/billing.component';
 import { PrescriptionComponent } from './adminboard/prescription/prescription.component';
 import { CabinComponent } from './adminboard/cabin/cabin.component';
@@ -97,10 +93,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     PatientlistComponent,
     PatientpendingComponent,
     PatientreviewComponent,
-    AllappointmentComponent,
-    PendingappointmentComponent,
-    ConfirmedappointmentComponent,
-    OnreviewappointmentComponent,
     BillingComponent,
     PrescriptionComponent,
     CabinComponent,

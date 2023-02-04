@@ -38,6 +38,7 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
   displayedColumns: string[] = [
     'select',
     'id',
+    'apStatus',
     'apSerial',
     'p_type',
     'p_id',
@@ -51,7 +52,6 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     'apAge',
     'apDeseaseDetails',
     'emp_id',
-    'apStatus',
     'apDate',
     'apEntryDate',
     'action'
@@ -101,11 +101,14 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     console.log(status  + "========================status")
     if(this.selectedStatus == ''){
     console.log("Do nothing")
+    this.ngOnInit();
     }else if (this.selectedStatus == 'mkPending') {
       this.changeStatusFromCheckbox("Pending");
+      this.ngOnInit();
       // console.log('all aapointment');
     } else if (this.selectedStatus == 'mkConfirm') {
       this.changeStatusFromCheckbox("Confirmed");
+      this.ngOnInit();
       // console.log('pending aapointment');
     }
 
@@ -189,7 +192,7 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
   getAll() {
     this.appointService.getAll().subscribe((data: Appointment[]) => {
       this.aptList = data;
-      console.log(data);
+      // console.log(data);
 
       // ===========data table properties===============
       this.datasource = new MatTableDataSource<Appointment>(this.aptList);

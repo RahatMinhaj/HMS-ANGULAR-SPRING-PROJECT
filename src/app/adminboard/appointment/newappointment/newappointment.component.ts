@@ -148,7 +148,15 @@ export class NewappointmentComponent
     this.appointService.save(this.appointForm.value).subscribe(
       
       data =>{
-        console.log("data saved!")
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data saved !',
+          // text: 'Data Not Found',
+          icon: 'success',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
         this.ngOnInit();
 
     },
@@ -161,11 +169,9 @@ export class NewappointmentComponent
         // showCancelButton: true,
         // confirmButtonText: 'Yes',
         // cancelButtonText: 'No',
-      })
+      })  
 
-    }
-
-    )
+    })
     
   }
   edit(model: Appointment, modal?: any): void {

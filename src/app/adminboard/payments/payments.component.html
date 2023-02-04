@@ -6,33 +6,29 @@
   </nav>
   
   
-  <div class="container d-flex justify-content-end mb-3">
-    <button class="btn btn-outline-info" routerLink="/admin/create_patient">Payment List</button>
-  </div>
-  
-  
-  
   <div class="container">
-    <h1 class="text-center">Create New Payment</h1>
+    <div class="heading bg-info">
+      <h3 class="text-light text-center p-2 mb-5">Add New Payment</h3>
+    </div>
   
   
-    <form  class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
-      method="POST">
+    <form  [formGroup]="paymentForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+      method="POST" (submit)="create()">
      
   
       <div class="row">
-        <div class="form-group col">
-          <label for="uname">Select Patient ID:</label>
-          <select class="form-select" formControlName="appointment_type">
-            <option value="1">P101</option>
-            <option value="2">P102</option>
-            <option value="3">P103</option>
+        <div class="form-group col ">
+          <label for="">Patient ID:</label>
+          <select class="form-select" formControlName="p_id" #pList (change)="patientSelect(pList.value)">
+            <option *ngFor="let patient of patientList" [value]="patient.id">
+              {{ patient.id}}
+            </option>
           </select>
         </div>
 
         <div class="form-group col">
           <label for="uname">Patient Name:</label>
-          <input type="text" placeholder="Patient Name" class="form-control" disabled>
+          <input type="text" formControlName="p_name" placeholder="Patient Name"   class="form-control" [value]="patient_name" readonly>
          
         </div>
 
@@ -52,32 +48,24 @@
 
 
       <div class="row">
-        <!-- <div class="form-group col">
-          <label for="uname">Appointment Type:</label>
-          <select class="form-select" formControlName="appointment_type">
-            <option value="1">Emergency</option>
-            <option value="2">Casual</option>
-            <option value="3">Online</option>
-          </select>
-        </div> -->
+
         <div class="form-group col">
-          <label for="uname">Doctors Category:</label>
-          <select class="form-select" formControlName="department_id">
-            <option value="1">Medicine</option>
-            <option value="2">Orthopedics</option>
-            <option value="2">Surgon</option>
-            <option value="2">Skin</option>
+          <label for="">Department ID:</label>
+          <select class="form-select" formControlName="dept_id" #depList (change)="deptSelect(depList.value)">
+            <option *ngFor="let dept of deptList" [value]="dept.id">
+              {{ dept.dept_name}}
+            </option>
           </select>
         </div>
 
         <div class="form-group col">
-            <label for="uname">Doctors Name:</label>
-            <select class="form-select" formControlName="doc_id">
-              <option value="1">Khalek</option>
-              <option value="1">Malek</option>
-              <option value="1">Rashed</option>
-            </select>
-          </div>
+          <label for="">Doctor Name:</label>
+          <select class="form-select" formControlName="doc_id">
+            <option *ngFor="let doc of docListByDept" [value]="doc.id">
+              {{ doc.first_name}} {{ doc.last_name}}
+            </option>
+          </select>
+        </div>
       </div>
 
 
@@ -85,12 +73,12 @@
       <div class="row">
         <div class="form-group col">
           <label for="uname">Admission Date:</label>
-          <input type="date" class="form-control" formControlName="appointment_date">
+          <input type="date" class="form-control" formControlName="admission_date">
          
         </div>
         <div class="form-group col">
           <label for="upass">Release Date:</label>
-          <input type="date" class="form-control" formControlName="appointment_date">
+          <input type="date" class="form-control" formControlName="release_date">
         </div>
       </div>
 
@@ -101,12 +89,12 @@
       <div class="row">
         <div class="form-group col">
           <label for="uname">Doctor Charges:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="doc_charge">
          
         </div>
         <div class="form-group col">
           <label for="upass">Ambulance Charge:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="ambulance_charge">
         </div>
       </div>
 
@@ -114,24 +102,24 @@
       <div class="row">
         <div class="form-group col">
           <label for="uname">Cabin Charges:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="cabin_charge">
          
         </div>
         <div class="form-group col">
           <label for="upass">Medicine Charge:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="med_charge">
         </div>
       </div>
 
       <div class="row">
         <div class="form-group col">
           <label for="uname">Testing Charges:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="test_charge">
          
         </div>
         <div class="form-group col">
           <label for="upass">Operation Charge:</label>
-          <input type="text" class="form-control" formControlName="appointment_date">
+          <input type="number" class="form-control" formControlName="ot_charge">
         </div>
       </div>
 
@@ -141,13 +129,13 @@
         <div class="form-group col">
           <div class="mb-2">
             <label for="uname">Discout:</label>
-            <input type="text" class="form-control" formControlName="appointment_date">
+            <input type="number" class="form-control" formControlName="discount">
           </div>
 
         </div>
         <div class="form-group col">
-          <label for="">Total Bill:</label>
-          <input type="text" placeholder="Total Bill" class="form-control" disabled>
+          <label for="">Total Bill (With Discount):</label>
+          <input type="number" placeholder="Total Bill" class="form-control" formControlName="total_bill" [value]="total" readonly>
         </div>
       </div>
   
@@ -158,3 +146,6 @@
   
     </form>
   </div>
+
+<h4>Total Bill (without Discount): {{ttBill}}</h4>
+<h4>Total Bill (with Discount): {{total}}</h4>

@@ -9,31 +9,48 @@
 <!-- <div class="container d-flex justify-content-end mb-3">
     <div class="btn btn-primary">Add New Appointment</div>
 </div> -->
-<div class="d-flex align-items-end flex-column">
-    <div class="btn btn-primary mb-2" (click)="changeStatusFromCheckbox('confirmed')">Add New Appointment</div>
-    <select class="form-select apt_table_option" #table (change)="onSelect(table.value)">
-        <option default value="all">All Appointments</option>
-        <option value="pending">Pending Appointments</option>
-        <option value="confirmed">Confirmed Appointments</option>
-        <option value="prescribed">Prscribed Appointment</option>
+
+
+<div class="row d-flex justify-content-between">
+
+  <div class="d-flex align-items-start flex-column col float-sart" *ngIf="statusSelectionBox">
+    <h6 class="">Change Appointment Status</h6>
+    <select class="form-select apt_table_option" #table2 (change)="statusChange(table2.value)">
+        <option value="">(--Select One--)</option>
+        <option value="mkPending">Make Pending</option>
+        <option value="mkConfirm">Make Confirmed</option>
     </select>
+  </div>
 </div>
 
-
-
-<div class="d-flex align-items-end flex-column" *ngIf="statusSelectionBox">
-  <!-- <div class="btn btn-primary mb-2" (click)="confirmAll('confirmed')">Add New Appointment</div> -->
-  <select class="form-select apt_table_option" #table2 (change)="statusChange(table2.value)">
-      <option value="mkPending">Make Pending</option>
-      <option value="mkConfirm">Make Confirmed</option>
-  </select>
-</div>
 
 
 <!-- <router-outlet></router-outlet> -->
 
  <!-- A General Input Field Workd Also -->
   <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Search Your Data Here</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+  
+    <div class="col">
+      <div class="d-flex align-items-end flex-column col float-end">
+        <select class="form-select apt_table_option" #table (change)="onSelect(table.value)">
+            <option default value="all">All Appointments</option>
+            <option value="pending">Pending Appointments</option>
+            <option value="confirmed">Confirmed Appointments</option>
+            <!-- <option value="prescribed">Prscribed Appointment</option> -->
+        </select>
+    </div>
+      <!-- <div class="container d-flex justify-content-end mb-3">
+        <button class="btn btn-outline-info me-2" routerLink="/admin/create_patient">New Doctor</button>
+        <button class="btn btn-outline-info" routerLink="/admin/create_patient">Departments</button>
+      </div> -->
+    </div>
+  </div>
 
   <div class="mat-elevation-z8 table_wrapper">
     <table mat-table [dataSource]="datasource" matSort>
@@ -52,15 +69,6 @@
       </mat-checkbox> -->
     </td>
   </ng-container>
-
-
-
-
-
-
-
-
-
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -133,7 +141,7 @@
       </ng-container>
       <ng-container matColumnDef="apStatus">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Status: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apStatus}} </td>
+        <td mat-cell  class="text-center" *matCellDef="let row"><div [ngClass]="{'bg-success': row.apStatus === 'Confirmed', 'bg-secondary': row.apStatus === 'Pending'}" class="text-white rounded"> {{row.apStatus}}</div> </td>
       </ng-container>
       <ng-container matColumnDef="apDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Date: </th>
@@ -153,8 +161,8 @@
           <div class="d-flex justify-content-center align-items-center">
             <button class="btn btn-success btn-sm me-1" (click)="edit(row, content)"
             >Edit</button><br>
-            <button class="btn btn-info btn-sm me-1" (click)="upTableVal(row)" 
-            >Confirm</button><br>
+            <!-- <button class="btn btn-info btn-sm me-1" (click)="upTableVal(row)" 
+            >Confirm</button><br> -->
 
           <button class="btn btn-danger btn-sm">Delete</button>
           </div>

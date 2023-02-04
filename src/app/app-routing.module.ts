@@ -11,14 +11,9 @@ import { DepartmentComponent } from './adminboard/doctor/department/department.c
 import { DoctorComponent } from './adminboard/doctor/doctor.component';
 import { CreatedoctorComponent } from './adminboard/doctor/createdoctor/createdoctor.component';
 import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.component';
-import { AppointmentlistComponent } from './adminboard/appointment/appointmentlist/appointmentlist.component';
 import { PatientlistComponent } from './adminboard/patient/patientlist/patientlist.component';
 import { PatientpendingComponent } from './adminboard/patient/patientlist/patientpending/patientpending.component';
 import { PatientreviewComponent } from './adminboard/patient/patientlist/patientreview/patientreview.component';
-import { PendingappointmentComponent } from './adminboard/appointment/pendingappointment/pendingappointment.component';
-import { AllappointmentComponent } from './adminboard/appointment/allappointment/allappointment.component';
-import { OnreviewappointmentComponent } from './adminboard/appointment/onreviewappointment/onreviewappointment.component';
-import { ConfirmedappointmentComponent } from './adminboard/appointment/confirmedappointment/confirmedappointment.component';
 import { NewappointmentComponent } from './adminboard/appointment/newappointment/newappointment.component';
 import { PatientaddmissionComponent } from './adminboard/patient/patientaddmission/patientaddmission.component';
 import { PrescriptionComponent } from './adminboard/prescription/prescription.component';
@@ -67,20 +62,9 @@ const routes: Routes = [
           },
           {
             path: 'all',
-            component: AllappointmentComponent,
-          },
-          {
-            path: 'pending',
-            component: PendingappointmentComponent,
-          },
-          {
-            path: 'ondoctor',
-            component: OnreviewappointmentComponent,
-          },
-          {
-            path: 'confirmed',
-            component: ConfirmedappointmentComponent,
-          },
+            component: AppointmentComponent,
+          }
+          
         ],
       },
       {

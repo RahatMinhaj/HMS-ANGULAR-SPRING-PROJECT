@@ -6,6 +6,7 @@ import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createdoctor',
@@ -48,11 +49,38 @@ console.log(value + " =============FORM DOCTOR COMP")
       console.log(this.createDocForm.value.first_name);
       console.log(this.createDocForm.value.picture.value);
 
-      this.DocService.save(this.createDocForm.value).subscribe((data) => {
-        alert("Doctor Added" + data);
-        this.ngOnInit();
-        this.router.navigateByUrl("/admin/doctors")
-      });
+      this.DocService.save(this.createDocForm.value).subscribe(
+      
+        data =>{
+          Swal.fire({
+            // title: 'Are you sure !',
+            title: 'Data saved !',
+            // text: 'Data Not Found',
+            icon: 'success',
+            // showCancelButton: true,
+            // confirmButtonText: 'Yes',
+            // cancelButtonText: 'No',
+          })
+          
+          this.router.navigateByUrl("/admin/doctors")
+          this.ngOnInit();
+  
+      },
+      error =>{
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Cannot be saved !',
+          // text: 'Data Not Found',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })  
+  
+      })
+
+
+
     } else {
       alert("Please Fill The Field Properly")
     }
