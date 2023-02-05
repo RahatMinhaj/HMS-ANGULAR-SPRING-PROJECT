@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
 export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   editPForm!: FormGroup;
   pList!: Patient[];
-  pModel!:Patient;
+  pModel!: Patient;
   // ==============Table Properties===========
   datasource: any;
   displayedColumns: string[] = [
@@ -46,8 +46,14 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   constructor(
     private pService: PatientService,
     private formBuilder: FormBuilder,
-    private modalService:NgbModal
-  ) {}
+    private modalService: NgbModal
+  ) { }
+
+  public get totalRows(): number {
+    return this.pList.length;
+  }
+
+
 
   getAll() {
     this.pService.getAll().subscribe((data: Patient[]) => {
@@ -115,7 +121,7 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
     }).then((result) => {
       if (result.value) {
         this.deleteByID(id);
-        Swal.fire('Your Item is','removed','error');
+        Swal.fire('Your Item is', 'removed', 'error');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // Swal.fire('Cancelled');
       }
