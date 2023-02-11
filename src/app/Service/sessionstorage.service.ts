@@ -32,6 +32,11 @@ export class SessionstorageService {
     }else{
       return false;
     }
-
   }
+
+  logOut(){
+    window.localStorage.removeItem(userKey);
+    window.localStorage.clear();
+  }
+
 }

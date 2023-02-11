@@ -38,7 +38,7 @@
             <!-- <a class="nav-item nav-link bgph" (click)="adminPanel()">Amin Panel</a> -->
             <a *ngIf="!checkLogin" routerLink="/login" class="nav-item nav-link bgph">Sign In</a>
             <a *ngIf="!checkLogin" routerLink="/signup" class="nav-item nav-link bgph">Sign Up</a>
-            <a *ngIf="checkLogin" routerLink="/signup" class="nav-item nav-link bgph">Logout</a>
+            <a *ngIf="checkLogin" class="nav-item nav-link bgph" (click)="logOut()">Logout</a>
             <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">

@@ -1,5 +1,5 @@
 export class Medicine{
-    med_id!:number;
+    id!:number;
     med_name!:string;
     med_group_name!:string;
     med_type!:string;

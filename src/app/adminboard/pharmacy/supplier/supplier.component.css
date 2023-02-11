@@ -1,0 +1,33 @@
+
+/* Material Table CSS BY DEFAULT FROM ANGULAR SITE */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+
+
+  /* .mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  } */
+  
+  td, th {
+    width: 25%;
+  }
+
+  .table_wrapper{
+    height: 500px;
+    overflow: auto;
+  }
+ 
+  

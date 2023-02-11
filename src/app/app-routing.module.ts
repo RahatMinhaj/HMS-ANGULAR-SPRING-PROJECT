@@ -31,6 +31,7 @@ import { MedicineReport } from './ModelClass/MedicineReport.model';
 import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
+import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.component';
 
 const routes: Routes = [
   {
@@ -161,7 +162,7 @@ const routes: Routes = [
       },
       {
         path: 'med_report',
-        component: MedicineReport,
+        component: MedreportComponent,
       },
       {
         path: 'med_supplier',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SessionstorageService } from '../Service/sessionstorage.service';
 import { SignupService } from '../Service/signup.service';
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private signupService: SignupService,
-    private strorageService: SessionstorageService
+    private strorageService: SessionstorageService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.userData= this.strorageService.getData();
       let namw: string = this.userData.user.userFirstName;
       console.log(this.userData.user.userFirstName, 'Component=================');
+      this.router.navigateByUrl("/")
     });
   }
 }

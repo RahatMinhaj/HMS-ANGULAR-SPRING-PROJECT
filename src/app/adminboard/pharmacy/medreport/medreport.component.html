@@ -1,4 +1,3 @@
-<p>medreport works!</p>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -6,86 +5,220 @@
     </ol>
 </nav>
 
-<div class="container">
-    <div class="">
-        <div class="">
-            <h3 class="text-center">Add New Medicine Report</h3><br>
-            <div class="text-center">
-                <img src="../../../../assets/images/doctor.jpg" alt="" class="rounded-circle">
-            </div>
-
-
-            <form [formGroup]="createMedReportForm" method="POST">
-
+<ngb-accordion [closeOthers]="true" activeIds="0">
+	<ngb-panel id="static-1">
+        <ng-template ngbPanelTitle>
+			<h6 class="text-right">Add Medicine Report</h6>
+		</ng-template>
+		<ng-template ngbPanelContent>
+            <form [formGroup]="createMedReportForm">
                 <div class="row">
-                    <div class="form-group col">
-                        <label for="">Med Item ID</label>
-                        <select class="form-select" formControlName="med_id">
-                            <option [ngValue]="1">One</option>
-                            <option [ngValue]="2">Two</option>
-                            <option [ngValue]="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="form-group col">
-                        <label for="">Medicine Company</label>
-                        <input class="form-control" type="text" name="" id="" formControlName="med_company">
-                    </div>
 
+
+                  <div class="form-group col">
+                    <label for="">Select Medicine:</label>
+                    <select class="form-select" formControlName="med_id" #aMed (change)="onChangeMedicine(aMed.value)">
+                      <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+                      <option *ngFor="let medicine of medicineList" [value]="medicine.id">
+                        {{ medicine.med_name }}
+                      </option>
+                    </select>
+                  </div>
+
+            
+                  <div class="form-group col">
+                    <label for="">Medicine Company:</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name=""
+                      id=""
+                      formControlName="med_company"
+                    />
+                  </div>
                 </div>
-
+            
                 <div class="row">
-                    <div class="form-group col">
-                        <label for="">Med Quantity</label>
-                        <input class="form-control" type="text" name="" id="" formControlName="med_quantity">
-                    </div>
-
-
-
+                  <div class="form-group col">
+                    <label for="">Quantity Purchase:</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name=""
+                      id=""
+                      formControlName="med_quantity"
+                    />
+                  </div>
+            
+                  <div class="form-group col">
+                    <label for="">Country:</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name=""
+                      id=""
+                      formControlName="med_courty"
+                    />
                 </div>
-
+                </div>
+            
                 <div class="row">
-                    <div class="form-group col">
-                        <label for="">Med Country:</label>
-                        <input class="form-control" type="text" name="" id="" formControlName="med_courty">
-                    </div>
+                  <div class="form-group col">
+                    <label for="">Manufacture Date:</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name=""
+                      id=""
+                      formControlName="med_manufacture_date"
+                    />
+                  </div>
 
-                    <div class="form-group col">
-                        <label for="">Med Production Date:</label>
-                        <input class="form-control" type="date" name="" id="" formControlName="med_production_date">
-                    </div>
-                    <div class="form-group col">
-                        <label for="">Med Expiry Date:</label>
-                        <input class="form-control" type="date" name="" id="" formControlName="med_expiry_date">
-                    </div>
+
+                  <div class="form-group col">
+                    <label for="">Expiry Date:</label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name=""
+                      id=""
+                      formControlName="med_expiry_date"
+                    />
+                  </div>
+                 
                 </div>
-
                 <div class="row">
-                    <div class="form-group col">
-                        <label for="">Supplier ID:</label>
-                        <select class="form-select" formControlName="supplier_id">
-                            <option [ngValue]="1">One</option>
-                            <option [ngValue]="2">Two</option>
-                            <option [ngValue]="3">Three</option>
-                        </select>
-                    </div>
 
-                    <div class="form-group col">
-                        <label for="">Med Price:</label>
-                        <input class="form-control" type="text" name="" id="" formControlName="med_price">
-                    </div>
+                  <div class="form-group col">
+                    <label for="">Suplier:</label>
+                    <select class="form-select" formControlName="supplier_id" #aMed (change)="onChangeMedicine(aMed.value)">
+                      <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+                      <option *ngFor="let medicine of medicineList" [value]="medicine.id">
+                        {{ medicine.med_name }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col">
+                    <label for="">Price:</label>
+                    <input
+                      class="form-control"
+                      type="number"
+                      name=""
+                      id=""
+                      formControlName="med_price"
+                    />
+                  </div>
                 </div>
-                <br><br>
-
-                <div class="d-flex justify-content-center"><button type="submit"
-                        class="btn btn-success float-right d-flex justify-content-center" id="btnLogin"
-                        (click)="createMedReport()">Create Doctor</button>
+                <br /><br />
+            
+                <div class="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    class="btn btn-info btn-lg float-right d-flex justify-content-center me-2"
+                    id="btnLogin"
+                    
+                  >
+                    Add in Stock
+                  </button>
+            
+                  <button
+                    class="btn btn-success btn-lg float-right d-flex justify-content-center"
+                    id="btnLogin"
+                    routerLink="/admin/doctors"
+                  >
+                    Medicine List
+                  </button>
                 </div>
+              </form>
+            
+		</ng-template>
+	</ngb-panel>
+</ngb-accordion>
+
+
+<div class="heading bg-info">
+  <h3 class="text-light text-center p-2 mt-4 mb-2">All of Medicine Reports</h3>
+</div>
+
+
+
+ <!-- Bootstrap or jquery Table -->
+ <div class="table_wrapper">
+
+  <mat-form-field>
+    <mat-label>Search Your Data Here</mat-label>
+    <input matInput (keyup)="applyFilter($event)">
+  </mat-form-field>
+  <!-- A General Input Field Workd Also -->
+  <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+  
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="datasource" matSort class="table-stripped">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="med_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Medicine ID: </th>
+        <td mat-cell *matCellDef="let row"> {{row.med_id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="med_company">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name:</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_company}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="med_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Med Type</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="med_quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_quantity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="med_courty">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Country</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_courty}} </td>
+      </ng-container>
+      <ng-container matColumnDef="med_manufacture_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Manufacture Date:</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_manufacture_date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="med_expiry_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expiry Date:</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_expiry_date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="supplier_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Supplier ID:</th>
+        <td mat-cell *matCellDef="let row"> {{row.supplier_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="med_price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price:</th>
+        <td mat-cell *matCellDef="let row"> {{row.med_price}} </td>
+      </ng-container>
 
 
 
 
 
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Manager </th>
+        <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"
+            (click)="edit( row)">Edit</button>|
+          <button class="btn btn-danger btn-sm ms-1" (click)="deleteByID(row.id)">Delete</button>
+        </td>
+      </ng-container>
 
-            </form>
-        </div>
-    </div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+</tr> -->
+    </table>
+  </div>
+</div>

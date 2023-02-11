@@ -27,6 +27,14 @@ export class HeaderComponent  implements OnInit{
 
 	checkLogin:boolean = this.sessionStorage.isLoggedIn();
 
+	logOut(){
+		console.log("hit")
+		this.sessionStorage.logOut();
+		
+		this.router.navigateByUrl("/home");
+	
+	}
+
 
 
 

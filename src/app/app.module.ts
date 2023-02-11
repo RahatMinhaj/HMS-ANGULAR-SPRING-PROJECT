@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordion, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
@@ -128,6 +128,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
     DataTablesModule,
     NgbModule,
+    NgbAccordion,
 
     BrowserAnimationsModule,
     MatButtonModule,

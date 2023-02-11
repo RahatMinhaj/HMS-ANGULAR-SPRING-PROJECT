@@ -1,50 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICommonService } from '../Interfaces/ICommonService';
-import { User } from '../ModelClass/User.model';
-
-
-const url:string = "http://localhost:8090/auth";
-
 
 @Injectable({
   providedIn: 'root'
 })
-
-
-export class SignupService implements ICommonService<User> {
-
-
-
-
+export class MedicinereportService implements ICommonService<MedicinereportService> {
 
   constructor(
-    private http:HttpClient,
-    
+    private http:HttpClient
   ) { }
+
+  url:string = "http://localhost:8080/medicine_report/";
+
+  save(data: MedicinereportService) {
+    return this.http.post(this.url + "create", data)
+  }
   getAll() {
     throw new Error('Method not implemented.');
   }
   getuserByID(id: number) {
     throw new Error('Method not implemented.');
   }
-  updateData(data: User) {
+  updateData(data: MedicinereportService) {
     throw new Error('Method not implemented.');
   }
   deleteById(id: number) {
     throw new Error('Method not implemented.');
   }
-
-
-
-
-  save(data: User) {
-
-   return this.http.post(url+"/registration",data);
-  }
-
-  checkLoginS(data:User){
-    return this.http.post("http://localhost:8080/auth/login",data);
-  }
-
 }

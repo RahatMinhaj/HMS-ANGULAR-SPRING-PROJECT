@@ -23,8 +23,5 @@ export class CreatemedComponent implements OnInit {
 
   }
 
-  createMedItem(){
-
-  }
 
 }
