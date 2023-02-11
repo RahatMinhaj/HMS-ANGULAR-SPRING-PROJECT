@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router} from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
+import { SessionstorageService } from 'src/app/Service/sessionstorage.service';
 
 
 @Component({
@@ -11,11 +12,22 @@ import * as $ from 'jquery';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent  implements OnInit{
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private router:Router) {
+  constructor(
+	config: NgbModalConfig, 
+	private modalService: NgbModal, 
+	private router:Router,
+	private sessionStorage:SessionstorageService
+
+	) {
+
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
 		config.keyboard = false;
 	}
+
+	checkLogin:boolean = this.sessionStorage.isLoggedIn();
+
+
 
 
 
@@ -27,13 +39,6 @@ export class HeaderComponent  implements OnInit{
 
 
 	ngOnInit(): void {
-		// $(window).scroll((data:any) =>{
-		// 	if($(data).scrollTop() > 50){
-		// 		$('.my-nav').addClass('sticky')
-		// 	} else{
-		// 		$('.my-nav').removeClass('sticky')
-		// 	}
-		// });
 		
 	}
 
