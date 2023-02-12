@@ -66,6 +66,9 @@ export class PharmacyComponent implements OnInit, ICommonComp<Medicine> {
       med_description:[''],
     })
 
+
+
+    this.getAll();
   }
 
 

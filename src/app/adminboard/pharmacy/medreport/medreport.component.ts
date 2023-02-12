@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Medicine } from 'src/app/ModelClass/Medicine.model';
 import { MedicineReport } from 'src/app/ModelClass/MedicineReport.model';
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2';
 })
 export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
   createMedReportForm!:FormGroup;
+  medReportList!:MedicineReport[];
 
 
 
@@ -69,11 +71,13 @@ export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
 
 
 
-
     // For Getting medicine LIst
     this.medicineService.getAll().subscribe((data:Medicine[]) =>{
       this.medicineList = data;
     })
+
+
+    this.getAll();
 
   }
 
@@ -85,7 +89,13 @@ export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
 
  
   getAll() {
-    throw new Error('Method not implemented.');
+    this.medicineReportService.getAll().subscribe((data:MedicineReport[]) =>{
+      this.medReportList = data;
+      // ===========data table properties===============
+      this.datasource = new MatTableDataSource<MedicineReport>(this.medReportList);
+      this.datasource.paginator = this.paginator;
+      this.datasource.sort = this.sorting;
+    })
   }
 
 

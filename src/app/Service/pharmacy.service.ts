@@ -21,14 +21,12 @@ export class PharmacyService implements OnInit,ICommonService<Medicine> {
   ) { }
 
 
-
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+
   }
 
 
   save(data: Medicine) {
-    console.log(data)
    return this.http.post(this.url+"create",data);
     
   }
@@ -36,8 +34,11 @@ export class PharmacyService implements OnInit,ICommonService<Medicine> {
 
 
   getAll() {
-    return this.http.get<Medicine[]>(this.url);
+    return this.http.get<Medicine[]>(this.url+"lists");
   }
+
+
+
   getuserByID(id: number) {
     throw new Error('Method not implemented.');
   }
