@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Cabin } from 'src/app/ModelClass/Cabin.model';
 import { CabinService } from 'src/app/Service/cabin.service';
@@ -15,6 +17,15 @@ export class CabincreateComponent implements OnInit,ICommonComp<Cabin> {
   
   cabinForm!:FormGroup;
 
+  cabinList!:Cabin[];
+
+  cabinModel!:Cabin;
+
+
+
+  cabinStatus = "free";
+
+
 
 
 
@@ -22,7 +33,8 @@ export class CabincreateComponent implements OnInit,ICommonComp<Cabin> {
   
   constructor(
     private formBuilder:FormBuilder,
-    private cabinService:CabinService
+    private cabinService:CabinService,
+    private modalService: NgbModal
   ){}
   
 
@@ -36,13 +48,15 @@ export class CabincreateComponent implements OnInit,ICommonComp<Cabin> {
       cabin_fare:[''],
       cabin_status:['Free']
     })
+
+    this.getAll();
   }
   
   
 
  // ==============Table Properties===========
  datasource: any;
- displayedColumns: string[] = ['id', 'cabin_type', 'floor',"cabin_fare","action"]
+ displayedColumns: string[] = ['id', 'cabin_type', 'floor',"cabin_fare","patient_id","action"]
  @ViewChild(MatPaginator) paginator!: MatPaginator;
  @ViewChild(MatSort) sorting!: MatSort;
 
@@ -63,7 +77,13 @@ export class CabincreateComponent implements OnInit,ICommonComp<Cabin> {
   
   
   getAll() {
-    throw new Error('Method not implemented.');
+    this.cabinService.getAll().subscribe((data: Cabin[]) => {
+      this.cabinList = data;
+      // ===========data table properties===============
+      this.datasource = new MatTableDataSource<Cabin>(this.cabinList);
+      this.datasource.paginator = this.paginator;
+      this.datasource.sort = this.sorting;
+    });
   }
   create(): void {
    this.cabinService.save(this.cabinForm.value).subscribe(
@@ -94,9 +114,34 @@ export class CabincreateComponent implements OnInit,ICommonComp<Cabin> {
 
   })
   }
+
+
+  closeResult!: string;
   edit(model: Cabin, modal?: any): void {
-    throw new Error('Method not implemented.');
+    this.modalService.open(modal, { size: 'xl' }).result.then(
+      (result) => {
+        this.ngOnInit();
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.ngOnInit();
+        this.closeResult = `Dismissed `;
+      }
+    );
+
+    this.cabinService.getuserByID(model.id).subscribe((data: Cabin) => {
+      // console.log(data + "         ====================data comes from back" + data.dept_name);
+      this.cabinModel = data;
+      this.cabinForm.patchValue(this.cabinModel);
+      // console.log(data.dept_manager + "=========-------------------------- test")
+    });
   }
+
+
+
+
+
+
   updateData() {
     throw new Error('Method not implemented.');
   }

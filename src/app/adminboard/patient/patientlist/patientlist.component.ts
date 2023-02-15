@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 })
 export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   editPForm!: FormGroup;
-  pList!: Patient[];
+  pList: Patient[]= [];
   pModel!: Patient;
   // ==============Table Properties===========
   datasource: any;
@@ -33,6 +33,7 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
     'p_mobile',
     'p_address',
     'p_platform',
+    'cabin_id',
     'action',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,15 +50,41 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
     private modalService: NgbModal
   ) { }
 
-  public get totalRows(): number {
-    return this.pList.length;
+  // public get totalRows(): number {
+  //   return this.pList.length;
+  // }
+
+
+Cabin_id = 'Null';
+
+getCabin(post: Patient){
+  if(post.cabin!==null){
+    return 22
   }
 
-
-
+  return 0;
+}
   getAll() {
     this.pService.getAll().subscribe((data: Patient[]) => {
       this.pList = data;
+      const test = data;
+
+
+// for (let index = 0; index < this.pList.length; index++) {
+
+//   if(this.pList[index].cabin.id !== null){
+//     this.Cabin_id = this.pList[index].cabin.id.toString();
+//   }else{
+//     this.Cabin_id = "null";
+//   }
+
+// }
+
+
+
+      console.log(this.pList[0].cabin , "-*******************************************");
+      // console.log(test.cabin.id , "-*******************************************");
+
       // ===========data table properties===============
       this.datasource = new MatTableDataSource<Patient>(this.pList);
       this.datasource.paginator = this.paginator;

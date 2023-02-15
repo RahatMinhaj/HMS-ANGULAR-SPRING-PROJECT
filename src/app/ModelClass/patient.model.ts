@@ -1,3 +1,6 @@
+
+
+
 export interface Patient {
     id:number;
     p_first_name: string;
@@ -16,6 +19,16 @@ export interface Patient {
     p_password: string;
     p_pass_confirm: string;
     cabin_id:number;
+    cabin:cabin;
+
   
-  
+  }
+
+  export interface cabin{
+    id:number;
+    cabin_no:string;
+    cabin_type:string;
+    floor:string;
+    cabin_fare:number;
+    cabin_status:string;
   }

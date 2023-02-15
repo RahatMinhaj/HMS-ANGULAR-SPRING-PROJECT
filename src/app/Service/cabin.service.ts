@@ -19,10 +19,10 @@ export class CabinService implements ICommonService<Cabin>{
     return this.http.post(this.url + "create" , data)
   }
   getAll() {
-    throw new Error('Method not implemented.');
+    return this.http.get<Cabin[]>(this.url + "lists");
   }
   getuserByID(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.get<Cabin>(this.url + "lists/editbyid/" + id);
   }
   updateData(data: Cabin) {
     throw new Error('Method not implemented.');

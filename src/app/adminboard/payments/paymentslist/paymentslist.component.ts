@@ -22,6 +22,11 @@ export class PaymentslistComponent implements OnInit, ICommonComp<Payment> {
   patientInfo!:Patient;
   paymentData!:Payment;
 
+
+  testList(row:any){
+    console.log(row.p_first_name + "===================================================")
+  }
+
  
 
 get sum(){
@@ -73,6 +78,7 @@ showInvoice(model:Payment, modal?: any): void {
   // patient
   this.patientService.getuserByID(model.p_id).subscribe(data =>{
     this.patientInfo = data;
+    console.log(this.patientInfo.p_first_name , "++++++++++++++++++++++++++++++++++++data ")
   })
 
   // data assigning
