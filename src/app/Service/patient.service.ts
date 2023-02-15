@@ -16,10 +16,18 @@ export class PatientService implements ICommonService<Patient>{
 
 url:string = "http://localhost:8080/patient/";
 
+
+
+
   save(data: Patient) {
     return this.http.post(this.url + "create", data);
   }
 
+
+  cabinStatusEngaged(patientID:number, status:string){
+    return this.http.get(this.url +"updatecabin/?pid=" + patientID + "&status=" + status);
+
+  }
 
 
 

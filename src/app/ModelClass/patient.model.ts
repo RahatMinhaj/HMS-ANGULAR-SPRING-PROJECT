@@ -20,6 +20,7 @@ export interface Patient {
     p_pass_confirm: string;
     cabin_id:number;
     cabin:cabin;
+    cabin_status:string;
 
   
   }

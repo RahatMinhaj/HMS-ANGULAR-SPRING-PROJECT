@@ -8,7 +8,7 @@ export interface Pathology{
     pathology_desc:string;
 
 
-    pathology_date:Date;
+    createdAt:Date;
 
 
 

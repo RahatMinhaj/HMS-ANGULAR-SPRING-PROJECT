@@ -1,20 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Cabin } from 'src/app/ModelClass/Cabin.model';
-import { CabingAllotment } from 'src/app/ModelClass/CabinAllotment.model';
+import { CabinAllotment } from 'src/app/ModelClass/CabinAllotment.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { Patient } from 'src/app/ModelClass/Patient.model';
 import { CabinallotmentService } from 'src/app/Service/cabinallotment.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-allcabinlist',
   templateUrl: './allcabinlist.component.html',
   styleUrls: ['./allcabinlist.component.css']
 })
-export class AllcabinlistComponent implements OnInit,ICommonComp<CabingAllotment>{
-  cabinAllotMentList!: CabingAllotment[];
+export class AllcabinlistComponent implements OnInit,ICommonComp<CabinAllotment>{
+  cabinAllotMentList!: CabinAllotment[];
 
 // patient list
 plist!:Patient[];
@@ -43,6 +45,48 @@ docList!:Doctor[];
     'cabin_status',
     'action'
   ];
+
+
+  changeCabinStaus(cabinAllotment:CabinAllotment){
+    if(cabinAllotment.cabin_status == "Engaged"){
+      Swal.fire({
+        // title: 'You Want to release the patient?',
+        text: 'You Want to release the patient?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ok',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if (result.value) {
+          this.cabinAllotmentService.changeCabinStatus(cabinAllotment.id).subscribe((data) =>{
+            console.log("data gained " + data)
+            this.ngOnInit();
+          })   
+          Swal.fire('Discharged!', 'Patient has been discharged!', 'success');
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          // Swal.fire('Cancelled', 'Product still in our database.', 'error');
+        }
+
+
+
+
+
+        
+      });
+
+
+    }else{
+      Swal.fire({
+        // title: 'Are you sure !',
+        text: 'Already Discharged!',
+        icon: 'info',
+        // showCancelButton: true,
+        confirmButtonText: 'ok',
+        cancelButtonText: 'No',
+      })
+    }
+
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sorting!: MatSort;
@@ -79,12 +123,23 @@ docList!:Doctor[];
 
 
   getAll() {
-    throw new Error('Method not implemented.');
+    this.cabinAllotmentService.getAll().subscribe((data:CabinAllotment[])=>{
+      this.cabinAllotMentList = data;
+
+      // console.log(this.cabinAllotMentList , "=============================")
+      // ===========data table properties===============
+      this.datasource = new MatTableDataSource<CabinAllotment>(this.cabinAllotMentList);
+      this.datasource.paginator = this.paginator;
+      this.datasource.sort = this.sorting;
+    })
   }
+
+
+
   create(): void {
     throw new Error('Method not implemented.');
   }
-  edit(model: CabingAllotment, modal?: any): void {
+  edit(model: CabinAllotment, modal?: any): void {
     throw new Error('Method not implemented.');
   }
   updateData() {

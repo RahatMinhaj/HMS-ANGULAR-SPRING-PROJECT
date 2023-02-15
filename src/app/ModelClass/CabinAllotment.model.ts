@@ -1,4 +1,4 @@
-export interface CabingAllotment{
+export interface CabinAllotment{
     id:number;
     p_id:number;
     p_name:string;

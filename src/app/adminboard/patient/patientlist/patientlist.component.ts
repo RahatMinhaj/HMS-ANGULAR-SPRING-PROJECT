@@ -55,8 +55,6 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   // }
 
 
-Cabin_id = 'Null';
-
 getCabin(post: Patient){
   if(post.cabin!==null){
     return 22
@@ -64,6 +62,8 @@ getCabin(post: Patient){
 
   return 0;
 }
+
+
   getAll() {
     this.pService.getAll().subscribe((data: Patient[]) => {
       this.pList = data;

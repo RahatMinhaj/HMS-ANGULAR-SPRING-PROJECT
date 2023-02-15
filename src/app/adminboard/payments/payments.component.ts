@@ -49,6 +49,7 @@ for (let i = 0; i < this.patientList.length; i++) {
     this.patient_name = this.patientList[i].p_first_name +' '+this.patientList[i].p_last_name ;
   }
 }
+
 this.paymentForm.setValue({
   ...this.paymentForm.value, p_name: this.patient_name
   });

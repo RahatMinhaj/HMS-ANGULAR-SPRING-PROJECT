@@ -1,151 +1,145 @@
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Department</li>
-    </ol>
-  </nav>
-  
-  
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Department</li>
+  </ol>
+</nav>
 
-    <div class="row">
-      <div class="col-4">
-        <div class="bg-secondary mb-4">
-          <h6 class="bg-info p-3 text-white">Add new Pathology Type:</h6>
-        </div>
+<div class="row">
+  <div class="col-4">
+    <div class="bg-secondary mb-4">
+      <h6 class="bg-info p-3 text-white">Add new Pathology Type:</h6>
+    </div>
 
-  
-        <form [formGroup]="pathologyTypeForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
-          method="POST">
-          <div class="form-group col">
-            <label for="">Pathology Name:</label>
-            <input
-              class="form-control"
-              type="text"
-              name=""
-              id=""
-              formControlName="pathology_name"
-            />
-          </div>
-          <div class="form-group col">
-            <label for="">Pathology Description:</label>
-            <input
-              class="form-control"
-              type="text"
-              name=""
-              id=""
-              formControlName="pathology_desc"
-            />
-          </div>
-
-          <div class="form-group col">
-            <label for="">Price (in Taka):</label>
-            <input
-              class="form-control"
-              type="number"
-              name=""
-              id=""
-              formControlName="pathology_price"
-            />
-          </div><br><br>
-
-          <div class="d-flex justify-content-center"><button type="submit"
-              class="btn btn-outline-success float-right d-flex justify-content-center" id="btnLogin"
-              (click)="create()">Create Pathology Type</button></div>
-  
-        </form>
+    <form
+      [formGroup]="pathologyTypeForm"
+      class="form"
+      role="form"
+      autocomplete="off"
+      id="formLogin"
+      novalidate=""
+      method="POST"
+    >
+      <div class="form-group col">
+        <label for="">Pathology Name:</label>
+        <input
+          class="form-control"
+          type="text"
+          name=""
+          id=""
+          formControlName="pathology_name"
+        />
       </div>
-  
-  
-  
-  
-        <!-- Bootstrap or jquery Table -->
-        <div class="table_wrapper col-8">
-          <div class="bg-secondary mb-4">
-            <h6 class="bg-info p-3 text-white">All the Pathology Type:</h6>
-          </div>
+      <br />
 
-          <mat-form-field>
-            <mat-label>Search Your Data Here</mat-label>
-            <input matInput (keyup)="applyFilter($event)">
-          </mat-form-field>
-          <!-- A General Input Field Workd Also -->
-          <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
-          
-  
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="datasource" matSort class="table-stripped">
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-              </ng-container>
-  
-              <ng-container matColumnDef="pathology_name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Name</th>
-                <td mat-cell *matCellDef="let row"> {{row.pathology_name}}</td>
-              </ng-container>
-  
-              <ng-container matColumnDef="pathology_desc">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Description</th>
-                <td mat-cell *matCellDef="let row"> {{row.pathology_desc}} </td>
-              </ng-container>
+      <div class="form-group col">
+        <label for="">Pathology Description:</label>
+        <input
+          class="form-control"
+          type="text"
+          name=""
+          id=""
+          formControlName="pathology_desc"
+        />
+      </div>
+      <br />
 
-              <ng-container matColumnDef="pathology_price">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Price</th>
-                <td mat-cell *matCellDef="let row"> {{row.pathology_price}} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-                <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"
-                    (click)="edit( row)">Edit</button>|
-                  <button class="btn btn-danger btn-sm ms-1" (click)="deleteByID(row.id)">Delete</button>
-                </td>
-              </ng-container>
-  
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-              <!-- Row shown when there is no matching data. -->
-              <!-- <tr class="mat-row" *matNoDataRow>
+      <div class="form-group col">
+        <label for="">Price (in Taka):</label>
+        <input
+          class="form-control"
+          type="number"
+          name=""
+          id=""
+          formControlName="pathology_price"
+        />
+      </div>
+      <br /><br />
+
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-outline-success float-right d-flex justify-content-center"
+          id="btnLogin"
+          (click)="create()"
+        >
+          Create Pathology Type
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap or jquery Table -->
+  <div class="table_wrapper col-8">
+    <div class="bg-secondary mb-4">
+      <h6 class="bg-info p-3 text-white">All the Pathology Type:</h6>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Search Your Data Here</mat-label>
+      <input matInput (keyup)="applyFilter($event)" />
+    </mat-form-field>
+    <!-- A General Input Field Workd Also -->
+    <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="datasource" matSort class="table-stripped">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="pathology_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Pathology Name
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.pathology_name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="pathology_desc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Pathology Description
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.pathology_desc }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="pathology_price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Pathology Price
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.pathology_price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row">
+            <div class="d-flex justify-content-center align-items-center">
+              <button class="btn btn-info btn-sm me-1">Edit</button><br />
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <!-- <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr> -->
-            </table>
-          </div>
-          <mat-paginator [pageSizeOptions]="[10, 20,30, 100]" showFirstLastButtons
-          aria-label="Select page of users"></mat-paginator>
-        </div>
-  
-  
-      </div>
+      </table>
+    </div>
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 30, 100]"
+      showFirstLastButtons
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>
 
+<!-- ==============================Modal====================================================== -->
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <!-- ==============================Modal====================================================== -->
-  
-  <!-- <ng-template #content let-c="close" let-d="dismiss">
+<!-- <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title text-center" id="modal-basic-title">Edit Your Department</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
@@ -162,21 +156,20 @@
           <div class="text-danger" *ngIf="deptNameValue?.touched && userNameval?.invalid">
             <div *ngIf="deptNameValue?.errors?.['required']">Fill The Field First</div>
           </div> -->
-  
-          <!-- <div class="alert alert-danger " *ngIf="userNameval?.touched && userNameval?.invalid">
+
+<!-- <div class="alert alert-danger " *ngIf="userNameval?.touched && userNameval?.invalid">
             <div *ngIf="userNameval?.errors?.['minLength']">please put 3</div>
           </div> -->
-  
-          <!-- <div class="alert alert-danger " *ngIf="docDeptForm.get('dept_name')?.touched && docDeptForm.get('dept_name')?.invalid">
+
+<!-- <div class="alert alert-danger " *ngIf="docDeptForm.get('dept_name')?.touched && docDeptForm.get('dept_name')?.invalid">
             <div *ngIf="docDeptForm.get('dept_name')?.errors.required"></div>
           </div> -->
-  
-  
-          <!-- <div *ngIf="docDeptForm.get('dept_name')?.invalid && (docDeptForm.get('dept_name')?.dirty || docDeptForm.get('name')?.touched)">
+
+<!-- <div *ngIf="docDeptForm.get('dept_name')?.invalid && (docDeptForm.get('dept_name')?.dirty || docDeptForm.get('name')?.touched)">
             <div *ngIf="docDeptForm.get('dept_name')?.errors">Name is required</div>
           </div> -->
-  
-        <!-- </div><br>
+
+<!-- </div><br>
         <div class="form-group">
           <label for="">Department Manager</label>
           <input class="form-control" type="text" name="" id="" formControlName="dept_manager" required>
@@ -195,47 +188,37 @@
       </form>
   
     </div> -->
-    <!-- <div class="modal-footer">
+<!-- <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
     </div> -->
-  <!-- </ng-template>
+<!-- </ng-template>
   
   <h1>{{closeResult}}</h1>
    -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <!-- <table class="mat-elevation-z8" mat-table [dataSource]="deptList"> -->
-  
-  <!--- Note that these columns can be defined in any order.
+
+<!-- <table class="mat-elevation-z8" mat-table [dataSource]="deptList"> -->
+
+<!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-  <!-- Position Column -->
-  <!-- <ng-container matColumnDef="dept_id">
+
+<!-- Position Column -->
+<!-- <ng-container matColumnDef="dept_id">
       <th mat-header-cell *matHeaderCellDef>Department ID </th>
       <td mat-cell *matCellDef="let deptList"> {{deptList.id}} </td>
     </ng-container> -->
-  
-  <!-- Name Column -->
-  <!-- <ng-container matColumnDef="department_name">
+
+<!-- Name Column -->
+<!-- <ng-container matColumnDef="department_name">
       <th mat-header-cell *matHeaderCellDef> Department Name </th>
       <td mat-cell *matCellDef="let deptList"> {{deptList.dept_name}} </td>
     </ng-container> -->
-  
-  <!-- Weight Column -->
-  <!-- <ng-container matColumnDef="department_name">
+
+<!-- Weight Column -->
+<!-- <ng-container matColumnDef="department_name">
       <th mat-header-cell *matHeaderCellDef> Department Manager </th>
       <td mat-cell *matCellDef="let deptList"> {{deptList.dept_manager}} </td>
     </ng-container> -->
-  
-  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+<!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let deptList; columns: displayedColumns;"></tr>
   </table> -->

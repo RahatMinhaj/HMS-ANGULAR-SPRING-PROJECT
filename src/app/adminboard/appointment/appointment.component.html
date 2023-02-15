@@ -139,10 +139,16 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID: </th>
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.emp_id}} </td>
       </ng-container>
+
+
+
       <ng-container matColumnDef="apStatus">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Status: </th>
         <td mat-cell  class="text-center" *matCellDef="let row"><div [ngClass]="{'bg-success': row.apStatus === 'Confirmed', 'bg-secondary': row.apStatus === 'Pending'}" class="text-white rounded"> {{row.apStatus}}</div> </td>
       </ng-container>
+
+
+      
       <ng-container matColumnDef="apDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Date: </th>
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apDate}} </td>

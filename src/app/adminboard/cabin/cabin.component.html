@@ -25,7 +25,7 @@
       <div class="row">
         <div class="form-group col">
           <label for="">Patient ID:</label>
-          <select class="form-select" formControlName="p_id">
+          <select class="form-select" formControlName="p_id" (change)="patinetChange($event)">
             <option *ngFor="let patient of patientList" [value]="patient.id">
               <!-- for another method -->
               <!-- <option *ngFor="let dept of docByDepartment" [ngValue]="dept.id"> -->
@@ -36,7 +36,7 @@
 
         <div class="form-group col">
           <label for="uname">Patient Name:</label>
-          <input type="text" placeholder="Please Select Patient ID" class="form-control" disabled> 
+          <input type="text" placeholder="Please Select Patient ID" class="form-control" formControlName="p_name" [value]="patient_name" readonly> 
           <!-- follow patient list for this method -->
          
         </div>
@@ -84,7 +84,7 @@
 
     
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-outline-info float-right d-flex justify-content-center m-2" id="btnLogin">Create Allotment</button>
+        <button type="submit" class="btn btn-outline-info float-right d-flex justify-content-center m-2" id="btnLogin" (click)="create()">Make Allotment</button>
         <button type="submit" class="btn btn-outline-info float-right d-flex justify-content-center m-2" id="btnLogin">Cabin List</button>
     </div><br>
   

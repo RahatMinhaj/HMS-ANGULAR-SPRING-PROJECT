@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Patient } from 'src/app/ModelClass/Patient.model';
 import { PatientService } from 'src/app/Service/Patient.service';
@@ -50,7 +50,10 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
       p_address: [''],
       p_mobile: [''],
       p_platform: [''],
-      // cabin_id: 12
+      cabin_status:['Null'],
+      // cabin: {
+      //   id:35
+      // }
     });
   }
 }

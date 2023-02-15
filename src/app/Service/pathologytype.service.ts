@@ -12,7 +12,7 @@ export class PathologytypeService implements ICommonService<PathologyType> {
     private http:HttpClient
   ) { }
 
-  url:string = "http://localhost:8080/pathologyyype/";
+  private url:string = "http://localhost:8080/pathologytype/";
 
 
   save(data: PathologyType) {

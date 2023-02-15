@@ -23,10 +23,6 @@ export class PaymentslistComponent implements OnInit, ICommonComp<Payment> {
   paymentData!:Payment;
 
 
-  testList(row:any){
-    console.log(row.p_first_name + "===================================================")
-  }
-
  
 
 get sum(){
