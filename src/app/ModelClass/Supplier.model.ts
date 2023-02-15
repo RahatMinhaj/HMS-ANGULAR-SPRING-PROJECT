@@ -4,5 +4,8 @@ export interface Supplier{
     sup_location:string
     sup_phone:string;
     sup_email:string;
+
+
+
         
 }

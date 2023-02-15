@@ -1,122 +1,119 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Cabin List and Status</li>
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Appointment List:</li>
     </ol>
-  </nav>
+</nav>
+
+
+<!-- <div class="container d-flex justify-content-end mb-3">
+    <div class="btn btn-primary">Add New Appointment</div>
+</div> -->
+
+
+
+
+<!-- <router-outlet></router-outlet> -->
+
+ <!-- A General Input Field Workd Also -->
+  <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Search Your Data Here</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
   
-  
-  <div class="container d-flex justify-content-end mb-3">
-    <button class="btn btn-outline-secondary me-2" routerLink="/admin/create_patient">New Cabin Allotment</button>
-    <button class="btn btn-outline-secondary" routerLink="/admin/create_patient">Add New Cabin</button>
-  </div>
-  
-  
-  
-  <div class="container">
-    <h3 class="text-center">Cabin List And Status</h3>
-  
-    <div class="table-responsive mt-3">
-    <table id="table_id" class="display">
-        <thead>
-            <tr>
-                <th>Appointment id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 3</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-            <tr>
-                <td>MinhJ</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col">
+      <div class="d-flex align-items-end flex-column col float-end">
+        <select class="form-select apt_table_option" #table (change)="filterCabinStatus(table.value)">
+            <option default value="all">All Appointments</option>
+            <option value="pending">Pending Appointments</option>
+            <option value="confirmed">Confirmed Appointments</option>
+            <!-- <option value="prescribed">Prscribed Appointment</option> -->
+        </select>
     </div>
+      <!-- <div class="container d-flex justify-content-end mb-3">
+        <button class="btn btn-outline-info me-2" routerLink="/admin/create_patient">New Doctor</button>
+        <button class="btn btn-outline-info" routerLink="/admin/create_patient">Departments</button>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8 table_wrapper">
+    <table mat-table [dataSource]="datasource" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="p_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient ID:</th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.p_id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cabin_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cabin ID:</th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.cabin_id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="doc_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Doc ID:</th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.doc_id}}</td>
+      </ng-container>
+
+
+
+      
+
+      <ng-container matColumnDef="allotment_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Appointment Date:</th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.apFirstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="discharge_date">
+        <th mat-header-cell *matHeaderCellDef>Discharge Date:</th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.discharge_date}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="cabin_status">
+        <th mat-header-cell *matHeaderCellDef>Cabin Status:</th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.cabin_status}} </td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-success btn-sm me-1"
+            >Edit</button><br>
+            <!-- <button class="btn btn-info btn-sm me-1" (click)="upTableVal(row)" 
+            >Confirm</button><br> -->
+
+          <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+</tr> -->
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[10, 20,30, 100]" showFirstLastButtons
+    aria-label="Select page of users"></mat-paginator>
+
+
+
+
+
+
+

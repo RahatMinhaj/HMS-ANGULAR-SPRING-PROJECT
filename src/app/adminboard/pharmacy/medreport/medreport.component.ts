@@ -6,8 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Medicine } from 'src/app/ModelClass/Medicine.model';
 import { MedicineReport } from 'src/app/ModelClass/MedicineReport.model';
+import { Supplier } from 'src/app/ModelClass/Supplier.model';
 import { MedicinereportService } from 'src/app/Service/medicinereport.service';
 import { PharmacyService } from 'src/app/Service/pharmacy.service';
+import { SupplierService } from 'src/app/Service/supplier.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,6 +24,7 @@ export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
 
 
   medicineList!:Medicine[];
+  supplierList!:Supplier[];
   // supplierList!:S
 
 
@@ -29,7 +32,8 @@ export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
   constructor(
     private formBuilder:FormBuilder,
     private medicineService:PharmacyService,
-    private medicineReportService:MedicinereportService
+    private medicineReportService:MedicinereportService,
+    private supplierService:SupplierService
 
     ){}
 
@@ -76,12 +80,21 @@ export class MedreportComponent implements OnInit,ICommonComp<MedicineReport> {
       this.medicineList = data;
     })
 
+       // For Getting Supplier LIst
+       this.supplierService.getAll().subscribe((data:Supplier[]) =>{
+        this.supplierList = data;
+      })
+
 
     this.getAll();
 
   }
 
   onChangeMedicine(MedID:any){
+
+  }
+
+  onChangeSupplier(supplier:any){
 
   }
 

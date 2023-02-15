@@ -32,6 +32,10 @@ import { SupplierComponent } from './adminboard/pharmacy/supplier/supplier.compo
 import { SignupComponent } from './signup/signup.component';
 import { AdminhomeComponent } from './adminboard/adminhome/adminhome.component';
 import { MedreportComponent } from './adminboard/pharmacy/medreport/medreport.component';
+import { PathologycategoryComponent } from './adminboard/diagonosis/pathology/pathologycategory/pathologycategory.component';
+import { PathologyComponent } from './adminboard/diagonosis/pathology/pathology.component';
+import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
+import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 
 const routes: Routes = [
   {
@@ -151,6 +155,18 @@ const routes: Routes = [
         component: DiagonosislistComponent,
       },
       {
+        path:"pathology",
+        component:PathologyComponent
+      },
+      {
+        path:"pathology_type",
+        component:PathologycategoryComponent
+      },
+      {
+        path:"operation",
+        component:OperationComponent
+      },
+      {
         path: 'creatediagonosis',
         component: DiagonosisComponent,
       },
@@ -179,6 +195,10 @@ const routes: Routes = [
   {
     path: 'appointment',
     component: AppointmentComponent,
+  },
+  {
+    path: 'invoice',
+    component: InvoiceComponent,
   },
 ];
 

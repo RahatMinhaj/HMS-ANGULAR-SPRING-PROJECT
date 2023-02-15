@@ -50,6 +50,7 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
       p_address: [''],
       p_mobile: [''],
       p_platform: [''],
+      // cabin_id: 12
     });
   }
 }

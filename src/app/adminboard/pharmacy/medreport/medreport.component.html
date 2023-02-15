@@ -89,10 +89,10 @@
 
                   <div class="form-group col">
                     <label for="">Suplier:</label>
-                    <select class="form-select" formControlName="supplier_id" #aMed (change)="onChangeMedicine(aMed.value)">
+                    <select class="form-select" formControlName="supplier_id" #aMed (change)="onChangeSupplier(aMed.value)">
                       <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
-                      <option *ngFor="let medicine of medicineList" [value]="medicine.id">
-                        {{ medicine.med_name }}
+                      <option *ngFor="let supplier of supplierList" [value]="supplier.id">
+                        {{ supplier.sup_company_name }}
                       </option>
                     </select>
                   </div>

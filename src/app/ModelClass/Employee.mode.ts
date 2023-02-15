@@ -1,5 +1,5 @@
 export class Employee{
-emp_id!:number;
+id!:number;
 emp_first_name!:string;
 emp_last_name!:string;
 emp_dob!:Date;

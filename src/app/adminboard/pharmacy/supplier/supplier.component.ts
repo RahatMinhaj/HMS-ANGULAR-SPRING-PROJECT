@@ -39,7 +39,7 @@ export class SupplierComponent implements OnInit,ICommonComp<Supplier> {
 
     
     
-        
+     this.getAll();   
   }
 
 

@@ -74,6 +74,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { DoctorlistComponent } from './adminboard/doctor/doctorlist/doctorlist.component';
 import Swal from 'sweetalert2';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PathologyComponent } from './adminboard/diagonosis/pathology/pathology.component';
+import { PathologycategoryComponent } from './adminboard/diagonosis/pathology/pathologycategory/pathologycategory.component';
+import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
+import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 
 
 @NgModule({
@@ -118,7 +122,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AdminhomeComponent,
     DoctorlistComponent,
     DepartmentComponent,
-    NewappointmentComponent
+    NewappointmentComponent,
+    PathologyComponent,
+    PathologycategoryComponent,
+    OperationComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

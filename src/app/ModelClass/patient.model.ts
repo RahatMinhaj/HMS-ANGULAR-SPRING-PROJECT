@@ -15,6 +15,7 @@ export interface Patient {
     p_email: string;
     p_password: string;
     p_pass_confirm: string;
+    cabin_id:number;
   
   
   }

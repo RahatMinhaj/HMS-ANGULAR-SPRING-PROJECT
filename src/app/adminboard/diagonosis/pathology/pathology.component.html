@@ -1,0 +1,201 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pathology</li>
+  </ol>
+</nav>
+<ngb-accordion [closeOthers]="true" activeIds="0">
+  <ngb-panel id="static-1">
+    <ng-template ngbPanelTitle>
+      <h6 class="text-right">Add Pathology</h6>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <form [formGroup]="pathologyForm">
+        <div class="row">
+          <div class="form-group col">
+            <label for="">Patient ID:</label>
+            <select class="form-select" formControlName="p_id">
+              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+              <option *ngFor="let patient of patientList" [value]="patient.id">
+                {{ patient.id }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group col">
+            <label for="">Pathologis ID:</label>
+            <select class="form-select" formControlName="pathologist_id">
+              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+              <option
+                *ngFor="let pathologist of emp_id_pathologist"
+                [value]="pathologist.id"
+              >
+                {{ pathologist.emp_first_name }} {{ pathologist.emp_last_name }}
+              </option>
+            </select>
+          </div>
+        </div><br />
+
+        <div class="row">
+          <div class="form-group col">
+            <label for="">Doctor:</label>
+            <select class="form-select" formControlName="doc_id">
+              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+              <option *ngFor="let doctor of docList" [value]="doctor.id">
+                {{ doctor.first_name }} {{ doctor.last_name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group col">
+            <label for="">Pathology Type:</label>
+            <select class="form-select" formControlName="doc_id">
+              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
+              <option
+                *ngFor="let pathologyType of pathologyTypeList"
+                [value]="pathologyType.id"
+              >
+                {{ pathologyType.pathology_name }}
+              </option>
+            </select>
+          </div>
+        </div><br />
+
+        <div class="row">
+          <div class="form-group col">
+            <label for="">Price:</label>
+            <input
+              class="form-control"
+              type="text"
+              name=""
+              id=""
+              formControlName="pathology_price"
+            />
+          </div>
+
+          <div class="form-group col">
+            <label for="">Description (Optional):</label>
+            <input
+              class="form-control"
+              type="text"
+              name=""
+              id=""
+              formControlName="pathology_price"
+            />
+          </div>
+        </div>
+
+        <br /><br />
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            class="btn btn-info btn-lg float-right d-flex justify-content-center me-2"
+            id="btnLogin"
+            (click)="create()"
+          >
+            Add Pathology
+          </button>
+
+          <button
+            class="btn btn-success btn-lg float-right d-flex justify-content-center"
+            id="btnLogin"
+            routerLink="/admin/doctors"
+          >
+            Medicine Report
+          </button>
+        </div>
+      </form>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+
+
+
+
+
+
+
+
+
+<div class="heading bg-info">
+  <h3 class="text-light text-center p-2 mt-4 mb-2">Pathology Lists</h3>
+</div>
+
+
+<!-- Bootstrap or jquery Table -->
+<div class="table_wrapper">
+  <mat-form-field>
+    <mat-label>Search Your Data Here</mat-label>
+    <input matInput (keyup)="applyFilter($event)" />
+  </mat-form-field>
+  <!-- A General Input Field Workd Also -->
+  <!-- <input type="text"  (keyup)="applyFilter($event)"> -->
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="datasource" matSort class="table-stripped">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="p_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient ID:</th>
+        <td mat-cell *matCellDef="let row">{{ row.p_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pathologist_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathologist:</th>
+        <td mat-cell *matCellDef="let row">{{ row.pathologist_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="doc_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Doctor:</th>
+        <td mat-cell *matCellDef="let row">{{ row.doc_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pathology_type_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Pathology Type:
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.pathology_type_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pathology_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Pathology Date:
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.pathology_date }}</td>
+      </ng-container>
+      <ng-container matColumnDef="pathology_price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price:</th>
+        <td mat-cell *matCellDef="let row">{{ row.pathology_price }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="pathology_desc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description:</th>
+        <td mat-cell *matCellDef="let row">{{ row.pathology_desc }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell class="text-center" *matCellDef="let row">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-info btn-sm me-1">Edit</button><br />
+            <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!-- <tr class="mat-row" *matNoDataRow>
+<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+</tr> -->
+    </table>
+  </div>
+<mat-paginator [pageSizeOptions]="[10, 20,30, 100]" showFirstLastButtons
+aria-label="Select page of users"></mat-paginator>
+</div>

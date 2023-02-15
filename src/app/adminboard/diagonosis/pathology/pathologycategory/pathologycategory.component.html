@@ -1,8 +1,7 @@
-
-  <nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Operation</li>
+      <li class="breadcrumb-item active" aria-current="page">Department</li>
     </ol>
   </nav>
   
@@ -11,62 +10,58 @@
     <div class="row">
       <div class="col-4">
         <div class="bg-secondary mb-4">
-          <h6 class="bg-info p-3 text-white">Add Operation Entry:</h6>
+          <h6 class="bg-info p-3 text-white">Add new Pathology Type:</h6>
         </div>
 
   
-        <form [formGroup]="cabinForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+        <form [formGroup]="pathologyTypeForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
           method="POST">
-
-          <div class="form-group">
-            <label for="">Cabin No:</label>
-            <input class="form-control" type="number" formControlName="cabin_no">
-          </div><br>
-
-
-          <div class="form-group">
-            <label for="">Cabin Type:</label>
-            <select class="form-select" formControlName="cabin_type">
-              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
-              <option value="AC">AC</option>
-              <option value="General">General</option>
-            </select>
-          </div><br>
-
-
-          <div class="form-group">
-            <label for="">Floor:</label>
-            <select class="form-select" formControlName="floor">
-              <!-- <select class="form-select" formControlName="dept_id"  #aDept (change)="onSelect(aDept.value)"> -->
-              <option value="1st Floor">1st Floor</option>
-              <option value="2nd Floor">2nd Floor</option>
-              <option value="3rd Floor">3rd Floor</option>
-            </select>
-          </div><br>
-
-          <div class="form-group">
-            <label for="">Cabin Fare:</label>
-            <input class="form-control" type="number" formControlName="cabin_fare">
+          <div class="form-group col">
+            <label for="">Pathology Name:</label>
+            <input
+              class="form-control"
+              type="text"
+              name=""
+              id=""
+              formControlName="pathology_name"
+            />
           </div>
-          <br><br>
-  
+          <div class="form-group col">
+            <label for="">Pathology Description:</label>
+            <input
+              class="form-control"
+              type="text"
+              name=""
+              id=""
+              formControlName="pathology_desc"
+            />
+          </div>
+
+          <div class="form-group col">
+            <label for="">Price (in Taka):</label>
+            <input
+              class="form-control"
+              type="number"
+              name=""
+              id=""
+              formControlName="pathology_price"
+            />
+          </div><br><br>
+
           <div class="d-flex justify-content-center"><button type="submit"
-              class="btn btn btn-outline-info float-right d-flex justify-content-center" id="btnLogin" (click)="create()"
-              >Create Cabin</button></div>
+              class="btn btn-outline-success float-right d-flex justify-content-center" id="btnLogin"
+              (click)="create()">Create Pathology Type</button></div>
   
         </form>
       </div>
   
   
-
-
-
-
+  
   
         <!-- Bootstrap or jquery Table -->
         <div class="table_wrapper col-8">
           <div class="bg-secondary mb-4">
-            <h6 class="bg-info p-3 text-white">All Cabin Lists:</h6>
+            <h6 class="bg-info p-3 text-white">All the Pathology Type:</h6>
           </div>
 
           <mat-form-field>
@@ -84,22 +79,21 @@
                 <td mat-cell *matCellDef="let row"> {{row.id}} </td>
               </ng-container>
   
-              <ng-container matColumnDef="cabin_type">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Cabin Type:</th>
-                <td mat-cell *matCellDef="let row"> {{row.cabin_type}}</td>
+              <ng-container matColumnDef="pathology_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Name</th>
+                <td mat-cell *matCellDef="let row"> {{row.pathology_name}}</td>
               </ng-container>
   
-              <ng-container matColumnDef="floor">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Floor:</th>
-                <td mat-cell *matCellDef="let row"> {{row.floor}} </td>
+              <ng-container matColumnDef="pathology_desc">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Description</th>
+                <td mat-cell *matCellDef="let row"> {{row.pathology_desc}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="cabin_fare">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Cabin Fare:</th>
-                <td mat-cell *matCellDef="let row"> {{row.cabin_fare}} </td>
+              <ng-container matColumnDef="pathology_price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pathology Price</th>
+                <td mat-cell *matCellDef="let row"> {{row.pathology_price}} </td>
               </ng-container>
-
-             
+              
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                 <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"

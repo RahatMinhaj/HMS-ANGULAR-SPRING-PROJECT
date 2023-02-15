@@ -131,10 +131,13 @@
       </ng-container>
       
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Manager </th>
-        <td mat-cell *matCellDef="let row"> <button class="btn btn-info me-1 btn-sm"
-            (click)="edit( row)">Edit</button>|
-          <button class="btn btn-danger btn-sm ms-1" (click)="deleteByID(row.id)">Delete</button>
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row">
+          <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-info btn-sm me-1" 
+            >Edit</button><br>
+          <button class="btn btn-danger btn-sm">Delete</button>
+          </div>
         </td>
       </ng-container>
 

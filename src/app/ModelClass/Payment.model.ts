@@ -20,7 +20,6 @@ export interface Payment{
 
 
     // SPring Data field
-    active:boolean;
     createdAt:Date;
     createdBy:number;
     updatedAt:Date;
