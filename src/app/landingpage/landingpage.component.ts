@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Route } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HardCodeauthService } from '../Service/hard-codeauth.service';
 import { PatientService } from '../Service/Patient.service';
 
@@ -13,9 +14,17 @@ export class LandingpageComponent implements OnInit {
   userLoginForm!:FormGroup;
   userSignUpform!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private patientService:PatientService, public hardcoderAuth:HardCodeauthService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+     private patientService:PatientService, 
+     public hardcoderAuth:HardCodeauthService,
+     private modalService:NgbModal,
+     
+     ) {}
 
   isUserLoggedIN : boolean = false;    
+
+
 
 
   ngOnInit(): void {
@@ -57,6 +66,21 @@ this.userLoginForm = this.formBuilder.group({
     // console.log(this.userLoginForm.value.username);
     this.hardcoderAuth.authenticate(this.userLoginForm.value.username, this.userLoginForm.value.password);
     
+    }
+
+
+    ShowAppointmentForm(modal?: any): void {
+      this.modalService.open(modal, { size: 'xl' }).result.then(
+        (result) => {
+          this.ngOnInit();
+          // this.closeResult = `Closed with: ${result}`;
+        },
+        (reason) => {
+          this.ngOnInit();
+          // this.closeResult = `Dismissed `;
+        }
+      );
+      
     }
 
 

@@ -14,7 +14,7 @@
                                     Welcome to IsDB-BISEW Hospital</p>
                                 <h1 class="display-4 mb-4 fw-semi-bold animated slideInDown headlinecar text-capitalize">Partnerships for Health.
                                 </h1>
-                                <a href="" class="btn py-3 px-5 animated slideInDown  btn-info text-light">Make Appointment</a>
+                                <a class="btn py-3 px-5 animated slideInDown  btn-info text-light" (click)="ShowAppointmentForm(content)">Make Appointment</a>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                     Welcome to IsDB-BISEW Hospital</p>
                                 <h1 class="display-4 mb-4 fw-semi-bold animated slideInDown headlinecar text-capitalize">Quality care close to home.
                                 </h1>
-                                <a href="" class="btn py-3 px-5 animated slideInDown  btn-info ">Make Appointment</a>
+                                <a  class="btn py-3 px-5 animated slideInDown btn-info" (click)="ShowAppointmentForm(content)">Make Appointment</a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                         <h6 class="text-white mb-0">Sunday</h6>
                         <p class="mb-0"> 8:00am - 5:00pm</p>
                     </div>
-                    <a class="btn btn-light" href="">Appointment</a>
+                    <a class="btn btn-light" (click)="ShowAppointmentForm(content)">Appointment</a>
                 </div>
             </div>
             <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
@@ -435,3 +435,25 @@
     </div>
 </div>
 <!-- Blog End -->
+
+
+
+
+
+
+<!-- ==============================Modal====================================================== -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title text-center" id="modal-basic-title">Edit Doctor's Information:</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+     <app-newappointment></app-newappointment>
+  
+    </div>
+    <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div> -->
+  </ng-template>

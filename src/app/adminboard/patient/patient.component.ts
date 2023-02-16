@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Patient } from 'src/app/ModelClass/Patient.model';
 import { PatientService } from 'src/app/Service/Patient.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-patient',
@@ -14,7 +16,8 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
 
   constructor(
     private formBuilder: FormBuilder,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private router:Router
   ) {}
 
   getAll() {
@@ -22,10 +25,33 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
   }
 
   create(): void {
-    this.patientService.save(this.patientForm.value).subscribe((data) => {
-      console.log(data);
-      alert('Patient Added!');
-    });
+    this.patientService.save(this.patientForm.value).subscribe(
+      
+      data =>{
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data saved !',
+          // text: 'Data Not Found',
+          icon: 'success',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
+        this.router.navigateByUrl("/admin/patientlist")
+
+    },
+    error =>{
+      Swal.fire({
+        // title: 'Are you sure !',
+        title: 'Data Cannot be saved !',
+        text: 'Spring Server Issue',
+        icon: 'error',
+        // showCancelButton: true,
+        // confirmButtonText: 'Yes',
+        // cancelButtonText: 'No',
+      })  
+
+    })
     
   }
 
