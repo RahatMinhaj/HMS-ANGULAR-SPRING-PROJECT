@@ -78,6 +78,7 @@ import { PathologyComponent } from './adminboard/diagonosis/pathology/pathology.
 import { PathologycategoryComponent } from './adminboard/diagonosis/pathology/pathologycategory/pathologycategory.component';
 import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
+import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
 
 
 @NgModule({
@@ -126,7 +127,8 @@ import { InvoiceComponent } from './adminboard/invoice/invoice.component';
     PathologyComponent,
     PathologycategoryComponent,
     OperationComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    UsermanagementComponent
   ],
   imports: [
     BrowserModule,
