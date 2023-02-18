@@ -3,7 +3,19 @@ export interface User{
     userFirstName:string;
     userLastName:string;
     email:string;
-    userPassword:string;
+    password:string;
+
+
+
+    userDOB:Date;
+    userLoc:string;
+    userRegistrationDate:Date;
+    registrationIP:string;
+
+
+
+
+
     // credentialsNonExpired:boolean;
     userRoleModel:string[];
     enabled:boolean;

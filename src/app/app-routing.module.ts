@@ -36,6 +36,7 @@ import { PathologycategoryComponent } from './adminboard/diagonosis/pathology/pa
 import { PathologyComponent } from './adminboard/diagonosis/pathology/pathology.component';
 import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
+import { CanactivateGuard } from './Service/Auth/canactivate.guard';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminboardComponent,
+    canActivate:[CanactivateGuard],
     children: [
       {
         path: '',

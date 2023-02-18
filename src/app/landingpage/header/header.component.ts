@@ -30,7 +30,6 @@ export class HeaderComponent  implements OnInit{
 	logOut(){
 		console.log("hit")
 		this.sessionStorage.logOut();
-		
 		this.router.navigateByUrl("/home");
 	
 	}

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       userName: [''],
-      userPassword: [''],
+      password: [''],
     });
 
     // For Demo Purpose [Changing input group text on focus]
@@ -53,9 +53,10 @@ export class LoginComponent implements OnInit {
       this.strorageService.saveSession(data);
       this.isLoggedIn = true;
       this.userData= this.strorageService.getData();
-      let namw: string = this.userData.user.userFirstName;
-      console.log(this.userData.user.userFirstName, 'Component=================');
-      this.router.navigateByUrl("/")
+      let userRole = this.userData.user.role[0].roleName;  
+      console.log(userRole , " User Roles")
+
     });
+    this.router.navigateByUrl("/")
   }
 }

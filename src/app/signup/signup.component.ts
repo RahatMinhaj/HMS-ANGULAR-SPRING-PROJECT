@@ -5,12 +5,20 @@ import {  User } from '../ModelClass/User.model';
 import { SignupService } from '../Service/signup.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
+
+
+
+
+
+
 export class SignupComponent implements OnInit,ICommonComp<User> {
 
   signupForm!:FormGroup;
@@ -18,7 +26,8 @@ export class SignupComponent implements OnInit,ICommonComp<User> {
   constructor(
     private formBuilder:FormBuilder,
     private signupService:SignupService,
-    private router:Router
+    private router:Router,
+    private http:HttpClient
     ){}
   
 
@@ -34,16 +43,18 @@ export class SignupComponent implements OnInit,ICommonComp<User> {
       userFirstName:['', Validators.required],
       userLastName:['', Validators.required],
       email:['', [Validators.required, Validators.email]],
-      userPassword:['', Validators.required],
+      password:['', Validators.required],
       confirmPassword:['',Validators.required],
-    }, { validator: this.matchPassword('userPassword', 'confirmPassword') }
+      userDOB:[''],
+      userLoc:[''],
+    }, { validator: this.matchPassword('password', 'confirmPassword') }
     
     )
+
     
   }
 
 
-  
 
 
   matchPassword(controlName: string, matchingControlName: string) {
@@ -61,8 +72,13 @@ export class SignupComponent implements OnInit,ICommonComp<User> {
         matchingControl.setErrors(null);
       }
     };
+
+
   }
 
+  resetFields(){
+    this.ngOnInit();
+  }
 
 
 
@@ -104,7 +120,9 @@ export class SignupComponent implements OnInit,ICommonComp<User> {
           cancelButtonText: 'ok',
 
         })
+        window.location.reload()
         this.router.navigateByUrl("/login")
+        
 
       },error=>{
         Swal.fire({

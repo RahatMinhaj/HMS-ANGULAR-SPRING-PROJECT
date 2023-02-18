@@ -18,12 +18,21 @@ export class SessionstorageService {
     window.localStorage.removeItem(userKey)
     window.localStorage.setItem(userKey,JSON.stringify(userData));
 
+    // window.location.reload();
+
   }
 
   getData(){
     const user = window.localStorage.getItem(userKey)
     return JSON.parse(user!);
   }
+
+  getRole(){
+    const user = window.localStorage.getItem(userKey)
+    let role = this.getData().user.role[0].roleName;
+    return role;
+  }
+
 
 
   isLoggedIn(){
@@ -35,8 +44,9 @@ export class SessionstorageService {
   }
 
   logOut(){
-    window.localStorage.removeItem(userKey);
+    // window.localStorage.removeItem(userKey);
     window.localStorage.clear();
+    window.location.reload();
   }
 
 }

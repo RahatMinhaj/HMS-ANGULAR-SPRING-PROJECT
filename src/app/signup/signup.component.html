@@ -46,7 +46,7 @@
             formControlName="email"
             required
           />
-          <div class="text-danger" *ngIf="email!.touched && email?.invalid">
+          <div class="text-danger" *ngIf="email?.touched && email?.invalid">
             <div *ngIf="email?.errors?.['required']">Input Your Mail Please!</div>
             <div *ngIf="email?.errors?.['email']" class=" text-warning">Please Provide a valid Mail!</div>
           </div>
@@ -65,7 +65,7 @@
             required
             maxlength="20"
           />
-          <div class="text-danger" *ngIf="userFirstName!.touched && userFirstName?.invalid">
+          <div class="text-danger" *ngIf="userFirstName?.touched && userFirstName?.invalid">
             <div *ngIf="userFirstName!.errors?.['required']">Input Your First Name</div>
           </div>
         </div>
@@ -81,7 +81,7 @@
             required
             maxlength="20"
           />
-          <div class="text-danger" *ngIf="userLastName!.touched && userLastName?.invalid && userLastName!.dirty">
+          <div class="text-danger" *ngIf="userLastName?.touched && userLastName?.invalid && userLastName!.dirty">
             <div *ngIf="userLastName!.errors?.['required']">Input Your Last Name</div>
           </div>
         </div>
@@ -95,13 +95,13 @@
             type="password"
             class="form-control"
             placeholder="Enter Your Password"
-            formControlName="userPassword"
+            formControlName="password"
             required
           />
-          <div class="text-danger" *ngIf="password!.touched && password?.invalid">
+          <div class="text-danger" *ngIf="password?.touched && password?.invalid">
             <div *ngIf="password!.errors?.['required']">Input Your Password</div>
           </div>
-          <div class="text-danger" *ngIf="confirmPassword!.touched && confirmPassword?.invalid">
+          <div class="text-danger" *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
             <div *ngIf="confirmPassword!.errors?.['mustMatch']">Password Doesn't match</div>
           </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="form-outline col">
           <label class="form-label">Confirm Password:</label>
           <input
-            type="password"
+            type="confirmPassword"
             class="form-control"
             placeholder="Enter Your Cofnirm Password"
             formControlName="confirmPassword"
@@ -120,9 +120,34 @@
             Passwords do not match
           </div>
 
-          <div class="text-danger" *ngIf="confirmPassword!.touched && confirmPassword?.invalid">
+          <div class="text-danger" *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
             <div *ngIf="confirmPassword!.errors?.['mustMatch']">Password Doesn't match</div>
           </div>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <!-- Date input -->
+        <div class="form-outline col">
+          <label class="form-label">Date of Birth:</label>
+          <input
+            type="date"
+            class="form-control"
+            placeholder="Enter Your Password"
+            formControlName="userDOB"
+          />
+        </div>
+
+        <!-- Location input -->
+        <div class="form-outline col">
+          <label class="form-label">Location:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Address Please!"
+            formControlName="userLoc"
+          />
         </div>
       </div>
 
@@ -148,6 +173,7 @@
           type="button"
           class="btn btn-outline-secondary btn-lg"
           style="padding-left: 2.5rem; padding-right: 2.5rem"
+          (click)="resetFields()"
         >
           Reset
         </button>

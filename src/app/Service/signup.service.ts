@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ICommonService } from '../Interfaces/ICommonService';
 import { User } from '../ModelClass/User.model';
 
 
-const url:string = "http://localhost:8090/auth";
+const url:string = "http://localhost:8080/";
 
 
 @Injectable({
@@ -12,7 +12,7 @@ const url:string = "http://localhost:8090/auth";
 })
 
 
-export class SignupService implements ICommonService<User> {
+export class SignupService implements ICommonService<User>,OnInit {
 
 
 
@@ -20,8 +20,27 @@ export class SignupService implements ICommonService<User> {
 
   constructor(
     private http:HttpClient,
+
     
   ) { }
+
+
+
+  ngOnInit(): void {
+    // this.getIp();
+  }
+
+
+  // getIp(){
+  //   let ipads = '';
+  //   return this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+  //     ipads = res.ip;
+  //     return ipads;
+  //   });
+  // }
+
+
+
   getAll() {
     throw new Error('Method not implemented.');
   }
@@ -39,12 +58,13 @@ export class SignupService implements ICommonService<User> {
 
 
   save(data: User) {
+    console.log(data.password , " from service")
 
-   return this.http.post(url+"/registration",data);
+   return this.http.post(url+"registration",data);
   }
 
   checkLoginS(data:User){
-    return this.http.post("http://localhost:8080/auth/login",data);
+    return this.http.post(url + "api/auth/login",data);
   }
 
 }

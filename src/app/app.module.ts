@@ -79,6 +79,7 @@ import { PathologycategoryComponent } from './adminboard/diagonosis/pathology/pa
 import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 @NgModule({
@@ -161,6 +162,8 @@ import { UsermanagementComponent } from './adminboard/usermanagement/usermanagem
   
 
 
+    // for ip and device
+    // DeviceDetectorService,
     
 
 
