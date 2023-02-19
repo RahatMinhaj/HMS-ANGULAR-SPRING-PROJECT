@@ -56,8 +56,9 @@ export class LoginComponent implements OnInit {
       let userRole = this.userData.jwtToken;  
       console.log(this.userData , " User Roles")
       console.log(userRole , " User token")
-
+      this.router.navigate([""])
     });
-    this.router.navigateByUrl("/")
+
+
   }
 }

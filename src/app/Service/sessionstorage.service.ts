@@ -20,7 +20,7 @@ export class SessionstorageService {
     window.localStorage.removeItem(userKey)
     window.localStorage.setItem(userKey,JSON.stringify(userData));
 
-    // window.location.reload();
+    window.location.reload();
 
   }
 
@@ -35,11 +35,35 @@ export class SessionstorageService {
   }
 
 
-
-  getToken(){
-    const userToken = this.getData().jwtToken;
-    return userToken
+  getToken(): string | null {
+    const user = window.localStorage.getItem(userKey);
+    if (user) {
+      const userData = JSON.parse(user);
+      return userData.jwtToken;
+    } else {
+      return null;
+    }
   }
+  
+  
+  
+  
+  
+
+
+
+  // getToken(){
+  //   const userToken = this.getData().jwtToken;
+
+  //   if (userToken) {
+  //     const userData = JSON.parse(user);
+  //     return userData.jwtToken;
+  //   } else {
+  //     return null;
+  //   }
+
+  //   return userToken
+  // }
 
 
 

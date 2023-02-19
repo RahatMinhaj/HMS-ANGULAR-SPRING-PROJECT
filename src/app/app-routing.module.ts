@@ -37,6 +37,8 @@ import { PathologyComponent } from './adminboard/diagonosis/pathology/pathology.
 import { OperationComponent } from './adminboard/diagonosis/operation/operation.component';
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 import { CanactivateGuard } from './Service/Auth/canactivate.guard';
+import { ErrorComponent } from './error/error.component';
+import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
 
 const routes: Routes = [
   {
@@ -186,6 +188,14 @@ const routes: Routes = [
         path: 'med_supplier',
         component: SupplierComponent,
       },
+
+      {
+        path:'user_list',
+        component:UsermanagementComponent
+      }
+
+
+
     ],
   },
 
@@ -202,6 +212,8 @@ const routes: Routes = [
     path: 'invoice',
     component: InvoiceComponent,
   },
+  { path: 'error', component: ErrorComponent},
+  { path: '**', redirectTo: '/error' }
 ];
 
 @NgModule({

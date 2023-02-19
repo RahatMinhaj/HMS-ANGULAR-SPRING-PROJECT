@@ -65,6 +65,7 @@ export class SignupService implements ICommonService<User>,OnInit {
 
   checkLoginS(data:User){
     return this.http.post(url + "api/auth/login",data);
+
   }
 
 }

@@ -37,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminboardComponent } from './adminboard/adminboard.component';
 import { PatientComponent } from './adminboard/patient/patient.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppointmentComponent } from './adminboard/appointment/appointment.component';
 import { DepartmentComponent } from './adminboard/doctor/department/department.component';
 import { HeaderComponent } from './landingpage/header/header.component';
@@ -80,7 +80,8 @@ import { OperationComponent } from './adminboard/diagonosis/operation/operation.
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { httpInterceptorProviders, JwtinterceptorInterceptor } from './Helper/jwtinterceptor.interceptor';
+import { JwtInterceptor } from './Helper/jwt.interceptor';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -130,7 +131,8 @@ import { httpInterceptorProviders, JwtinterceptorInterceptor } from './Helper/jw
     PathologycategoryComponent,
     OperationComponent,
     InvoiceComponent,
-    UsermanagementComponent
+    UsermanagementComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -182,7 +184,13 @@ import { httpInterceptorProviders, JwtinterceptorInterceptor } from './Helper/jw
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [JwtinterceptorInterceptor],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }
+],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

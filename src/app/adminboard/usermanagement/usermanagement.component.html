@@ -11,7 +11,7 @@
 </div> -->
 
 
-<div class="row d-flex justify-content-between">
+<!-- <div class="row d-flex justify-content-between">
 
   <div class="d-flex align-items-start flex-column col float-sart">
     <h6 class="">Change Appointment Status</h6>
@@ -21,7 +21,7 @@
         <option value="mkConfirm">Make Confirmed</option>
     </select>
   </div>
-</div>
+</div> -->
 
 
 
@@ -38,10 +38,11 @@
   
     <div class="col">
       <div class="d-flex align-items-end flex-column col float-end">
-        <select class="form-select apt_table_option" #table>
-            <option default value="all">All Appointments</option>
-            <option value="pending">Pending Appointments</option>
-            <option value="confirmed">Confirmed Appointments</option>
+        <select class="form-select apt_table_option" #table (change)="filterRole($event)">
+            <option default value="all">All Users</option>
+            <option value="Admin">Admins</option>
+            <option value="User">Users</option>
+            <!-- <option value="confirmed">Users</option> -->
             <!-- <option value="prescribed">Prscribed Appointment</option> -->
         </select>
     </div>
@@ -55,6 +56,8 @@
   <div class="mat-elevation-z8 table_wrapper">
     <table mat-table [dataSource]="datasource" matSort>
 
+
+      This is the user
 
        <!-- Checkbox Column -->
   <!-- <ng-container matColumnDef="select">
@@ -71,93 +74,50 @@
   </ng-container> -->
 
 
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell class="text-center" *matCellDef="let row"> {{row.id}} </td>
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.userName}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="apSerial">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Serial No: </th>
-        <td mat-cell class="text-center" *matCellDef="let row"> {{row.apSerial}}</td>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.email}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="p_type">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient Type: </th>
-        <td mat-cell class="text-center" *matCellDef="let row"> {{row.p_type}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="p_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient ID: </th>
-        <td mat-cell class="text-center" *matCellDef="let row"> {{row.p_id}}</td>
-      </ng-container>
-
-
-
-      
-
-      <ng-container matColumnDef="apFirstName">
+      <ng-container matColumnDef="userFirstName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name: </th>
-        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.apFirstName}} </td>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.userFirstName}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="apLastName">
-        <th mat-header-cell *matHeaderCellDef> Last Name: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apLastName}} </td>
+      <ng-container matColumnDef="userLastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name: </th>
+        <td mat-cell class="text-center" *matCellDef="let row"> {{row.userLastName}}</td>
       </ng-container>
-
-      <ng-container matColumnDef="apMobile">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apMobile}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="dept_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department ID: </th>
-        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.dept_id}} </td>
-      </ng-container>
-      <ng-container matColumnDef="doc_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Doctor ID: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.doc_id}} </td>
-      </ng-container>
-      <ng-container matColumnDef="apLocation">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Location: </th>
-        <td mat-cell class="text-center"  *matCellDef="let row"> {{row.apLocation}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="apGender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apGender}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="apAge">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Age: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apAge}} </td>
-      </ng-container>
-      <ng-container matColumnDef="apDeseaseDetails">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Details: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apDeseaseDetails}} </td>
-      </ng-container>
-      <ng-container matColumnDef="emp_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.emp_id}} </td>
-      </ng-container>
-
-
-
-      <ng-container matColumnDef="apStatus">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Status: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"><div [ngClass]="{'bg-success': row.apStatus === 'Confirmed', 'bg-secondary': row.apStatus === 'Pending'}" class="text-white rounded"> {{row.apStatus}}</div> </td>
-      </ng-container>
-
-
       
-      <ng-container matColumnDef="apDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Date: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apDate}} </td>
+
+      <ng-container matColumnDef="userDOB">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth: </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.userDOB}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="apEntryDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Entry Date: </th>
-        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apEntryDate}} </td>
+      <ng-container matColumnDef="userLoc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address: </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.userLoc}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userRegistrationDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date: </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> {{row.userRegistrationDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Role: </th>
+        <td mat-cell  class="text-center"  *matCellDef="let row"> 
+          <div *ngFor="let role of row.role">
+            {{role.roleName}}
+          </div>
+        
+        </td>
       </ng-container>
 
 
