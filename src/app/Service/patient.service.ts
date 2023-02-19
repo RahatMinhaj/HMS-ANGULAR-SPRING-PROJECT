@@ -1,10 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICommonService } from '../Interfaces/ICommonService';
 import { Patient } from '../ModelClass/Patient.model';
+import { SessionstorageService } from './sessionstorage.service';
 
 
 
+// const httpOptions = {
+//   headers: new HttpHeaders({ 'Content-Type': 'application/json',           'Authorization': "Bearer " + this.localStorage.getToken()
+// })
+// };
 
 
 @Injectable({
@@ -12,7 +17,12 @@ import { Patient } from '../ModelClass/Patient.model';
 })
 export class PatientService implements ICommonService<Patient>{
 
-  constructor( private http:HttpClient) { }
+  constructor( private http:HttpClient,   private localStorage: SessionstorageService) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + this.localStorage.getToken()
+  })
+  };
 
 url:string = "http://localhost:8080/patient/";
 

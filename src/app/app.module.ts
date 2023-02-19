@@ -80,6 +80,7 @@ import { OperationComponent } from './adminboard/diagonosis/operation/operation.
 import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { httpInterceptorProviders, JwtinterceptorInterceptor } from './Helper/jwtinterceptor.interceptor';
 
 
 @NgModule({
@@ -168,7 +169,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 
 
-
     MatFormFieldModule,
     MatPaginatorModule,
     MatDialogModule,
@@ -182,7 +182,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [JwtinterceptorInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -29,8 +29,8 @@ export class CanactivateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      if(this.userDate == "ROLE_ADMIN"){
-        alert("This is admin login")
+      if(this.userDate == "Admin"){
+        // alert("This is admin login")
         return true;
       }else{
         alert("This is not admin login")

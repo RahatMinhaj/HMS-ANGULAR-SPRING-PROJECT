@@ -12,7 +12,9 @@ export class SessionstorageService {
 
   constructor() { }
 
-
+  clean(): void {
+    window.sessionStorage.clear();
+  }
 
   saveSession(userData:any){
     window.localStorage.removeItem(userKey)
@@ -28,9 +30,15 @@ export class SessionstorageService {
   }
 
   getRole(){
-    const user = window.localStorage.getItem(userKey)
     let role = this.getData().user.role[0].roleName;
     return role;
+  }
+
+
+
+  getToken(){
+    const userToken = this.getData().jwtToken;
+    return userToken
   }
 
 

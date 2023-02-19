@@ -53,8 +53,9 @@ export class LoginComponent implements OnInit {
       this.strorageService.saveSession(data);
       this.isLoggedIn = true;
       this.userData= this.strorageService.getData();
-      let userRole = this.userData.user.role[0].roleName;  
-      console.log(userRole , " User Roles")
+      let userRole = this.userData.jwtToken;  
+      console.log(this.userData , " User Roles")
+      console.log(userRole , " User token")
 
     });
     this.router.navigateByUrl("/")
