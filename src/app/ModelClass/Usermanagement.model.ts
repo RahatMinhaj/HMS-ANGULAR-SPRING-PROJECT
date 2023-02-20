@@ -1,6 +1,6 @@
 export interface UserManagementModel{
 
-    userName:string;
+    username:string;
    email:string;
    userFirstName:string;
    userLastName:string;

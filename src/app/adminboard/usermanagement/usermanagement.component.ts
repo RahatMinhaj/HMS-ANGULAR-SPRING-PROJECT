@@ -29,7 +29,7 @@ export class UsermanagementComponent implements ICommonComp<UserManagementModel>
   // ==============Table Properties===========
   datasource: any;
   displayedColumns: string[] = [
-    'userName',
+    'username',
     'email',
     'userFirstName',
     'userLastName',
