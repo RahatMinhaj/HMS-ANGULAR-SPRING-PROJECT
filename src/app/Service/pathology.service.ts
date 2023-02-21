@@ -18,11 +18,19 @@ export class PathologyService implements ICommonService<Pathology>{
 
 
   save(data: Pathology) {
+    console.log(data.patient_id)
     return this.http.post(this.url + "create", data);
   }
+
   getAll() {
     return this.http.get<Pathology[]>(this.url + "lists");
   }
+
+  getDataByUserID(id:number){
+return this.http.get<Pathology[]>(this.url + "diagonosticlist/" + id);
+  }
+
+
   getuserByID(id: number) {
     throw new Error('Method not implemented.');
   }

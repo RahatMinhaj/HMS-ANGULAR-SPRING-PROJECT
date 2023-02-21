@@ -60,7 +60,7 @@
 
         <div class="form-group col">
           <label for="">Doctor Name:</label>
-          <select class="form-select" formControlName="doc_id">
+          <select class="form-select" formControlName="doc_id" (change)="docChange($event)">
             <option *ngFor="let doc of docListByDept" [value]="doc.id">
               {{ doc.first_name}} {{ doc.last_name}}
             </option>
@@ -135,7 +135,7 @@
         </div>
         <div class="form-group col">
           <label for="">Total Bill (With Discount):</label>
-          <input type="number" placeholder="Total Bill" class="form-control" formControlName="total_bill" [value]="total" readonly>
+          <input type="number" placeholder="Total Bill" class="form-control" formControlName="total_bill" [value]="getTotal()" readonly>
         </div>
       </div>
   
@@ -148,4 +148,4 @@
   </div>
 
 <h4>Total Bill (without Discount): {{ttBill}}</h4>
-<h4>Total Bill (with Discount): {{total}}</h4>
+<h4>Total Bill (with Discount): {{getTotal()}}</h4>

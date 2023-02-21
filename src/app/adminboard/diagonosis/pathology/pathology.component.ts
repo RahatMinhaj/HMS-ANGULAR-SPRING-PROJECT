@@ -39,13 +39,13 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
   ngOnInit(): void {
     this.pathologyForm = this.formBuilder.group({
       id: [''],
-      p_id: [''],
-      pathologist_id: [''], //should be from employee table where pathologist will be there
+      p_name: [''], //should be from employee table where pathologist will be there
       doc_id: [''], //doct reference id
       pathology_type_id: [''],
       pathology_price: [''],
       pathology_desc: [''],
       createdAt: [''],
+      patient_id: ['']
     });
 
     this.getAll();
@@ -55,8 +55,8 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
   datasource: any;
   displayedColumns: string[] = [
     'id',
-    'p_id',
-    'pathologist_id',
+    'patient_id',
+    'p_name',
     'doc_id',
     'pathology_type_id',
     'createdAt',
@@ -77,6 +77,40 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
     // }
     // }
   }
+
+  patient_name = '';
+  patientChange(event:any){
+    let value = event.target.value;
+    let p_id = parseInt(value);
+
+    for (let i = 0; i < this.patientList.length; i++) {
+      if (p_id === this.patientList[i].id) {
+        this.patient_name =
+          this.patientList[i].p_first_name +
+          ' ' +
+          this.patientList[i].p_last_name;
+      }
+    }
+    this.pathologyForm.controls['p_name'].setValue(this.patient_name);
+
+  }
+
+  pathologyPrice:number = 0;
+  changePathologyType(event:any){
+    let value = event.target.value;
+    let pathologyTypeid = parseInt(value);
+    for (let i = 0; i < this.pathologyTypeList.length; i++) {
+      if (pathologyTypeid === this.pathologyTypeList[i].id) {
+        this.pathologyPrice = this.pathologyTypeList[i].pathology_price;
+      }
+    }
+    this.pathologyForm.controls['pathology_price'].setValue(this.pathologyPrice);
+
+  }
+
+
+
+
 
   getAll() {
     this.pathologyService.getAll().subscribe((data: Pathology[]) => {

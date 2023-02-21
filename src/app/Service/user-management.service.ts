@@ -21,6 +21,24 @@ export class UserManagementService implements ICommonService<UserManagementModel
   }
 
 
+  applyRole(username:string, roleName:string[]){
+
+    console.log(" pring from service " , username , roleName)
+
+    return this.http.put(this.url + "applyrole/?username=" + username, roleName);
+
+
+  }
+  // applyRole(username:string, roleName:string){
+
+  //   // console.log(" pring from service " , username , roleName)
+  //   this.http.put(this.url + "applyrole/?username=" + username +"&rolename="+ roleName, {});
+
+  // }
+
+
+
+
   getAll() {
     return this.http.get<UserManagementModel[]>(this.url + "getuserlist")
   }

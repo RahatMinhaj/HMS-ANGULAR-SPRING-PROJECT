@@ -126,12 +126,15 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell  class="text-center"  *matCellDef="let row">
           <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-success btn-sm me-1"
-            >Edit</button><br>
+            <button title="Edit user" class="btn btn-success btn-sm me-1" (click)="edit(row,content)"
+            ><i class="fa-solid fa-pen-to-square"></i></button><br>
+
+            <button title="Role Management" class="btn btn-success btn-sm me-1" (click)="roleManagement(row,role)"
+            ><i class="fa-solid fa-user-plus"></i></button><br>
             <!-- <button class="btn btn-info btn-sm me-1" (click)="upTableVal(row)" 
             >Confirm</button><br> -->
 
-          <button class="btn btn-danger btn-sm">Delete</button>
+          <!-- <button class="btn btn-danger btn-sm"></button> -->
           </div>
         </td>
       </ng-container>
@@ -155,6 +158,61 @@
 
 <!-- ==============================Modal====================================================== -->
 
+<!-- Modal For Role Management -->
+<ng-template #role let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">User Role Management:</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+
+    <h5 >Current User Roles: <span *ngFor="let role of currentUserRole">{{role}}, </span> </h5>
+    <div class="container">
+
+      <form [formGroup]="userRoleForm">
+        <div class="form-check">
+          <input class="radio form-check-input" type="checkbox" name="role" formControlName="Admin"/>
+          <label class="form-check-label">Admin</label>
+        </div>
+        <div class="form-check">
+          <input class=" radio form-check-input" type="checkbox" name="role" formControlName="User"/>
+          <label class="form-check-label">User</label>
+        </div>
+        <button class="btn btn-outline-info" type="submit" (click)="assignRole()">Assign Role</button>
+      </form>
+
+
+
+
+<!-- <form >
+    <div class="form-check" >
+      <input class="form-check-input" type="checkbox" value="admin"/>
+      <label class="form-check-label" >Admin</label>
+    </div>
+      <div class="form-check">
+        <input class="form-check-input"  type="checkbox"value="user">
+        <label class="form-check-label" >User</label>
+      </div>
+      <button class="btn btn-outline-info" type="submit"> assign role</button>
+
+    </form> -->
+
+</div>
+
+  
+
+  </div>
+</ng-template>
+
+
+  
+
+
+
+
+
+<!-- Modal For Edit User -->
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title text-center" id="modal-basic-title">Edit Doctor's Information:</h4>
@@ -162,10 +220,180 @@
   </div>
   <div class="modal-body">
 
-    <h3 class="text-center bg-info mb-4 p-2">Update Doctor's Information</h3>
+    <h3 class="text-center bg-info mb-4 p-2">Update User's Information</h3>
+    
+    <form [formGroup]="userEditForm" (submit)="create()">
+      <div class="row mb-3">
+        <!-- Email input -->
+        <div class="form-outline col-6">
+          <label class="form-label">User Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="userName"
+            placeholder="Choose An UserName"
+            maxlength="30"
+            
+
+          />
+          <div class="text-danger" *ngIf="userNameVal?.invalid && (userNameVal?.touched || userNameVal?.dirty) ">
+            <div *ngIf="userNameVal?.errors?.['required']">Write Your UserName</div>
+            <div *ngIf="userNameVal?.errors?.['minlength']" class="text-info">UserName Should be atleast 5 charecters</div>
+            <div *ngIf="userNameVal?.errors?.['maxlength']">username Should not be greater than 20 charecters</div>
+          </div>
+        </div>
+
+
+
+<!--         
+          <div class="text-danger" *ngIf="userNameVal?.touched && userNameVal?.invalid" class="invalid-feedback">
+            <div *ngIf="userNameVal?.errors?.['required']">Fill The Field First</div>
+          </div> -->
+
+
+
+
+
+
+        <div class="form-outline col-6">
+          <label class="form-label">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter a valid email address"
+            formControlName="email"
+            required
+          />
+          <div class="text-danger" *ngIf="email?.touched && email?.invalid">
+            <div *ngIf="email?.errors?.['required']">Input Your Mail Please!</div>
+            <div *ngIf="email?.errors?.['email']" class=" text-warning">Please Provide a valid Mail!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <!-- Email input -->
+        <div class="form-outline col">
+          <label class="form-label">First Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your First Name"
+            formControlName="userFirstName"
+            required
+            maxlength="20"
+          />
+          <div class="text-danger" *ngIf="userFirstName?.touched && userFirstName?.invalid">
+            <div *ngIf="userFirstName!.errors?.['required']">Input Your First Name</div>
+          </div>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline col">
+          <label class="form-label">Last Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Last Name"
+            formControlName="userLastName"
+            required
+            maxlength="20"
+          />
+          <div class="text-danger" *ngIf="userLastName?.touched && userLastName?.invalid && userLastName!.dirty">
+            <div *ngIf="userLastName!.errors?.['required']">Input Your Last Name</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <!-- Email input -->
+        <div class="form-outline col">
+          <label class="form-label">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter Your Password"
+            formControlName="password"
+            required
+          />
+          <div class="text-danger" *ngIf="password?.touched && password?.invalid">
+            <div *ngIf="password!.errors?.['required']">Input Your Password</div>
+          </div>
+          <div class="text-danger" *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
+            <div *ngIf="confirmPassword!.errors?.['mustMatch']">Password Doesn't match</div>
+          </div>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline col">
+          <label class="form-label">Confirm Password:</label>
+          <input
+            type="confirmPassword"
+            class="form-control"
+            placeholder="Enter Your Cofnirm Password"
+            formControlName="confirmPassword"
+            required
+          />
+          <div *ngIf="confirmPassword!.errors?.['matchPassword']">
+            Passwords do not match
+          </div>
+
+          <div class="text-danger" *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
+            <div *ngIf="confirmPassword!.errors?.['mustMatch']">Password Doesn't match</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <!-- Date input -->
+        <div class="form-outline col">
+          <label class="form-label">Date of Birth:</label>
+          <input
+            type="date"
+            class="form-control"
+            placeholder="Enter Your Password"
+            formControlName="userDOB"
+          />
+        </div>
+
+        <!-- Location input -->
+        <div class="form-outline col">
+          <label class="form-label">Location:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Address Please!"
+            formControlName="userLoc"
+          />
+        </div>
+      </div>
+
+      <div
+        class="text-center text-lg-start mt-4 mb-2 d-flex justify-content-center"
+      >
+        <button
+          type="submit"
+          class="btn btn-outline-primary btn-lg me-3"
+          style="padding-left: 2.5rem; padding-right: 2.5rem"
+        >
+          Update
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg"
+          style="padding-left: 2.5rem; padding-right: 2.5rem"
+          
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+
+
 
     
-
 
   </div>
   <!-- <div class="modal-footer">

@@ -74,7 +74,7 @@ showInvoice(model:Payment, modal?: any): void {
   // patient
   this.patientService.getuserByID(model.p_id).subscribe(data =>{
     this.patientInfo = data;
-    console.log(this.patientInfo.p_first_name , "++++++++++++++++++++++++++++++++++++data ")
+    // console.log(this.patientInfo.p_first_name , "++++++++++++++++++++++++++++++++++++data ")
   })
 
   // data assigning
