@@ -48,7 +48,9 @@ console.log(value + " =============FORM DOCTOR COMP")
     if (this.createDocForm.valid) {
       console.log(this.createDocForm.value.first_name);
       console.log(this.createDocForm.value.picture.value);
-
+      this.createDocForm.value.department = {
+        id:this.createDocForm.value.dept_id
+      }
       this.DocService.save(this.createDocForm.value).subscribe(
       
         data =>{
@@ -115,18 +117,18 @@ console.log(value + " =============FORM DOCTOR COMP")
 
   ngOnInit(): void {
     this.createDocForm = this.formBuilder.group({
-      id: [""],
+      id: [],
       first_name: [''],
       last_name: [''],
       mobile: [''],
-      dept_id: [''],
+      dept_id: [],
       degree: [''],
       specialization: [''],
       details: [''],
       visit_charge: [''],
       doc_join_date: [''],
-      picture:['']
-
+      picture:[''],
+      department:[]
     })
 
 

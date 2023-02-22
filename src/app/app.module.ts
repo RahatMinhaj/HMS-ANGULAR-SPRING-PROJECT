@@ -82,6 +82,7 @@ import { UsermanagementComponent } from './adminboard/usermanagement/usermanagem
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { JwtInterceptor } from './Helper/jwt.interceptor';
 import { ErrorComponent } from './error/error.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -132,7 +133,8 @@ import { ErrorComponent } from './error/error.component';
     OperationComponent,
     InvoiceComponent,
     UsermanagementComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

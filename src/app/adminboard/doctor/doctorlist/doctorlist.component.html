@@ -51,11 +51,14 @@
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.mobile}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="Department">
+      <!-- <ng-container matColumnDef="Department">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Id: </th>
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.dept_id}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="Department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department Id: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.department.dept_name}} </td>
       </ng-container>
-
       <ng-container matColumnDef="specialization">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Specialization </th>
         <td mat-cell class="text-center"  *matCellDef="let row"> {{row.specialization}} </td>

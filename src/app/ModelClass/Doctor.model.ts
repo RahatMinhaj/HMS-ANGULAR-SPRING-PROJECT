@@ -9,5 +9,9 @@ export interface Doctor{
     details:string;
     visit_charge:number;
     doc_join_date:number;
+    department: Department2;
 
 }
+export interface Department2{
+    id: number;
+  }
