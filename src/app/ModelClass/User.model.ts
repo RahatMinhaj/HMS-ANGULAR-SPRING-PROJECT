@@ -4,6 +4,8 @@ export interface User{
     userLastName:string;
     email:string;
     password:string;
+    userMobile:string;
+    userGender:string;
 
 
 

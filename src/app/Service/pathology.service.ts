@@ -19,6 +19,9 @@ export class PathologyService implements ICommonService<Pathology>{
 
   save(data: Pathology) {
     // console.log(data.patient_id)
+    console.log(data.patient.id , "print from service")
+
+
     return this.http.post(this.url + "create", data);
   }
 

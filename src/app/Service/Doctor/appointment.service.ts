@@ -37,6 +37,14 @@ export class AppointmentService implements OnInit,ICommonService<Appointment> {
     return this.http.get<Appointment[]>(this.url + "lists");
   }
 
+  getAppointmentListByUserName(userName:string){
+
+    return this.http.get<Appointment[]>(this.url + userName + "/lists");
+  }
+
+
+
+
   getAllListByAppointType(type:string){
 return this.http.get<Appointment[]>(this.url + "lists/" + type)
   }

@@ -204,13 +204,13 @@ return this.ttBill - disc;
       admission_date: [''],
       release_date: [''],
 
-      doc_charge: [''],
-      ambulance_charge: [''],
-      cabin_charge: [''],
-      med_charge: [''],
+      doc_charge: [],
+      ambulance_charge: [],
+      cabin_charge: [],
+      med_charge: [],
       test_charge: [],
-      ot_charge: [''],
-      discount: [''],
+      ot_charge: [],
+      discount: [],
 
       total_bill: [''],
     });

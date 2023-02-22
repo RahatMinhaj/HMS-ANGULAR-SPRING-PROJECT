@@ -159,6 +159,11 @@
         <td mat-cell  class="text-center" *matCellDef="let row"> {{row.apEntryDate}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="appointmentuserName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Username: </th>
+        <td mat-cell  class="text-center" *matCellDef="let row"> {{row.appointmentuserName}} </td>
+      </ng-container>
+
 
 
       <ng-container matColumnDef="action">

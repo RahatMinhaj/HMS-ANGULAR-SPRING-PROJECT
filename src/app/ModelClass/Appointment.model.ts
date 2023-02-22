@@ -18,4 +18,8 @@ export interface Appointment {
   apDeseaseDetails: string;
   emp_id: number;
   apStatus: string;
+
+
+  
+  appointmentuserName:string;
 }

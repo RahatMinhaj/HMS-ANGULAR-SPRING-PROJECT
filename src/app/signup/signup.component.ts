@@ -47,6 +47,9 @@ export class SignupComponent implements OnInit,ICommonComp<User> {
       confirmPassword:['',Validators.required],
       userDOB:[''],
       userLoc:[''],
+      userMobile:[''],
+      userGender:[''],
+
     }, { validator: this.matchPassword('password', 'confirmPassword') }
     
     )

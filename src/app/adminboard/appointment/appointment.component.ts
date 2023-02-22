@@ -54,6 +54,7 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
     'emp_id',
     'apDate',
     'apEntryDate',
+    'appointmentuserName',
     'action'
   ];
 

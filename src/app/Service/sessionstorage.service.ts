@@ -20,7 +20,7 @@ export class SessionstorageService {
     window.localStorage.removeItem(userKey)
     window.localStorage.setItem(userKey,JSON.stringify(userData));
 
-    window.location.reload();
+    // window.location.reload();
 
   }
 

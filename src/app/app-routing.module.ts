@@ -39,6 +39,7 @@ import { InvoiceComponent } from './adminboard/invoice/invoice.component';
 import { CanactivateGuard } from './Service/Auth/canactivate.guard';
 import { ErrorComponent } from './error/error.component';
 import { UsermanagementComponent } from './adminboard/usermanagement/usermanagement.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,7 @@ const routes: Routes = [
   // landing page Routing
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'admin',
     component: AdminboardComponent,

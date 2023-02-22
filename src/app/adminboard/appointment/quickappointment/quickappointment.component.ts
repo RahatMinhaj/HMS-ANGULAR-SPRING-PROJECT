@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { error } from 'jquery';
-import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Appointment } from 'src/app/ModelClass/Appointment.model';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
@@ -10,19 +8,19 @@ import { AppointmentService } from 'src/app/Service/Doctor/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
 import { PatientService } from 'src/app/Service/Patient.service';
+import { SessionstorageService } from 'src/app/Service/sessionstorage.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
-  selector: 'app-newappointment',
-  templateUrl: './newappointment.component.html',
-  styleUrls: ['./newappointment.component.css'],
+  selector: 'app-quickappointment',
+  templateUrl: './quickappointment.component.html',
+  styleUrls: ['./quickappointment.component.css']
 })
-export class NewappointmentComponent
-  implements OnInit, ICommonComp<Appointment>
-{
+export class QuickappointmentComponent implements OnInit {
   deptList!: Department[];
 
-  appointForm!: FormGroup;
+  quickAppointment!: FormGroup;
   docNameStatus = true;
   deptSelect = '';
   docByDepartment!: Doctor[];
@@ -70,8 +68,8 @@ export class NewappointmentComponent
           
         }
 
-        this.appointForm.patchValue(pData);
-        console.log(this.appointForm.value.apFirstName)
+        this.quickAppointment.patchValue(pData);
+        console.log(this.quickAppointment.value.apFirstName)
       },
 
       
@@ -137,15 +135,18 @@ export class NewappointmentComponent
     private deptService: DepartmentService,
     private docService: DoctorService,
     private patientService:PatientService,
-    private appointService:AppointmentService
+    private appointService:AppointmentService,
+    private sessionStorage:SessionstorageService
   ) { }
 
   getAll() {
     throw new Error('Method not implemented.');
   }
   create(): void {
-    console.log(this.appointForm.value.apFirstName +"999999999999")
-    this.appointService.save(this.appointForm.value).subscribe(
+
+    console.log(this.filledUserName ,  "appojslkdfjklsdf")
+    console.log(this.quickAppointment.value.apFirstName +"999999999999")
+    this.appointService.save(this.quickAppointment.value).subscribe(
       
       data =>{
         Swal.fire({
@@ -184,8 +185,12 @@ export class NewappointmentComponent
     throw new Error('Method not implemented.');
   }
 
+
+
+
+filledUserName = this.sessionStorage.getData().user.username;
   ngOnInit(): void {
-    this.appointForm = this.formBuilder.group({
+    this.quickAppointment = this.formBuilder.group({
       id: [''],
       p_id: [''],
       p_type:'New',
@@ -203,7 +208,7 @@ export class NewappointmentComponent
       apDeseaseDetails: [''],
       emp_id: [''],
       apStatus:'Pending',
-      appointmentuserName:['']
+      appointmentuserName:[this.filledUserName]
     });
 
 
@@ -212,4 +217,6 @@ export class NewappointmentComponent
       this.deptList = data;
     })
   }
+
 }
+

@@ -46,10 +46,13 @@ console.log(value + " =============FORM DOCTOR COMP")
 
   create(): void {
     if (this.createDocForm.valid) {
-      console.log(this.createDocForm.value.first_name);
-      console.log(this.createDocForm.value.picture.value);
+
+
+      // console.log(this.createDocForm.value.first_name);
+      // console.log(this.createDocForm.value.picture.value);
       this.createDocForm.value.department = {
         id:this.createDocForm.value.dept_id
+
       }
       this.DocService.save(this.createDocForm.value).subscribe(
       

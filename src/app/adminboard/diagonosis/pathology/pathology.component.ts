@@ -36,16 +36,23 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
     private pathologyTypeService: PathologytypeService
   ) {}
 
+
+ 
+
+
   ngOnInit(): void {
     this.pathologyForm = this.formBuilder.group({
-      id: [''],
+      id: [],
       p_name: [''], //should be from employee table where pathologist will be there
-      doc_id: [''], //doct reference id
-      pathology_type_id: [''],
-      pathology_price: [''],
+      doc_id: [], //doct reference id
+      pathology_type_id: [],
+      pathology_price: [],
       pathology_desc: [''],
-      createdAt: [''],
-      patient_id: ['']
+      createdAt: [],
+
+
+      patient_id: [],
+      patient:[]
     });
 
     this.getAll();
@@ -134,6 +141,14 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
     });
   }
   create(): void {
+
+    this.pathologyForm.value.patient = {
+      id:this.pathologyForm.value.patient_id
+
+    }
+
+
+
     this.pathologyService.save(this.pathologyForm.value).subscribe(
       (data) => {
         Swal.fire({

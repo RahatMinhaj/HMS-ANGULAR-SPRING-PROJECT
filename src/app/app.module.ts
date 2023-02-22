@@ -83,6 +83,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { JwtInterceptor } from './Helper/jwt.interceptor';
 import { ErrorComponent } from './error/error.component';
 import { ProfileComponent } from './profile/profile.component';
+import { QuickappointmentComponent } from './adminboard/appointment/quickappointment/quickappointment.component';
 
 
 @NgModule({
@@ -134,7 +135,8 @@ import { ProfileComponent } from './profile/profile.component';
     InvoiceComponent,
     UsermanagementComponent,
     ErrorComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuickappointmentComponent
   ],
   imports: [
     BrowserModule,
