@@ -33,7 +33,7 @@ export class CanactivateGuard implements CanActivate {
         // alert("This is admin login")
         return true;
       }else{
-        alert("This is not admin login")
+        this.router.navigate(['/'])
         return false;
       }   
   }

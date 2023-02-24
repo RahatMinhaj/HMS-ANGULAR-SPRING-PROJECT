@@ -25,12 +25,25 @@ export class HeaderComponent  implements OnInit{
 		config.keyboard = false;
 	}
 
+
+
 	checkLogin:boolean = this.sessionStorage.isLoggedIn();
+	adminPanel = false;
+	userName =this.sessionStorage.getData().user.username;
+	
+
+	checkAdmin(){
+		let checkRole = this.sessionStorage.getRole();
+		if(checkRole == "Admin"){
+			this.adminPanel = true;
+	}
+}
+
 
 	logOut(){
 		console.log("hit")
 		this.sessionStorage.logOut();
-		this.router.navigateByUrl("/home");
+		this.router.navigateByUrl("");
 	
 	}
 
@@ -46,7 +59,7 @@ export class HeaderComponent  implements OnInit{
 
 
 	ngOnInit(): void {
-		
+		this.checkAdmin();
 	}
 
 

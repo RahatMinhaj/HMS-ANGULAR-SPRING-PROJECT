@@ -34,22 +34,22 @@
             <a routerLink="" class="nav-item nav-link active bgph">Home</a>
             <a routerLink="/about" class="nav-item nav-link bgph">About</a>
             <a routerLink="/contact" class="nav-item nav-link bgph">Contact</a>
-            <a routerLink="/admin" class="nav-item nav-link bgph">Amin Panel</a>
+            <a *ngIf="adminPanel" routerLink="/admin" class="nav-item nav-link bgph">Amin Panel</a>
             <!-- <a class="nav-item nav-link bgph" (click)="adminPanel()">Amin Panel</a> -->
             <a *ngIf="!checkLogin" routerLink="/login" class="nav-item nav-link bgph">Sign In</a>
             <a *ngIf="!checkLogin" routerLink="/signup" class="nav-item nav-link bgph">Sign Up</a>
-            <a *ngIf="checkLogin"  routerLink="/" class="nav-item nav-link bgph" (click)="logOut()">Logout</a>
+            <!-- <a   routerLink="/" class="nav-item nav-link bgph" (click)="logOut()">Logout</a> -->
             
-            <div ngbDropdown class="d-inline-block">
+            <div ngbDropdown class="d-inline-block" *ngIf="checkLogin">
                 <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
                     <!-- <div class="bg-dark rounded-circle me-2"></div> -->
                     <img src="../../assets/images/team1.png" alt="" class="img-fluid imgtest rounded-circle">
-                    <span class="text-white">Minhajul Islam</span>
+                    <span>{{userName}}</span>
                 </button>
                
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem routerLink="/profile">Profile</button>
-                    <button ngbDropdownItem>Log Out</button>
+                    <button ngbDropdownItem  (click)="logOut()">Log Out</button>
                 </div>
             </div>
             

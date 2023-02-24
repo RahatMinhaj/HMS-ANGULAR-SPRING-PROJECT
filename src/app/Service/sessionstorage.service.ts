@@ -19,7 +19,6 @@ export class SessionstorageService {
   saveSession(userData:any){
     window.localStorage.removeItem(userKey)
     window.localStorage.setItem(userKey,JSON.stringify(userData));
-
     // window.location.reload();
 
   }

@@ -58,6 +58,7 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
     //   });
   }
 
+  testDiagonosisRef!:number[];
   getDiagonosticDataByID(p_id: number) {
     let temp:number = 0;
     let val:number = 0;
@@ -65,7 +66,9 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
       .getDataByUserID(p_id)
       .subscribe((data: Pathology[]) => {
         for (let i = 0; i < data.length; i++) {
+          this.testDiagonosisRef.push(data[i].id)
           temp = data[i].pathology_price + temp;
+
 
            val= +temp
         }

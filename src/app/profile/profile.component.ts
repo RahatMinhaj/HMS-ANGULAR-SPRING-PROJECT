@@ -25,6 +25,7 @@ constructor(
 
   fullName = this.sessionStorage.getData().user.userFirstName + " " + this.sessionStorage.getData().user.userLastName
   userName =this.sessionStorage.getData().user.username
+  userRole = this.sessionStorage.getRole();
   
   userLocation = this.sessionStorage.getData().user.userLoc;
   userEmail= this.sessionStorage.getData().user.email;
