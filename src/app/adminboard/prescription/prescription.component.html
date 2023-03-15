@@ -1,105 +1,128 @@
 <div class="container-fluid">
-    <div class="d-flex row">
-        <div class="logo p-3 col align-items-center">
-            <img class="" src="https://images2.imgbox.com/79/7a/3CWkEnHN_o.png" height="80">
-        </div>
-        <div class="d-flex justify-content-center info col">
-            <div class="docInfo ms-5 me-5 pt-3">
-                <h4>Doctor Information</h4>
-                <div class="fw-bold">Minhajul Islam</div>
-                <div>Mobile: 0XXXXXXXXX</div>
-                <div>MBBS, FCPS</div>
-                <div>Dhaka Medical Hospital</div>
-            </div>
-            <div class="docInfo ms-5 pt-3 me-5 col">
-                <h4>Patient Info </h4>
-                <div class="fw-bold">Minhajul Islam</div>
-                <div>Mobile: 0XXXXXXXXX</div>
-                <div>MBBS, FCPS</div>
-                <div>Dhaka Medical Hospital</div>
-            </div>
-        </div>
+  <div class="d-flex row">
+    <div class="logo p-3 col align-items-center">
+      <img
+        class=""
+        src="https://images2.imgbox.com/79/7a/3CWkEnHN_o.png"
+        height="80"
+      />
     </div>
-    <hr>
-
-    <div class="row symptom">
-        <div class="col-3 border-end ">
-        <h3 class="bg-success p-2 text-center text-white">Symptoms</h3>
-        <textarea class="form-control col-md-12" style="height: 250px;" ></textarea>
-        
-        <div class="btnGroup mt-2">
-            <div class="btn btn-outline-success btn-sm w-20">
-                Save
-            </div>
-            <div class="btn btn-outline-danger btn-sm w-20">
-                Cancel
-            </div>
-        </div>
-        
+    <div class="d-flex justify-content-center info col">
+      <div class="docInfo ms-5 me-5 pt-3">
+        <h4>Doctor Information</h4>
+        <div class="fw-bold">Minhajul Islam</div>
+        <div>Mobile: 0XXXXXXXXX</div>
+        <div>MBBS, FCPS</div>
+        <div>Dhaka Medical Hospital</div>
+      </div>
+      <div class="docInfo ms-5 pt-3 me-5 col">
+        <h4>Patient Info</h4>
+        <div class="fw-bold">Minhajul Islam</div>
+        <div>Mobile: 0XXXXXXXXX</div>
+        <div>MBBS, FCPS</div>
+        <div>Dhaka Medical Hospital</div>
+      </div>
     </div>
-        <div class="col-9">
-            <div>
-                <h1 class="fw-semibold display-2">R<sub>x</sub></h1>
-                    <hr>
+  </div>
+  <hr />
 
-                    <table class="table">
-                        <thead >
-                            <th>Medicine Name</th>
-                            <th>Group Name</th>
-                            <th>Morning</th>
-                            <th>Noon</th>
-                            <th>Night</th>
-                            <th>Custom Time</th>
-                            <th>Eating Time</th>
-                            <th>Duration</th>
-                            <th>Duration</th>
-                        </thead>
-                    </table>
+  <div class="row symptom">
+    <div class="col-3 border-end">
+      <h3 class="bg-success p-2 text-center text-white">Symptoms</h3>
+      <textarea class="form-control col-md-12" style="height: 250px"></textarea>
 
-                    <form method="POST">
-                        <div class="row">
-                          <div class="form-group col">
-
-                            <select name="" id="" class="form-control">
-                                <option value="">Omiprazole</option>
-                                <option value="">Omiprazole</option>
-                                <option value="">Omiprazole</option>
-                                <option value="">Omiprazole</option>
-
-                            </select>
-                            <!-- <input
-                              class="form-control"
-                              type="text"
-                              name=""
-                              id=""
-                              formControlName="first_name"
-                            /> -->
-                          </div>
-
-                          <div class="col align-items-center">
-                            <button
-                          type="submit"
-                          class="btn btn-outline-info float-right d-flex justify-content-center me-2"
-                          id="btnLogin"
-                         
-                        >
-                          Add Medicine
-                        </button>
-                          </div>
-                        </div>
-                      </form>
+      <div class="btnGroup mt-2">
+        <div class="btn btn-outline-success btn-sm w-20">Save</div>
+        <div class="btn btn-outline-danger btn-sm w-20">Cancel</div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div>
+        <h1 class="fw-semibold display-2">R<sub>x</sub></h1>
+        <hr />
 
 
+        <form action="" [formGroup]="prescForm">
+        <table class="table table-sm">
+          <thead>
+            <th>Name</th>
+            <th>Group Name</th>
+            <th>Morning</th>
+            <th>Noon</th>
+            <th>Night</th>
+            <th>Eating Time</th>
+            <th>Duration</th>
+            <th>ML</th>
+            <th>Med Type</th>
+            <th>Action</th>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let medicine of medListforCash ; let i = index">
+              <td>{{medicine.med_name}}</td>
+              <td>{{medicine.med_group_name}}</td>
+              <td><input type="checkbox" formControlName="morning"/></td>
+              <td><input type="checkbox" formControlName="noon"/></td>
+              <td><input type="checkbox" formControlName="night" /></td>
+              <td><select formControlName="eatingTime" >
+                <option value="before">Before Eat</option>
+                <option value="after">After Eat</option>
+              </select></td>
+              <td>
+                <select formControlName="duration"> 
+                  <option value="1 days">1 day</option>
+                  <option value="3 days">3 days</option>
+                  <option value="5 days">5 days</option>
+                  <option value="7 days">7 days</option>
+                  <option value="15 days">15 days</option>
+                  <option value="30 days">30 days</option>
+                </select>
+              </td>
+
+              <td>{{medicine.med_weight}}</td>
+              <td>{{medicine.med_type}}</td>
+              <td><div (click)="removeItemFromPresc(i)"><i class="fa-solid fa-trash"></i></div></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <button (click)="saveMedicineList()"> sumbit</button>
+      </form>
+
+        <form method="POST">
+          <div class="row">
+            <div class="form-group col">
+              <select
+                class="form-control"
+                #medSel
+                (change)="medSelect(medSel.value)"
+              >
+                <option *ngFor="let medicine of medList" [value]="medicine.id">
+                  {{ medicine.med_name }}
+                </option>
+              </select>
             </div>
-        </div>
-       
-    </div>
 
-
-    <div class="row">
-        <div class="col-3 border-end symptom">
-            <h3 class="bg-success p-2 text-center text-white">Texts</h3>
-        </div>
-       
+            <div class="col align-items-center">
+              <button
+                type="submit"
+                class="btn btn-outline-info float-right d-flex justify-content-center me-2"
+                id="btnLogin"
+                (click)="addMedListtoCash()"
+              >
+                Add Medicine
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 border-end symptom">
+      <h3 class="bg-success p-2 text-center text-white">Tests</h3>
+    </div>
+  </div>
 </div>

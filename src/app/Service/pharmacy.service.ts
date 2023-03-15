@@ -40,7 +40,7 @@ export class PharmacyService implements OnInit,ICommonService<Medicine> {
 
 
   getuserByID(id: number) {
-    throw new Error('Method not implemented.');
+    return this.http.get<Medicine>(this.url + "lists/editbyid/" + id)
   }
   updateData(data: Medicine) {
     throw new Error('Method not implemented.');
