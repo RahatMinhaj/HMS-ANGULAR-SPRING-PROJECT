@@ -46,6 +46,7 @@ const routes: Routes = [
     path: '',
     component: LandingpageComponent,
   },
+  {path: 'prescription' , component:PrescriptionComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   // landing page Routing
