@@ -119,8 +119,6 @@ export class AppointmentComponent implements OnInit, ICommonComp<Appointment> {
 
 
   changeStatusFromCheckbox(status:string){
-
-    console.log("button vlicked..", )
     this.appointService.updateAllDataById(this.selectedIds,status).subscribe(data => {
       console.log(data)
       this.ngOnInit();

@@ -1,38 +1,34 @@
 import { Injectable } from '@angular/core';
 
-
-const userKey = "auth-user";
-
-
+const userKey = 'auth-user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class SessionstorageService {
 
-  constructor() { }
+
+export class SessionstorageService {
+  constructor() {}
 
   clean(): void {
     window.sessionStorage.clear();
   }
 
-  saveSession(userData:any){
-    window.localStorage.removeItem(userKey)
-    window.localStorage.setItem(userKey,JSON.stringify(userData));
+  saveSession(userData: any) {
+    window.localStorage.removeItem(userKey);
+    window.localStorage.setItem(userKey, JSON.stringify(userData));
     // window.location.reload();
-
   }
 
-  getData(){
-    const user = window.localStorage.getItem(userKey)
+  getData() {
+    const user = window.localStorage.getItem(userKey);
     return JSON.parse(user!);
   }
 
-  getRole(){
+  getRole() {
     let role = this.getData().user.role[0].roleName;
     return role;
   }
-
 
   getToken(): string | null {
     const user = window.localStorage.getItem(userKey);
@@ -43,13 +39,6 @@ export class SessionstorageService {
       return null;
     }
   }
-  
-  
-  
-  
-  
-
-
 
   // getToken(){
   //   const userToken = this.getData().jwtToken;
@@ -64,20 +53,17 @@ export class SessionstorageService {
   //   return userToken
   // }
 
-
-
-  isLoggedIn(){
-    if(localStorage.getItem(userKey)){
+  isLoggedIn() {
+    if (localStorage.getItem(userKey)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  logOut(){
+  logOut() {
     // window.localStorage.removeItem(userKey);
     window.localStorage.clear();
     window.location.reload();
   }
-
 }
