@@ -39,21 +39,21 @@
             <a *ngIf="!checkLogin" routerLink="/login" class="nav-item nav-link bgph">Sign In</a>
             <a *ngIf="!checkLogin" routerLink="/signup" class="nav-item nav-link bgph">Sign Up</a>
             <!-- <a   routerLink="/" class="nav-item nav-link bgph" (click)="logOut()">Logout</a> -->
-            
+
             <div ngbDropdown class="d-inline-block" *ngIf="checkLogin">
                 <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
                     <!-- <div class="bg-dark rounded-circle me-2"></div> -->
                     <img src="../../assets/images/team1.png" alt="" class="img-fluid imgtest rounded-circle">
                     <span>{{userName}}</span>
                 </button>
-               
+
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem routerLink="/profile">Profile</button>
                     <button ngbDropdownItem  (click)="logOut()">Log Out</button>
                 </div>
             </div>
-            
-            
+
+
             <!-- <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu m-0">
@@ -63,7 +63,7 @@
                     <a href="appointment.html" class="dropdown-item">Appointment</a>
                 </div>
             </div> -->
-           
+
         </div>
 
 
@@ -127,11 +127,11 @@
             <input class="form-control" type="text" name="" id="" formControlName="dept_manager">
           </div>
           <br><br>
-  
+
           <div class="d-flex justify-content-center"><button type="submit"
               class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
               >Create Cabin</button></div>
-  
+
         </form> -->
     </div>
     <div class="modal-footer">
@@ -181,11 +181,11 @@
             <input class="form-control" type="text" name="" id="" formControlName="dept_manager">
           </div>
           <br><br>
-  
+
           <div class="d-flex justify-content-center"><button type="submit"
               class="btn btn btn-outline-dark float-right d-flex justify-content-center" id="btnLogin"
               >Create Cabin</button></div>
-  
+
         </form> -->
     </div>
     <div class="modal-footer">

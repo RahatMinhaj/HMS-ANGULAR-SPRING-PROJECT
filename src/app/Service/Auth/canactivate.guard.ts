@@ -18,8 +18,10 @@ export class CanactivateGuard implements CanActivate {
     private router:Router
     ) {}
 
-  private userDate = this.session.getRole();
- 
+    private islog = this.session.isLoggedIn();
+  private userDate = '';
+
+
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -29,12 +31,20 @@ export class CanactivateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      if(this.userDate == "Admin"){
-        // alert("This is admin login")
-        return true;
-      }else{
-        this.router.navigate(['/'])
-        return false;
-      }   
+
+  const islog = this.session.isLoggedIn();
+  let userDate = '';
+
+  if (islog) {
+    userDate = this.session.getRole();
+    if (userDate === 'Admin') {
+      // alert("This is admin login")
+      return true;
+    }
+  }
+
+  // If the user is not logged in or is not an admin, navigate to the login page and return false
+  this.router.navigate(['']);
+  return false;
   }
 }

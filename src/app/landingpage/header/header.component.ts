@@ -1,94 +1,65 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import { SessionstorageService } from 'src/app/Service/sessionstorage.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent  implements OnInit{
+export class HeaderComponent implements OnInit {
   constructor(
-	config: NgbModalConfig, 
-	private modalService: NgbModal, 
-	private router:Router,
-	private sessionStorage:SessionstorageService
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private router: Router,
+    private sessionStorage: SessionstorageService
+  ) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
-	) {
+  checkLogin: boolean = this.sessionStorage.isLoggedIn();
+  adminPanel = false;
+  userName = '';
 
-		// customize default values of modals used by this component tree
-		config.backdrop = 'static';
-		config.keyboard = false;
-	}
+  checkAdmin() {
+    if (this.checkLogin) {
+      let checkRole = this.sessionStorage.getRole();
+      if (checkRole == 'Admin') {
+        this.adminPanel = true;
+      }
+    }
+  }
 
+  logOut() {
+    this.sessionStorage.logOut();
+    this.router.navigateByUrl('/home');
+    window.location.reload();
+  }
 
+  ngOnInit(): void {
+    this.checkAdmin();
 
-	checkLogin:boolean = this.sessionStorage.isLoggedIn();
-	adminPanel = false;
-	userName =this.sessionStorage.getData().user.username;
-	
+    if (this.checkLogin) {
+      this.userName = this.sessionStorage.getData().user.username;
+    }
+  }
 
-	checkAdmin(){
-		let checkRole = this.sessionStorage.getRole();
-		if(checkRole == "Admin"){
-			this.adminPanel = true;
-	}
-}
+  openLg(content: any) {
+    this.modalService.open(content, { size: 'xl' });
+  }
 
+  opensignup(content: any) {
+    this.modalService.open(content, { size: 'xl' });
+  }
 
-	logOut(){
-		console.log("hit")
-		this.sessionStorage.logOut();
-		this.router.navigateByUrl("");
-	
-	}
+  // adminPanel(){
+  // 	this.router.navigateByUrl('/admin');
+  // 	this.router.getCurrentNavigation('/admin',)
 
-
-
-
-
-
-
-
-
-
-
-
-	ngOnInit(): void {
-		this.checkAdmin();
-	}
-
-
-
-
-
-
-
-
-
-
-
-	openLg(content:any) {
-		this.modalService.open(content, {size:'xl'});
-	}
-
-	opensignup(content:any) {
-		this.modalService.open(content, {size:'xl'});
-	}
-
-
-
-	// adminPanel(){
-	// 	this.router.navigateByUrl('/admin');
-	// 	this.router.getCurrentNavigation('/admin',)
-
-	// }
-
-
-
-
+  // }
 }

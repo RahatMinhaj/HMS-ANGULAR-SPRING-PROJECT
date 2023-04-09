@@ -64,6 +64,6 @@ export class SessionstorageService {
   logOut() {
     // window.localStorage.removeItem(userKey);
     window.localStorage.clear();
-    window.location.reload();
+
   }
 }

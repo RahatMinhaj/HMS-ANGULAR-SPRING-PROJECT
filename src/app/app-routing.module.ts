@@ -44,6 +44,11 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo : "home"
+  },
+  {
+    path: 'home',
     component: LandingpageComponent,
   },
   {path: 'prescription' , component:PrescriptionComponent},
@@ -76,7 +81,7 @@ const routes: Routes = [
             path: 'all',
             component: AppointmentComponent,
           }
-          
+
         ],
       },
       {
