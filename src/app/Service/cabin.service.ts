@@ -8,15 +8,15 @@ import { Cabin } from '../ModelClass/Cabin.model';
 })
 export class CabinService implements ICommonService<Cabin>{
 
-  private url:string = "http://localhost:8080/cabin/";
+  private url: string = "http://localhost:8080/cabin/";
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
 
   save(data: Cabin) {
-    return this.http.post(this.url + "create" , data)
+    return this.http.post(this.url + "create", data)
   }
   getAll() {
     return this.http.get<Cabin[]>(this.url + "lists");
