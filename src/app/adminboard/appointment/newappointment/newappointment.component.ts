@@ -5,11 +5,11 @@ import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Appointment } from 'src/app/ModelClass/Appointment.model';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { AppointmentService } from 'src/app/Service/Doctor/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,52 +29,52 @@ export class NewappointmentComponent
 
 
 
-  pType:boolean = false;
+  pType: boolean = false;
 
-  pTypeChange(val:any){
+  pTypeChange(val: any) {
     const valu = val.target.value;
-    if(valu == "new"){
+    if (valu == "new") {
       this.pType = false;
       this.ngOnInit();
-    }else if(valu == "old"){
+    } else if (valu == "old") {
       this.pType = true;
     }
   }
 
 
-  playerName!:number;
-  setPatientInfo(){
+  playerName!: number;
+  setPatientInfo() {
 
-      this.patientService.getuserByID(this.playerName).subscribe((data:Patient)=>{
-        let pData={
-          p_id: data.id,
-           
-          apFirstName: data.p_first_name,
-          apLastName: data.p_last_name,
-          apMobile: data.p_mobile,
-          apGender: data.p_gender,
-          apAge: data.p_age,
+    this.patientService.getuserByID(this.playerName).subscribe((data: Patient) => {
+      let pData = {
+        p_id: data.id,
+
+        apFirstName: data.p_first_name,
+        apLastName: data.p_last_name,
+        apMobile: data.p_mobile,
+        apGender: data.p_gender,
+        apAge: data.p_age,
 
 
-          id:'', 
-          apSerial: '',
-          apDate: '',
-          apEntryDate: '',
-          dept_id: '',
-          doc_id: '',
-          apLocation: '',
-          apDeseaseDetails: '',
-          emp_id: '',
-          apStatus: 'Pending',
-          p_type:'Old',
-          
-        }
+        id: '',
+        apSerial: '',
+        apDate: '',
+        apEntryDate: '',
+        dept_id: '',
+        doc_id: '',
+        apLocation: '',
+        apDeseaseDetails: '',
+        emp_id: '',
+        apStatus: 'Pending',
+        p_type: 'Old',
 
-        this.appointForm.patchValue(pData);
-        console.log(this.appointForm.value.apFirstName)
-      },
+      }
 
-      
+      this.appointForm.patchValue(pData);
+      console.log(this.appointForm.value.apFirstName)
+    },
+
+
       error => {
         Swal.fire({
           // title: 'Are you sure !',
@@ -86,9 +86,9 @@ export class NewappointmentComponent
           // cancelButtonText: 'No',
         })
       }
-      
-  
-      )
+
+
+    )
 
   }
 
@@ -97,19 +97,19 @@ export class NewappointmentComponent
   onSelect(aDept: any) {
     // console.log(aDept.target.value + "==============")
     // console.log(aDept + "====================")
-    let deptID =  parseInt(aDept);
-    
-    if(deptID == null){
+    let deptID = parseInt(aDept);
+
+    if (deptID == null) {
       alert("Please Select the Department First");
-    }else{
+    } else {
       this.docService.getDocByDepartment(deptID).subscribe((data: Doctor[]) => {
-                this.docByDepartment = data;
-                this.docNameStatus = true;
-                // console.log(data)
-              });
+        this.docByDepartment = data;
+        this.docNameStatus = true;
+        // console.log(data)
+      });
     }
 
-// =====================Another Way=====================
+    // =====================Another Way=====================
     //   const selectedDeptId = aDept;
     //   const split = selectedDeptId.split(": ");
     //   const depTID = parseInt(split[1])
@@ -136,18 +136,18 @@ export class NewappointmentComponent
     private formBuilder: FormBuilder,
     private deptService: DepartmentService,
     private docService: DoctorService,
-    private patientService:PatientService,
-    private appointService:AppointmentService
+    private patientService: PatientService,
+    private appointService: AppointmentService
   ) { }
 
   getAll() {
     throw new Error('Method not implemented.');
   }
   create(): void {
-    console.log(this.appointForm.value.apFirstName +"999999999999")
+    console.log(this.appointForm.value.apFirstName + "999999999999")
     this.appointService.save(this.appointForm.value).subscribe(
-      
-      data =>{
+
+      data => {
         Swal.fire({
           // title: 'Are you sure !',
           title: 'Data saved !',
@@ -159,20 +159,20 @@ export class NewappointmentComponent
         })
         this.ngOnInit();
 
-    },
-    error =>{
-      Swal.fire({
-        // title: 'Are you sure !',
-        title: 'Data Cannot be saved !',
-        // text: 'Data Not Found',
-        icon: 'error',
-        // showCancelButton: true,
-        // confirmButtonText: 'Yes',
-        // cancelButtonText: 'No',
-      })  
+      },
+      error => {
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Cannot be saved !',
+          // text: 'Data Not Found',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
 
-    })
-    
+      })
+
   }
   edit(model: Appointment, modal?: any): void {
     throw new Error('Method not implemented.');
@@ -188,7 +188,7 @@ export class NewappointmentComponent
     this.appointForm = this.formBuilder.group({
       id: [''],
       p_id: [''],
-      p_type:'New',
+      p_type: 'New',
       apSerial: [''],
       apFirstName: [''],
       apLastName: [''],
@@ -202,8 +202,8 @@ export class NewappointmentComponent
       apAge: [''],
       apDeseaseDetails: [''],
       emp_id: [''],
-      apStatus:'Pending',
-      appointmentuserName:['']
+      apStatus: 'Pending',
+      appointmentuserName: ['']
     });
 
 

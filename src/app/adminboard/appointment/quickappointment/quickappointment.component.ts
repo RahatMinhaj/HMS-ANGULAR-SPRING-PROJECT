@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Appointment } from 'src/app/ModelClass/Appointment.model';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { AppointmentService } from 'src/app/Service/Doctor/appointment.service';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import { SessionstorageService } from 'src/app/Service/sessionstorage.service';
 import Swal from 'sweetalert2';
 
@@ -27,52 +27,52 @@ export class QuickappointmentComponent implements OnInit {
 
 
 
-  pType:boolean = false;
+  pType: boolean = false;
 
-  pTypeChange(val:any){
+  pTypeChange(val: any) {
     const valu = val.target.value;
-    if(valu == "new"){
+    if (valu == "new") {
       this.pType = false;
       this.ngOnInit();
-    }else if(valu == "old"){
+    } else if (valu == "old") {
       this.pType = true;
     }
   }
 
 
-  playerName!:number;
-  setPatientInfo(){
+  playerName!: number;
+  setPatientInfo() {
 
-      this.patientService.getuserByID(this.playerName).subscribe((data:Patient)=>{
-        let pData={
-          p_id: data.id,
-           
-          apFirstName: data.p_first_name,
-          apLastName: data.p_last_name,
-          apMobile: data.p_mobile,
-          apGender: data.p_gender,
-          apAge: data.p_age,
+    this.patientService.getuserByID(this.playerName).subscribe((data: Patient) => {
+      let pData = {
+        p_id: data.id,
+
+        apFirstName: data.p_first_name,
+        apLastName: data.p_last_name,
+        apMobile: data.p_mobile,
+        apGender: data.p_gender,
+        apAge: data.p_age,
 
 
-          id:'', 
-          apSerial: '',
-          apDate: '',
-          apEntryDate: '',
-          dept_id: '',
-          doc_id: '',
-          apLocation: '',
-          apDeseaseDetails: '',
-          emp_id: '',
-          apStatus: 'Pending',
-          p_type:'Old',
-          
-        }
+        id: '',
+        apSerial: '',
+        apDate: '',
+        apEntryDate: '',
+        dept_id: '',
+        doc_id: '',
+        apLocation: '',
+        apDeseaseDetails: '',
+        emp_id: '',
+        apStatus: 'Pending',
+        p_type: 'Old',
 
-        this.quickAppointment.patchValue(pData);
-        console.log(this.quickAppointment.value.apFirstName)
-      },
+      }
 
-      
+      this.quickAppointment.patchValue(pData);
+      console.log(this.quickAppointment.value.apFirstName)
+    },
+
+
       error => {
         Swal.fire({
           // title: 'Are you sure !',
@@ -84,9 +84,9 @@ export class QuickappointmentComponent implements OnInit {
           // cancelButtonText: 'No',
         })
       }
-      
-  
-      )
+
+
+    )
 
   }
 
@@ -95,19 +95,19 @@ export class QuickappointmentComponent implements OnInit {
   onSelect(aDept: any) {
     // console.log(aDept.target.value + "==============")
     // console.log(aDept + "====================")
-    let deptID =  parseInt(aDept);
-    
-    if(deptID == null){
+    let deptID = parseInt(aDept);
+
+    if (deptID == null) {
       alert("Please Select the Department First");
-    }else{
+    } else {
       this.docService.getDocByDepartment(deptID).subscribe((data: Doctor[]) => {
-                this.docByDepartment = data;
-                this.docNameStatus = true;
-                // console.log(data)
-              });
+        this.docByDepartment = data;
+        this.docNameStatus = true;
+        // console.log(data)
+      });
     }
 
-// =====================Another Way=====================
+    // =====================Another Way=====================
     //   const selectedDeptId = aDept;
     //   const split = selectedDeptId.split(": ");
     //   const depTID = parseInt(split[1])
@@ -134,9 +134,9 @@ export class QuickappointmentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private deptService: DepartmentService,
     private docService: DoctorService,
-    private patientService:PatientService,
-    private appointService:AppointmentService,
-    private sessionStorage:SessionstorageService
+    private patientService: PatientService,
+    private appointService: AppointmentService,
+    private sessionStorage: SessionstorageService
   ) { }
 
   getAll() {
@@ -144,11 +144,11 @@ export class QuickappointmentComponent implements OnInit {
   }
   create(): void {
 
-    console.log(this.filledUserName ,  "appojslkdfjklsdf")
-    console.log(this.quickAppointment.value.apFirstName +"999999999999")
+    console.log(this.filledUserName, "appojslkdfjklsdf")
+    console.log(this.quickAppointment.value.apFirstName + "999999999999")
     this.appointService.save(this.quickAppointment.value).subscribe(
-      
-      data =>{
+
+      data => {
         Swal.fire({
           // title: 'Are you sure !',
           title: 'Data saved !',
@@ -160,20 +160,20 @@ export class QuickappointmentComponent implements OnInit {
         })
         this.ngOnInit();
 
-    },
-    error =>{
-      Swal.fire({
-        // title: 'Are you sure !',
-        title: 'Data Cannot be saved !',
-        // text: 'Data Not Found',
-        icon: 'error',
-        // showCancelButton: true,
-        // confirmButtonText: 'Yes',
-        // cancelButtonText: 'No',
-      })  
+      },
+      error => {
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Cannot be saved !',
+          // text: 'Data Not Found',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
 
-    })
-    
+      })
+
   }
   edit(model: Appointment, modal?: any): void {
     throw new Error('Method not implemented.');
@@ -188,12 +188,12 @@ export class QuickappointmentComponent implements OnInit {
 
 
 
-filledUserName = this.sessionStorage.getData().user.username;
+  filledUserName = this.sessionStorage.getData().user.username;
   ngOnInit(): void {
     this.quickAppointment = this.formBuilder.group({
       id: [''],
       p_id: [''],
-      p_type:'New',
+      p_type: 'New',
       apSerial: [''],
       apFirstName: [''],
       apLastName: [''],
@@ -207,8 +207,8 @@ filledUserName = this.sessionStorage.getData().user.username;
       apAge: [''],
       apDeseaseDetails: [''],
       emp_id: [''],
-      apStatus:'Pending',
-      appointmentuserName:[this.filledUserName]
+      apStatus: 'Pending',
+      appointmentuserName: [this.filledUserName]
     });
 
 

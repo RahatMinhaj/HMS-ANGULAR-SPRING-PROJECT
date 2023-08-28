@@ -5,8 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
-import { Patient } from 'src/app/ModelClass/Patient.model';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { Patient } from 'src/app/ModelClass/patient.model';
+import { PatientService } from 'src/app/Service/patient.service';
 import Swal from 'sweetalert2';
 
 
@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 })
 export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   editPForm!: FormGroup;
-  pList: Patient[]= [];
+  pList: Patient[] = [];
   pModel!: Patient;
   // ==============Table Properties===========
   datasource: any;
@@ -55,13 +55,13 @@ export class PatientlistComponent implements OnInit, ICommonComp<Patient> {
   // }
 
 
-getCabin(post: Patient){
-  if(post.cabin!==null){
-    return 22
-  }
+  getCabin(post: Patient) {
+    if (post.cabin !== null) {
+      return 22
+    }
 
-  return 0;
-}
+    return 0;
+  }
 
 
   getAll() {
@@ -70,19 +70,19 @@ getCabin(post: Patient){
       const test = data;
 
 
-// for (let index = 0; index < this.pList.length; index++) {
+      // for (let index = 0; index < this.pList.length; index++) {
 
-//   if(this.pList[index].cabin.id !== null){
-//     this.Cabin_id = this.pList[index].cabin.id.toString();
-//   }else{
-//     this.Cabin_id = "null";
-//   }
+      //   if(this.pList[index].cabin.id !== null){
+      //     this.Cabin_id = this.pList[index].cabin.id.toString();
+      //   }else{
+      //     this.Cabin_id = "null";
+      //   }
 
-// }
+      // }
 
 
 
-      console.log(this.pList[0].cabin , "-*******************************************");
+      console.log(this.pList[0].cabin, "-*******************************************");
       // console.log(test.cabin.id , "-*******************************************");
 
       // ===========data table properties===============

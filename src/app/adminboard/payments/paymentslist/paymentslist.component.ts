@@ -4,9 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { Payment } from 'src/app/ModelClass/Payment.model';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import { PaymentService } from 'src/app/Service/payment.service';
 
 @Component({
@@ -15,78 +15,78 @@ import { PaymentService } from 'src/app/Service/payment.service';
   styleUrls: ['./paymentslist.component.css'],
 })
 export class PaymentslistComponent implements OnInit, ICommonComp<Payment> {
-  paymentList!:Payment[];
-  
-  
+  paymentList!: Payment[];
+
+
   // Data load for invoice
-  patientInfo!:Patient;
-  paymentData!:Payment;
+  patientInfo!: Patient;
+  paymentData!: Payment;
 
 
- 
 
-get sum(){
-  let totalSum = this.paymentData.doc_charge+this.paymentData.ambulance_charge+this.paymentData.cabin_charge+ this.paymentData.med_charge+this.paymentData.test_charge + this.paymentData.ot_charge
-  return totalSum
-}
 
-get DiscountVal(){
-  if(this.paymentData.discount == null){
-    return 0;
-  }else{
-    return this.paymentData.discount;
+  get sum() {
+    let totalSum = this.paymentData.doc_charge + this.paymentData.ambulance_charge + this.paymentData.cabin_charge + this.paymentData.med_charge + this.paymentData.test_charge + this.paymentData.ot_charge
+    return totalSum
   }
-}
 
-
-get discountSum(){
-
-  let discSum = this.sum * this.paymentData.discount/100;
-
-  return this.sum - discSum;
-}
-
-
-
-
-constructor(
-  private pService:PaymentService,
-  private modalService:NgbModal,
-  private patientService:PatientService,
-  private elementRef: ElementRef
-) {}
-
-
-
-closeResult!: string;
-showInvoice(model:Payment, modal?: any): void {
-  this.modalService.open(modal, { size: 'xl' }).result.then(
-    (result) => {
-      this.ngOnInit();
-      this.closeResult = `Closed with: ${result}`;
-    },
-    (reason) => {
-      this.ngOnInit();
-      this.closeResult = `Dismissed `;
+  get DiscountVal() {
+    if (this.paymentData.discount == null) {
+      return 0;
+    } else {
+      return this.paymentData.discount;
     }
-  );
-  // Data getting from service
-  // patient
-  this.patientService.getuserByID(model.p_id).subscribe(data =>{
-    this.patientInfo = data;
-    // console.log(this.patientInfo.p_first_name , "++++++++++++++++++++++++++++++++++++data ")
-  })
+  }
 
-  // data assigning
 
-  this.paymentData = model;
-  // this.invoiceID = model.id;
+  get discountSum() {
 
-}
+    let discSum = this.sum * this.paymentData.discount / 100;
 
-printModal(){
+    return this.sum - discSum;
+  }
 
-    window.print();    
+
+
+
+  constructor(
+    private pService: PaymentService,
+    private modalService: NgbModal,
+    private patientService: PatientService,
+    private elementRef: ElementRef
+  ) { }
+
+
+
+  closeResult!: string;
+  showInvoice(model: Payment, modal?: any): void {
+    this.modalService.open(modal, { size: 'xl' }).result.then(
+      (result) => {
+        this.ngOnInit();
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.ngOnInit();
+        this.closeResult = `Dismissed `;
+      }
+    );
+    // Data getting from service
+    // patient
+    this.patientService.getuserByID(model.p_id).subscribe(data => {
+      this.patientInfo = data;
+      // console.log(this.patientInfo.p_first_name , "++++++++++++++++++++++++++++++++++++data ")
+    })
+
+    // data assigning
+
+    this.paymentData = model;
+    // this.invoiceID = model.id;
+
+  }
+
+  printModal() {
+
+    window.print();
     // // Get the content of the modal
     // const content = this.elementRef.nativeElement.querySelector('.modal-body');
 
@@ -96,7 +96,7 @@ printModal(){
 
     // // Call the window.print() method to print the content
     // newWindow!.print();
-}
+  }
 
 
 
@@ -116,10 +116,10 @@ printModal(){
 
 
 
-  
-  
-  
-  
+
+
+
+
   // ==============Table Properties===========
   datasource: any;
   displayedColumns: string[] = [
@@ -139,7 +139,7 @@ printModal(){
     'discount',
     'total_bill',
     'createdAt'
- 
+
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sorting!: MatSort;
@@ -195,5 +195,5 @@ printModal(){
 
   selectedTeam = '';
 
-  onSelect(value: string) {}
+  onSelect(value: string) { }
 }

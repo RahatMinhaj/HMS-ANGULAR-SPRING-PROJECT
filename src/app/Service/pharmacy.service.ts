@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { ICommonService } from '../Interfaces/ICommonService';
 import { Medicine } from '../ModelClass/Medicine.model';
-import { Patient } from '../ModelClass/Patient.model';
+import { Patient } from '../ModelClass/patient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,13 @@ import { Patient } from '../ModelClass/Patient.model';
 
 
 
-export class PharmacyService implements OnInit,ICommonService<Medicine> {
+export class PharmacyService implements OnInit, ICommonService<Medicine> {
 
 
   url = "http://localhost:8080/medicine/";
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
 
   ) { }
 
@@ -27,14 +27,14 @@ export class PharmacyService implements OnInit,ICommonService<Medicine> {
 
 
   save(data: Medicine) {
-   return this.http.post(this.url+"create",data);
-    
+    return this.http.post(this.url + "create", data);
+
   }
 
 
 
   getAll() {
-    return this.http.get<Medicine[]>(this.url+"lists");
+    return this.http.get<Medicine[]>(this.url + "lists");
   }
 
 

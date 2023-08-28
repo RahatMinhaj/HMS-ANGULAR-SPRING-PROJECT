@@ -8,11 +8,11 @@ import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { Employee } from 'src/app/ModelClass/Employee.mode';
 import { Pathology } from 'src/app/ModelClass/Pathology.model';
 import { PathologyType } from 'src/app/ModelClass/PathologyType.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
 import { PathologyService } from 'src/app/Service/pathology.service';
 import { PathologytypeService } from 'src/app/Service/pathologytype.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-pathology',
@@ -34,10 +34,10 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
     private patientService: PatientService,
     private docService: DoctorService,
     private pathologyTypeService: PathologytypeService
-  ) {}
+  ) { }
 
 
- 
+
 
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
 
 
       patient_id: [],
-      patient:[]
+      patient: []
     });
 
     this.getAll();
@@ -86,7 +86,7 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
   }
 
   patient_name = '';
-  patientChange(event:any){
+  patientChange(event: any) {
     let value = event.target.value;
     let p_id = parseInt(value);
 
@@ -102,8 +102,8 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
 
   }
 
-  pathologyPrice:number = 0;
-  changePathologyType(event:any){
+  pathologyPrice: number = 0;
+  changePathologyType(event: any) {
     let value = event.target.value;
     let pathologyTypeid = parseInt(value);
     for (let i = 0; i < this.pathologyTypeList.length; i++) {
@@ -143,7 +143,7 @@ export class PathologyComponent implements OnInit, ICommonComp<Pathology> {
   create(): void {
 
     this.pathologyForm.value.patient = {
-      id:this.pathologyForm.value.patient_id
+      id: this.pathologyForm.value.patient_id
 
     }
 

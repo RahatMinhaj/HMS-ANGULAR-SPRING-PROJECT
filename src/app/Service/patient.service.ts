@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICommonService } from '../Interfaces/ICommonService';
-import { Patient } from '../ModelClass/Patient.model';
+import { Patient } from '../ModelClass/patient.model';
 import { SessionstorageService } from './sessionstorage.service';
 
 
@@ -17,14 +17,15 @@ import { SessionstorageService } from './sessionstorage.service';
 })
 export class PatientService implements ICommonService<Patient>{
 
-  constructor( private http:HttpClient,   private localStorage: SessionstorageService) { }
+  constructor(private http: HttpClient, private localStorage: SessionstorageService) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + this.localStorage.getToken()
-  })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': "Bearer " + this.localStorage.getToken()
+    })
   };
 
-url:string = "http://localhost:8080/patient/";
+  url: string = "http://localhost:8080/patient/";
 
 
 
@@ -34,8 +35,8 @@ url:string = "http://localhost:8080/patient/";
   }
 
 
-  cabinStatusEngaged(patientID:number, status:string){
-    return this.http.get(this.url +"updatecabin/?pid=" + patientID + "&status=" + status);
+  cabinStatusEngaged(patientID: number, status: string) {
+    return this.http.get(this.url + "updatecabin/?pid=" + patientID + "&status=" + status);
 
   }
 
@@ -49,12 +50,12 @@ url:string = "http://localhost:8080/patient/";
     return this.http.get<Patient>(this.url + "lists/editbyid/" + id)
   }
   updateData(data: Patient) {
-    return this.http.put(this.url +"lists/update/" + data.id, data );
+    return this.http.put(this.url + "lists/update/" + data.id, data);
   }
   deleteById(id: number) {
     return this.http.delete(this.url + "lists/delete/" + id);
   }
-  
 
-  
+
+
 }

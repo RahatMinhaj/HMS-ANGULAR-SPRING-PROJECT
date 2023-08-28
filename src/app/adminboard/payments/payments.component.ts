@@ -4,11 +4,11 @@ import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Department } from 'src/app/ModelClass/Department.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { Pathology } from 'src/app/ModelClass/Pathology.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { DepartmentService } from 'src/app/Service/Doctor/department.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
 import { PathologyService } from 'src/app/Service/pathology.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import { PaymentService } from 'src/app/Service/payment.service';
 import Swal from 'sweetalert2';
 
@@ -35,7 +35,7 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
     private formBuilder: FormBuilder,
     private paymentService: PaymentService,
     private pathologyService: PathologyService
-  ) {}
+  ) { }
 
   patient_name = '';
   patientSelect(value: any) {
@@ -58,10 +58,10 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
     //   });
   }
 
-  testDiagonosisRef!:number[];
+  testDiagonosisRef!: number[];
   getDiagonosticDataByID(p_id: number) {
-    let temp:number = 0;
-    let val:number = 0;
+    let temp: number = 0;
+    let val: number = 0;
     this.pathologyService
       .getDataByUserID(p_id)
       .subscribe((data: Pathology[]) => {
@@ -70,7 +70,7 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
           temp = data[i].pathology_price + temp;
 
 
-           val= +temp
+          val = +temp
         }
         this.paymentForm.controls['test_charge'].setValue(val);
       });
@@ -78,17 +78,17 @@ export class PaymentsComponent implements OnInit, ICommonComp<Patient> {
     return temp;
   }
 
-doctorCharge:number = 0;
-  docChange(event:any){
+  doctorCharge: number = 0;
+  docChange(event: any) {
     let value = event.target.value;
-    
-    for(let i = 0; i<this.docListByDept.length; i++){
-      if(value == this.docListByDept[i].id){
+
+    for (let i = 0; i < this.docListByDept.length; i++) {
+      if (value == this.docListByDept[i].id) {
         this.doctorCharge = this.docListByDept[i].visit_charge
       }
 
     }
-    
+
     this.paymentForm.controls['doc_charge'].setValue(this.doctorCharge);
   }
 
@@ -151,19 +151,19 @@ doctorCharge:number = 0;
     );
   }
 
-getTotal(){
-  let sum =
-  this.paymentForm.value.doc_charge +
-  this.paymentForm.value.ambulance_charge +
-  this.paymentForm.value.cabin_charge +
-  this.paymentForm.value.med_charge +
-  this.paymentForm.value.test_charge +
-  this.paymentForm.value.ot_charge;
+  getTotal() {
+    let sum =
+      this.paymentForm.value.doc_charge +
+      this.paymentForm.value.ambulance_charge +
+      this.paymentForm.value.cabin_charge +
+      this.paymentForm.value.med_charge +
+      this.paymentForm.value.test_charge +
+      this.paymentForm.value.ot_charge;
 
-this.ttBill = sum;
-let disc = (this.ttBill * this.paymentForm.value.discount) / 100;
-return this.ttBill - disc;
-}
+    this.ttBill = sum;
+    let disc = (this.ttBill * this.paymentForm.value.discount) / 100;
+    return this.ttBill - disc;
+  }
 
 
 

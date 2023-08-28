@@ -4,11 +4,11 @@ import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Cabin } from 'src/app/ModelClass/Cabin.model';
 import { CabinAllotment } from 'src/app/ModelClass/CabinAllotment.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { CabinService } from 'src/app/Service/cabin.service';
 import { CabinallotmentService } from 'src/app/Service/cabinallotment.service';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -31,8 +31,8 @@ export class CabinComponent implements OnInit, ICommonComp<CabinAllotment> {
     private patientService: PatientService,
     private docService: DoctorService,
     private cabinService: CabinService,
-    private cabinAllotmentService:CabinallotmentService
-  ) {}
+    private cabinAllotmentService: CabinallotmentService
+  ) { }
 
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class CabinComponent implements OnInit, ICommonComp<CabinAllotment> {
       doc_id: [''],
       allotment_date: [''],
       discharge_date: [''],
-      cabin_status:['Engaged']
+      cabin_status: ['Engaged']
     });
 
     this.getAll();
@@ -70,8 +70,8 @@ export class CabinComponent implements OnInit, ICommonComp<CabinAllotment> {
   create(): void {
     console.log(this.allotmentForm.value)
     this.cabinAllotmentService.save(this.allotmentForm.value).subscribe(
-      
-      data =>{
+
+      data => {
         Swal.fire({
           // title: 'Are you sure !',
           title: 'Data saved !',
@@ -81,27 +81,27 @@ export class CabinComponent implements OnInit, ICommonComp<CabinAllotment> {
           // confirmButtonText: 'Yes',
           // cancelButtonText: 'No',
         })
-        this.patientService.cabinStatusEngaged(this.allotmentForm.value.p_id , this.allotmentForm.value.cabin_status).subscribe(data =>{
-         console.log(data , "               data printed from component")
+        this.patientService.cabinStatusEngaged(this.allotmentForm.value.p_id, this.allotmentForm.value.cabin_status).subscribe(data => {
+          console.log(data, "               data printed from component")
         })
         this.ngOnInit();
-  
-    },
-    error =>{
-      Swal.fire({
-        // title: 'Are you sure !',
-        title: 'Data Cannot be saved !',
-        text: 'Spring Server Issue',
-        icon: 'error',
-        // showCancelButton: true,
-        // confirmButtonText: 'Yes',
-        // cancelButtonText: 'No',
-      })  
-  
-    })
+
+      },
+      error => {
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Cannot be saved !',
+          text: 'Spring Server Issue',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
+
+      })
 
 
-    
+
   }
 
   patient_name = '';

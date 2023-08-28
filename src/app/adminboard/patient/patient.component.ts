@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
-import { Patient } from 'src/app/ModelClass/Patient.model';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { Patient } from 'src/app/ModelClass/patient.model';
+import { PatientService } from 'src/app/Service/patient.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,8 +17,8 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
   constructor(
     private formBuilder: FormBuilder,
     private patientService: PatientService,
-    private router:Router
-  ) {}
+    private router: Router
+  ) { }
 
   getAll() {
     throw new Error('Method not implemented.');
@@ -26,8 +26,8 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
 
   create(): void {
     this.patientService.save(this.patientForm.value).subscribe(
-      
-      data =>{
+
+      data => {
         Swal.fire({
           // title: 'Are you sure !',
           title: 'Data saved !',
@@ -39,20 +39,20 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
         })
         this.router.navigateByUrl("/admin/patientlist")
 
-    },
-    error =>{
-      Swal.fire({
-        // title: 'Are you sure !',
-        title: 'Data Cannot be saved !',
-        text: 'Spring Server Issue',
-        icon: 'error',
-        // showCancelButton: true,
-        // confirmButtonText: 'Yes',
-        // cancelButtonText: 'No',
-      })  
+      },
+      error => {
+        Swal.fire({
+          // title: 'Are you sure !',
+          title: 'Data Cannot be saved !',
+          text: 'Spring Server Issue',
+          icon: 'error',
+          // showCancelButton: true,
+          // confirmButtonText: 'Yes',
+          // cancelButtonText: 'No',
+        })
 
-    })
-    
+      })
+
   }
 
   edit(model: Patient, modal?: any): void {
@@ -76,7 +76,7 @@ export class PatientComponent implements OnInit, ICommonComp<Patient> {
       p_address: [''],
       p_mobile: [''],
       p_platform: [''],
-      cabin_status:['Null'],
+      cabin_status: ['Null'],
       // cabin: {
       //   id:35
       // }

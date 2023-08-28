@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Route } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HardCodeauthService } from '../Service/hard-codeauth.service';
-import { PatientService } from '../Service/Patient.service';
+import { PatientService } from '../Service/patient.service';
 
 @Component({
   selector: 'app-landingpage',
@@ -11,34 +11,34 @@ import { PatientService } from '../Service/Patient.service';
   styleUrls: ['./landingpage.component.css'],
 })
 export class LandingpageComponent implements OnInit {
-  userLoginForm!:FormGroup;
+  userLoginForm!: FormGroup;
   userSignUpform!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-     private patientService:PatientService, 
-     public hardcoderAuth:HardCodeauthService,
-     private modalService:NgbModal,
-     
-     ) {}
+    private patientService: PatientService,
+    public hardcoderAuth: HardCodeauthService,
+    private modalService: NgbModal,
 
-  isUserLoggedIN : boolean = false;    
+  ) { }
+
+  isUserLoggedIN: boolean = false;
 
 
 
 
   ngOnInit(): void {
 
-this.isUserLoggedIN = this.hardcoderAuth.isUserLoggedIn();
+    this.isUserLoggedIN = this.hardcoderAuth.isUserLoggedIn();
 
 
-// user Login Form
-this.userLoginForm = this.formBuilder.group({
-  username:['us'],
-  password:['us']
+    // user Login Form
+    this.userLoginForm = this.formBuilder.group({
+      username: ['us'],
+      password: ['us']
 
 
-})
+    })
 
 
     // user Sign UP Form
@@ -52,42 +52,42 @@ this.userLoginForm = this.formBuilder.group({
       p_weight: [''],
       p_height: [''],
       p_gender: [''],
-      p_mobile:[''],
+      p_mobile: [''],
       p_address: [''],
     });
   }
 
-  registration(){
+  registration() {
     console.log(this.userSignUpform.value.p_first_name)
     // this.patientService.saveData(this.userSignUpform.value)
   }
-  
-  userLogin(){
+
+  userLogin() {
     // console.log(this.userLoginForm.value.username);
     this.hardcoderAuth.authenticate(this.userLoginForm.value.username, this.userLoginForm.value.password);
-    
-    }
 
-
-    ShowAppointmentForm(modal?: any): void {
-      this.modalService.open(modal, { size: 'xl' }).result.then(
-        (result) => {
-          this.ngOnInit();
-          // this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.ngOnInit();
-          // this.closeResult = `Dismissed `;
-        }
-      );
-      
-    }
-
-
-
-    
-
-    
   }
+
+
+  ShowAppointmentForm(modal?: any): void {
+    this.modalService.open(modal, { size: 'xl' }).result.then(
+      (result) => {
+        this.ngOnInit();
+        // this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.ngOnInit();
+        // this.closeResult = `Dismissed `;
+      }
+    );
+
+  }
+
+
+
+
+
+
+}
 
 

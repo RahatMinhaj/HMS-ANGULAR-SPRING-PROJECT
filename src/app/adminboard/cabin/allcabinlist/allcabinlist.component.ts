@@ -6,7 +6,7 @@ import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Cabin } from 'src/app/ModelClass/Cabin.model';
 import { CabinAllotment } from 'src/app/ModelClass/CabinAllotment.model';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { CabinallotmentService } from 'src/app/Service/cabinallotment.service';
 import Swal from 'sweetalert2';
 
@@ -15,13 +15,13 @@ import Swal from 'sweetalert2';
   templateUrl: './allcabinlist.component.html',
   styleUrls: ['./allcabinlist.component.css']
 })
-export class AllcabinlistComponent implements OnInit,ICommonComp<CabinAllotment>{
+export class AllcabinlistComponent implements OnInit, ICommonComp<CabinAllotment>{
   cabinAllotMentList!: CabinAllotment[];
 
-// patient list
-plist!:Patient[];
-cabinList!:Cabin[];
-docList!:Doctor[];
+  // patient list
+  plist!: Patient[];
+  cabinList!: Cabin[];
+  docList!: Doctor[];
 
 
   constructor(
@@ -47,8 +47,8 @@ docList!:Doctor[];
   ];
 
 
-  changeCabinStaus(cabinAllotment:CabinAllotment){
-    if(cabinAllotment.cabin_status == "Engaged"){
+  changeCabinStaus(cabinAllotment: CabinAllotment) {
+    if (cabinAllotment.cabin_status == "Engaged") {
       Swal.fire({
         // title: 'You Want to release the patient?',
         text: 'You Want to release the patient?',
@@ -58,10 +58,10 @@ docList!:Doctor[];
         cancelButtonText: 'No',
       }).then((result) => {
         if (result.value) {
-          this.cabinAllotmentService.changeCabinStatus(cabinAllotment.id).subscribe((data) =>{
+          this.cabinAllotmentService.changeCabinStatus(cabinAllotment.id).subscribe((data) => {
             console.log("data gained " + data)
             this.ngOnInit();
-          })   
+          })
           Swal.fire('Discharged!', 'Patient has been discharged!', 'success');
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           // Swal.fire('Cancelled', 'Product still in our database.', 'error');
@@ -71,11 +71,11 @@ docList!:Doctor[];
 
 
 
-        
+
       });
 
 
-    }else{
+    } else {
       Swal.fire({
         // title: 'Are you sure !',
         text: 'Already Discharged!',
@@ -113,7 +113,7 @@ docList!:Doctor[];
 
 
 
-  filterCabinStatus(value : any){
+  filterCabinStatus(value: any) {
 
   }
 
@@ -123,7 +123,7 @@ docList!:Doctor[];
 
 
   getAll() {
-    this.cabinAllotmentService.getAll().subscribe((data:CabinAllotment[])=>{
+    this.cabinAllotmentService.getAll().subscribe((data: CabinAllotment[]) => {
       this.cabinAllotMentList = data;
 
       // console.log(this.cabinAllotMentList , "=============================")

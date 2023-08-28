@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ICommonComp } from 'src/app/Interfaces/ICommonComp';
 import { Doctor } from 'src/app/ModelClass/Doctor.model';
 import { Medicine } from 'src/app/ModelClass/Medicine.model';
-import { Patient } from 'src/app/ModelClass/Patient.model';
+import { Patient } from 'src/app/ModelClass/patient.model';
 import { Prescription } from 'src/app/ModelClass/Prescription.model';
 import { DoctorService } from 'src/app/Service/Doctor/doctor.service';
-import { PatientService } from 'src/app/Service/Patient.service';
+import { PatientService } from 'src/app/Service/patient.service';
 import { PharmacyService } from 'src/app/Service/pharmacy.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class PrescriptionComponent
     private patientService: PatientService,
     private docService: DoctorService,
     private medService: PharmacyService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAll();
